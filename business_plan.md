@@ -35,9 +35,32 @@ It seeks to answer a much more important business question:
 Initial validation will be limited to **Home Decor** and **Home Organization**, avoiding dispersion across multiple categories.
 
 ---
-**Main Value Proposal**
 
-Style Picks helps U.S. consumers discover and choose useful, attractive home products by turning overwhelming product options into curated, contextual recommendations tailored to specific spaces, needs, and styles.
+## Value Proposition
+
+Style Picks reduces the friction of home-product discovery by transforming an overwhelming selection of products into curated, contextual, and visually compelling recommendations.
+
+Instead of simply presenting products, Style Picks explains **which products make sense for a specific space, problem, need, or aesthetic—and why**.
+
+For consumers, this means:
+
+**less searching → better selection → easier decisions.**
+
+For Amazon, Style Picks generates commercially relevant traffic from users who have already received contextual guidance and product recommendations.
+
+For Style Picks, the model creates a continuous learning system that identifies which needs, products, categories, and content formats are most effective at converting visual discovery into commercial action.
+
+### Core Value Proposition
+
+> **Discover better home products without having to search through hundreds of options.**
+
+### Strategic Differentiator
+
+Style Picks is not a mirror of Amazon.
+
+It is an **editorial selection layer between consumer intent and product inventory**, combining:
+
+**Discovery + Curation + Context + Recommendation.**
 
 # 2. Business Model
 
