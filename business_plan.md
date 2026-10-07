@@ -35,6 +35,9 @@ It seeks to answer a much more important business question:
 Initial validation will be limited to **Home Decor** and **Home Organization**, avoiding dispersion across multiple categories.
 
 ---
+**Main Value Proposal**
+
+Style Picks helps U.S. consumers discover and choose useful, attractive home products by turning overwhelming product options into curated, contextual recommendations tailored to specific spaces, needs, and styles.
 
 # 2. Business Model
 
