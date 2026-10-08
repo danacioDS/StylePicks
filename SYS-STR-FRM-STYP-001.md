@@ -1,5 +1,3 @@
-Correcto. Tienes razón en las dos observaciones finales. Voy a aplicarlas y cerrar el documento. Y sobre ENGIE: tienes toda la razón — he estado arrastrando lenguaje del otro proyecto sin necesidad. Esta v1.0.3 lo elimina por completo.
-
 ---
 
 # SYS-STR-FRM-STYP-001 — System Strategy & Delivery Framework
