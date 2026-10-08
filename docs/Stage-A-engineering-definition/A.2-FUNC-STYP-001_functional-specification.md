@@ -1,21 +1,43 @@
 # STYLE PICKS
+## Value Proposition Functional Specification
 
-## Value Proposition Functional Specification — V1.1 Release Candidate
+**Stage A.2 — Functional Definition**
+**Physical Foundation of the Style Picks Functional Model**
 
-**Business Model:** Content Commerce + Affiliate Commerce  
-**Brand:** Style Picks  
-**Target Market:** United States  
-**Initial Channel:** Pinterest  
-**Monetization:** Amazon Associates  
-**Initial Categories:** Home Decor + Home Organization  
-**Stage:** Commercial Validation  
-**Operational Start:** October 7, 2026  
-**Amazon Associates Account Created:** [OPEN ITEM — INSERT DATE]  
-**Amazon Associates Deadline:** [OPEN ITEM — ACCOUNT DATE + 180 DAYS]  
-**Validation Horizon:** Ends at the Amazon Associates deadline  
-**Destination Model:** Pinterest → Amazon (direct link)  
-**Document Type:** Business Functional Specification  
-**Version:** 1.1 — Release Candidate
+**Document ID:** A.2-FUNC-STYP-001
+
+**Version:** 1.1 — Functional Definition Release Candidate
+
+**Status:** Stage A — Engineering Definition (Conceptual Level) — Release Candidate
+
+**Project:** Style Picks — Content Commerce + Affiliate Commerce
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Parent Documents:**
+- A.1-BIZ-STYP-001 — Business Plan and Commercial Validation (v1.4)
+- PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.0)
+
+**Child Documents:**
+- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.1 RC.4)
+
+**Domain:** Domain A.2 — Business Functions
+
+---
+
+**Business Model:** Content Commerce + Affiliate Commerce
+**Brand:** Style Picks
+**Target Market:** United States
+**Initial Channel:** Pinterest
+**Monetization:** Amazon Associates
+**Initial Categories:** Home Decor + Home Organization
+**Stage:** Commercial Validation
+**Operational Start:** October 7, 2026
+**Amazon Associates Account Created:** [OI-001]
+**Amazon Associates Deadline:** [OI-002]
+**Validation Horizon:** Ends at the Amazon Associates deadline
+**Destination Model:** Pinterest → Amazon (direct link)
+**Document Type:** Business Functional Specification
 
 ---
 
@@ -26,22 +48,32 @@
 | 1.0 | Oct 7, 2026 | Initial functional specification |
 | 1.1 | Oct 7, 2026 | Govern diagram, Align/Govern boundary, confidence model, thresholds, imagery, FTC/Pinterest disclosure, attribution scope, sources |
 | 1.1 RC | Oct 7, 2026 | Checkpoint 135d split into two distinct alarms; interim evidence rule added; 12.3 attribution slip corrected; version label aligned with Section 22 |
+| **1.1 RC (Baselined header)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals register referenced; Sign-Off block added |
 
 ---
 
 ## Open Items
 
-> **This document cannot be treated as final while any of the following remain empty.**
+> **This document cannot be treated as final while any of the following remain empty. The authoritative source is `PH1-REG-STYP-001`.**
 
-| # | Open item | Owner | Status |
-|---|-----------|-------|--------|
-| 1 | Amazon Associates account creation date | Editorial Owner | **EMPTY — CLOSE FIRST** |
-| 2 | Amazon Associates deadline (account date + 180 days) | Editorial Owner | **EMPTY** |
-| 3 | Verification: qualifying-sales rule | Editorial Owner | **EMPTY** |
-| 4 | Verification: PA-API access requirements | Editorial Owner | **EMPTY** |
-| 5 | Verification: image and price display rules | Editorial Owner | **EMPTY** |
-| 6 | Verification: required disclosure wording | Editorial Owner | **EMPTY** |
-| 7 | Verification: link-format rules | Editorial Owner | **EMPTY** |
+| # | Open item | Priority | Owner | Status |
+|---|-----------|----------|-------|--------|
+| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **EMPTY — CLOSE FIRST** |
+| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **EMPTY** |
+| OI-003 | Verification: qualifying-sales rule | Defaultable | Editorial Owner | EMPTY |
+| OI-004 | Verification: Creators API access requirements | Defaultable | Editorial Owner | EMPTY |
+| OI-005 | Verification: image and price display rules | Defaultable | Editorial Owner | EMPTY |
+| OI-006 | Verification: required disclosure wording | Defaultable | Editorial Owner | EMPTY |
+| OI-007 | Verification: link-format rules | Defaultable | Editorial Owner | EMPTY |
+| OI-008 | Evidence Source Policy — formalized | Defaultable | Editorial Owner | EMPTY |
+
+**Change Proposals affecting this document:**
+
+| CP ID | Title | Status |
+|-------|-------|--------|
+| CP-002 | AI-Generated Contextual Imagery | Pending |
+
+> **On CP-002:** This CP, filed in `A.5-ENG-STYP-001` §47, proposes amending §10.6 of this document to admit AI-generated contextual imagery. Until CP-002 is accepted, only licensed and stock imagery are used.
 
 ---
 
@@ -153,13 +185,15 @@ It does not answer: **"Which product deserves to be recommended?"**
 
 Discover depends on product data. Two sources exist:
 
-### Source A — Amazon Product Advertising API (PA-API)
+### Source A — Amazon Product Advertising API (PA-API) / Creators API
 
-Access to PA-API has historically required recent qualifying sales.
+Access to the API has historically required recent qualifying sales.
 
-> **Open Item #4:** Verify current requirements. Record source and date here once verified.
+> **OI-004:** Verify current requirements. Record source and date here once verified.
 
-**Functional consequence:** Discover must operate in **manual or semi-manual mode** during early validation until PA-API access is confirmed.
+**Functional consequence:** Discover must operate in **manual or semi-manual mode** during early validation until API access is confirmed.
+
+> **Reference note:** PA-API has been deprecated and replaced by **Creators API**. All references in this document to PA-API should be read as referring to Creators API. See `A.5-ENG-STYP-001` §48.
 
 ### Source B — Manual product research
 Amazon Best Sellers, Movers & Shakers, Amazon search within approved categories, Pinterest search.
@@ -316,9 +350,9 @@ A product whose recommended use depends on a claim that **cannot be substantiate
 
 ### 9.6.2 Interim Evidence Rule (Applicable Until Evidence Source Policy Exists)
 
-> **Requirement for the next layer:** The full Evidence Source Policy belongs in the **Business Capabilities Specification / Capability Contracts**.
+> **Requirement for the next layer:** The full Evidence Source Policy belongs in the **Business Capabilities Specification / Capability Contracts** (`A.3-CAP-STYP-001`, `A.4-CONTR-STYP-001`).
 
-**Interim rule for V1.1 RC:**
+**Interim rule for Stage A:**
 
 Until that policy exists, only two sources count as **verified**:
 
@@ -328,6 +362,8 @@ Until that policy exists, only two sources count as **verified**:
 Any claim sourced from anything else — customer reviews, third-party publications, Pinterest posts, LLM-generated information — **lowers Evidence Confidence to Low**, which routes the recommendation to human review.
 
 This rule is deliberately strict. It keeps routing operable from the first Pin and will be relaxed only when the Evidence Source Policy defines reliability tiers.
+
+> **Tracked as OI-008** in `PH1-REG-STYP-001`.
 
 ---
 
@@ -353,7 +389,7 @@ Recommendation, product, context, brand identity, content format, platform requi
 ## 10.5 Outputs
 Publication-ready content asset.
 
-## 10.6 Imagery Rule (Resolved)
+## 10.6 Imagery Rule
 
 **Rule:** The recommended product must be **visibly and accurately represented** in the Pin.
 
@@ -376,9 +412,11 @@ Publication-ready content asset.
 
 > **Rationale:** Without this rule, a Pin could show a lamp that is not the recommended lamp. That would fail Align by design and would be misleading to the consumer.
 
+> **Pending CP-002:** A Change Proposal filed in `A.5-ENG-STYP-001` §47 proposes admitting AI-generated contextual imagery under labeling and evidence conditions. Until CP-002 is accepted, only licensed and stock imagery are used.
+
 ## 10.7 Price Display Rule
 
-> **V1.1 rule: Pins do not display prices.**
+> **Stage A rule: Pins do not display prices.**
 
 **Rationale:** Prices go stale, create Govern exposure, and complicate post-publication Align checks.
 
@@ -452,11 +490,11 @@ Align does not create the recommendation. It determines whether the result is st
 ## 12.1 Purpose
 Convert observed outcomes into improvements in editorial decisions and future content.
 
-## 12.2 Inputs (V1.1 Scope)
+## 12.2 Inputs (Stage A Scope)
 
-> **Attribution scope:** Category-level tracking IDs give **category attribution**. "Performance by context" and "performance by content format" are **not achievable in V1.1** unless IDs are assigned at that granularity from the start.
+> **Attribution scope:** Category-level tracking IDs give **category attribution**. "Performance by context" and "performance by content format" are **not achievable in Stage A** unless IDs are assigned at that granularity from the start.
 
-**Achievable V1.1 inputs:**
+**Achievable Stage A inputs:**
 - impressions (Pinterest)
 - saves (Pinterest)
 - outbound clicks (Pinterest, per Pin)
@@ -468,13 +506,13 @@ Convert observed outcomes into improvements in editorial decisions and future co
 - performance by product (via ASIN)
 - production time (manual log)
 
-**Not achievable in V1.1 without additional tracking IDs:**
+**Not achievable in Stage A without additional tracking IDs:**
 - performance by context
 - performance by content format
 
 ## 12.3 Responsibility (Qualified to Match 12.2)
 
-Learn identifies patterns **that are attributable within V1.1 scope**:
+Learn identifies patterns **that are attributable within Stage A scope**:
 
 - **categories** generating stronger **commercial action** (via tracking ID)
 - **products** generating stronger commercial action (via ASIN)
@@ -500,7 +538,7 @@ Learn does not automatically redefine strategy. It provides evidence.
 
 > **Tracking ID assignment is a functional requirement.** Without correct IDs, Learn cannot attribute performance.
 
-### 12.6.1 V1.1 Convention
+### 12.6.1 Stage A Convention
 
 | Tracking ID | Applied to |
 |-------------|-----------|
@@ -540,33 +578,35 @@ Govern controls: factual accuracy, product-claim integrity, affiliate disclosure
 
 ## 13.3 External Rules Enforced by Govern
 
-Each rule below requires verification against its current source. Verification status is recorded in Open Items.
+Each rule below requires verification against its current source. Verification status is recorded in Open Items (`PH1-REG-STYP-001`).
 
 ### 13.3.1 Amazon Associates — Qualifying Sales Requirement
 
-> **Open Item #3:** Verify current rule. Record source and date.
+> **OI-003:** Verify current rule. Record source and date.
 
 **Functional consequence:**
 - The Style Picks **survival horizon** = Associates account creation date + 180 days
-- **Account created:** [Open Item #1]
-- **Actual deadline:** [Open Item #2]
+- **Account created:** [OI-001]
+- **Actual deadline:** [OI-002]
 - This may differ from the operational start of October 7, 2026
 
-### 13.3.2 Amazon Associates — PA-API Access
+### 13.3.2 Amazon Associates — API Access
 
-> **Open Item #4:** Verify current requirements. Record source and date.
+> **OI-004:** Verify current requirements. Record source and date.
+
+> **Reference note:** PA-API has been deprecated and replaced by **Creators API**. All references in this document to PA-API should be read as referring to Creators API. See `A.5-ENG-STYP-001` §48.
 
 ### 13.3.3 Amazon Associates — Image and Price Display
 
-> **Open Item #5:** Verify current rules. Record source and date.
+> **OI-005:** Verify current rules. Record source and date.
 
 ### 13.3.4 Amazon Associates — Disclosure
 
-> **Open Item #6:** Verify **exact required statement and placement**. Record source and date.
+> **OI-006:** Verify **exact required statement and placement**. Record source and date.
 
 ### 13.3.5 Amazon Associates — Link Format
 
-> **Open Item #7:** Verify current link-format rules. Record source and date.
+> **OI-007:** Verify current link-format rules. Record source and date.
 
 ### 13.3.6 FTC Endorsement Disclosure (US)
 
@@ -584,7 +624,7 @@ Approve, Reject, Correct, Escalate, Compliance evidence.
 
 ## 13.6 Escalation Rules
 
-> **All checkpoints are anchored to the Amazon Associates deadline.**
+> **All checkpoints are anchored to the Amazon Associates deadline (OI-002).**
 
 | Condition | Action |
 |-----------|--------|
@@ -687,6 +727,8 @@ The rubric is upstream of Select, Recommend, Align, and Learn.
 
 Its evolution is an explicit learning process, not an undocumented change in personal judgment.
 
+> **Contractual basis:** Rubric Management is formalized as capability C-11 in `A.3-CAP-STYP-001` §17 and contracted in `A.4-CONTR-STYP-001` C-11.
+
 ---
 
 # 17. Execution Mechanisms
@@ -697,7 +739,7 @@ Possible mechanisms: deterministic, probabilistic, human, hybrid.
 
 ### 17.1 Preliminary Mechanism Mapping
 
-> Preliminary and subject to revision in the Engineering Proposal.
+> Preliminary and subject to revision in the Engineering Proposal (`A.5-ENG-STYP-001`).
 
 | Function | Preliminary mechanism |
 |----------|----------------------|
@@ -726,9 +768,11 @@ These measure whether the **functions** are working.
 | Governance violation rate | ≤ 2% | Every Pin for the first 30; then 1 in 5 |
 | Attribution completeness (Pins with correct tracking ID) | 100% | Every Pin |
 
+> **Naming note:** "Attribution completeness" here is a **Pin-level** metric: Pins with a correct tracking ID. `A.3-CAP-STYP-001` §14.12 defines a **tracking-ID-level** metric of the same name because Amazon reports per tracking ID, not per Pin. The two metrics are related but distinct. See `A.3-CAP-STYP-001` §21.
+
 ## 18.2 Business Validation Thresholds
 
-> **These are business targets, not functional requirements.** They belong conceptually to the Business Plan.
+> **These are business targets, not functional requirements.** They belong conceptually to the Business Plan (`A.1-BIZ-STYP-001`).
 
 | Threshold | Target | Notes |
 |-----------|--------|-------|
@@ -740,7 +784,7 @@ These measure whether the **functions** are working.
 
 ## 18.3 Interim Checkpoints
 
-> **All checkpoints are anchored to the Amazon Associates deadline.** Days are expressed as "deadline minus N."
+> **All checkpoints are anchored to the Amazon Associates deadline (OI-002). Days are expressed as "deadline minus N."**
 
 | Deadline minus | Condition | Action |
 |----------------|-----------|--------|
@@ -757,21 +801,21 @@ These measure whether the **functions** are working.
 # 19. Relationship to the Engineering Proposal
 
 ```text
-Business Plan
+Business Plan (A.1-BIZ-STYP-001)
       ↓
 Value Proposition
       ↓
 Value Proposition Functional Specification  ← this document
       ↓
-Business Capabilities Specification
+Business Capabilities Specification (A.3-CAP-STYP-001)
       ↓
-Capability Contracts
+Capability Contracts Specification (A.4-CONTR-STYP-001)
       ↓
-Engineering Proposal
+Engineering Proposal (A.5-ENG-STYP-001)
       ↓
-System Architecture
+System Architecture (Stage B)
       ↓
-Implementation
+Implementation (Stage D)
 ```
 
 The Engineering Proposal must answer:
@@ -806,7 +850,7 @@ The Engineering Proposal must answer:
 
 This specification represents the **V1.1 Release Candidate** functional model.
 
-It becomes **V1.1 Final** only when all Open Items are closed.
+It becomes **V1.1 Final** only when all Open Items (`OI-001` to `OI-008`) are closed.
 
 Changes should be made when:
 1. New evidence demonstrates a function is missing
@@ -831,10 +875,38 @@ Together, these functions define the minimum business behavior required for Styl
 
 ---
 
-## Note on Open Item #1
+## Note on OI-001
 
-> **Open Item #1 (Amazon Associates account creation date) is the single most consequential unclosed item in this document.**
+> **OI-001 (Amazon Associates account creation date) is the single most consequential unclosed item in this document.**
 >
 > Every checkpoint in Section 13.6 and Section 18.3, every survival threshold, and the entire validation schedule depend on it. It takes one minute to find in the Associates welcome email or the account dashboard.
 >
 > **Close it before writing any other document.**
+
+---
+
+# 24. Formal Sign-Off
+
+**Prepared by:** Style Picks Editorial Owner
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Stage:** A — Engineering Definition (Conceptual Level)
+
+**Level:** A.2 — Functional Definition
+
+**Document ID:** A.2-FUNC-STYP-001
+
+**Version:** 1.1 — Functional Definition Release Candidate
+
+**Status:** **Release Candidate**
+
+**Authorization:** This document defines the eight business functions that the rest of Stage A formalizes. `A.3-CAP-STYP-001` is authorized to derive from it.
+
+**Blocking dependencies:** OI-001, OI-002.
+
+**Language:** English
+
+---
+
+*End of Value Proposition Functional Specification — A.2-FUNC-STYP-001 v1.1 RC*

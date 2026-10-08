@@ -1,18 +1,73 @@
 # STYLE PICKS
+## Business Plan and Commercial Validation
 
-### Business Plan and Commercial Validation — V1.3
+**Stage A.1 — Commercial Intent**
+**Physical Foundation of the Style Picks Commercial Validation System**
 
-**Business model:** Content Commerce + Affiliate Commerce
+**Document ID:** A.1-BIZ-STYP-001
+
+**Version:** 1.4 — Commercial Intent Baseline (Baselined)
+
+**Status:** Stage A — Engineering Definition (Conceptual Level) — Baselined
+
+**Project:** Style Picks — Content Commerce + Affiliate Commerce
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Parent Documents:**
+- None (root document of the Style Picks pipeline)
+
+**Child Documents:**
+- A.2-FUNC-STYP-001 — Value Proposition Functional Specification (v1.1 RC)
+- PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.0)
+- STAGE-A-CONSOL-REPORT-STYP-001 — Stage A Consolidation Report (v1.0)
+
+**Domain:** Domain A.1 — Commercial Strategy
+
+---
+
+**Business Model:** Content Commerce + Affiliate Commerce
 **Brand:** Style Picks
-**Target market:** United States
-**Initial channel:** Pinterest
+**Target Market:** United States
+**Initial Channel:** Pinterest
 **Monetization:** Amazon Associates
-**Initial categories:** Home Decor + Home Organization
-**Stage:** Commercial validation
-**Operational start:** October 7, 2026
-**Validation horizon:** 180 days
-**Deadline:** April 5, 2027
-**Minimum objective:** 3 qualifying purchases
+**Initial Categories:** Home Decor + Home Organization
+**Operational Start:** October 7, 2026
+**Amazon Associates Account Created:** [OI-001]
+**Amazon Associates Deadline:** [OI-002]
+**Validation Horizon:** Ends at the Amazon Associates deadline
+**Survival Floor:** 3 qualifying purchases
+**Success Target:** ≥ 5 qualifying purchases by deadline
+
+---
+
+## Change Log
+
+| Version | Date | Change |
+|---------|------|--------|
+| 1.0–1.2 | — | Prior drafts (not preserved in this pipeline) |
+| 1.3 | Oct 7, 2026 | Reduced to five business questions; eliminated content that does not change decisions |
+| 1.4 | Oct 8, 2026 | Aligned with downstream documents: deadline reframed as Amazon Associates account date + 180 days (OI-001); survival floor vs. success target separated; conversion hypothesis qualified as provisional; time economics reconciled with Engineering Proposal §32-A; explicit handoff to Functional Spec added; Open Items propagated; cross-references added |
+| **1.4 (Baselined)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (PH1-REG-STYP-001) referenced; Change Proposals and Engineering Dependencies registers referenced; Sign-Off block added |
+
+---
+
+## Open Items
+
+> **This document cannot be treated as final while any of the following remain empty. These are the same Open Items carried by the entire Stage A pipeline and consolidated in `PH1-REG-STYP-001`.**
+
+| # | Open item | Priority | Owner | Status |
+|---|-----------|----------|-------|--------|
+| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **EMPTY — CLOSE FIRST** |
+| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **EMPTY** |
+| OI-003 | Verification: qualifying-sales rule | Defaultable | Editorial Owner | EMPTY |
+| OI-004 | Verification: Creators API access requirements | Defaultable | Editorial Owner | EMPTY |
+| OI-005 | Verification: image and price display rules | Defaultable | Editorial Owner | EMPTY |
+| OI-006 | Verification: required disclosure wording | Defaultable | Editorial Owner | EMPTY |
+| OI-007 | Verification: link-format rules | Defaultable | Editorial Owner | EMPTY |
+| OI-008 | Evidence Source Policy — formalized | Defaultable | Editorial Owner | EMPTY |
+
+> **Note on OI-001.** Every checkpoint, survival threshold, and validation schedule in this plan depends on the Amazon Associates account creation date. The operational start of October 7, 2026 is **not** the survival clock. The survival clock is the Amazon Associates account creation date. These may differ. Until OI-001 is closed, the deadline in this document is a placeholder, not a date.
 
 ---
 
@@ -33,6 +88,17 @@ It seeks to answer a much more important business question:
 > **Can Style Picks generate enough commercial traffic from Pinterest to produce qualifying purchases on a repeatable basis?**
 
 Initial validation will be limited to **Home Decor** and **Home Organization**, avoiding dispersion across multiple categories.
+
+### Survival Floor vs. Success Target
+
+Two distinct thresholds govern this stage:
+
+| Threshold | Value | Meaning |
+|-----------|-------|---------|
+| **Survival floor** | 3 qualifying purchases | Minimum to keep the Amazon Associates account. Not evidence that the value proposition works. |
+| **Success target** | ≥ 5 qualifying purchases by deadline | Evidence that the value proposition is commercially viable. |
+
+This plan tracks both. Reaching the survival floor prevents account termination; it does not validate the business. Validation requires exceeding it.
 
 ---
 
@@ -61,6 +127,8 @@ Style Picks is not a mirror of Amazon.
 It is an **editorial selection layer between consumer intent and product inventory**, combining:
 
 **Discovery + Curation + Context + Recommendation.**
+
+---
 
 # 2. Business Model
 
@@ -91,6 +159,18 @@ Style Picks transforms that need into a commercial recommendation.
 **For Style Picks:**
 
 > Monetize the commercial intent generated by the content through affiliate commissions.
+
+### Destination Model
+
+For Stage A, the destination model is:
+
+```text
+Pin → Amazon product page (via affiliate link)
+```
+
+Each Pin promotes a single product and links directly to that product's Amazon page, using a tracking ID that identifies the category.
+
+> **Open business decision (not owned by this plan):** Pinterest permits creators enrolled in the Amazon Influencer Program to connect an Amazon Storefront, after which affiliate attribution may be applied automatically. If adopted, this could bypass Style Picks' own tracking ID design. This decision belongs to the Functional Specification's destination model (`A.2-FUNC-STYP-001`). Until decided, Style Picks remains the source of truth for the tracking ID.
 
 ---
 
@@ -145,6 +225,19 @@ The reduction to two categories has an economic and operational purpose:
 
 New categories will not be added simply because an isolated opportunity exists.
 
+### Tracking ID Strategy (Stage A)
+
+Each category has its own Amazon tracking ID:
+
+| Tracking ID | Applied to |
+|-------------|-----------|
+| `stylepicks-home-20` | Home Decor category |
+| `stylepicks-org-20` | Home Organization category |
+
+This is the functional requirement that makes category-level attribution possible. Without it, Learn cannot attribute performance by category.
+
+> **Contractual basis:** The tracking ID convention is defined in `A.3-CAP-STYP-001` §12.6.1 and enforced by **INV-3** and **INV-7** in `A.4-CONTR-STYP-001`.
+
 ---
 
 # 5. Problem Style Picks Solves
@@ -157,11 +250,11 @@ Style Picks attempts to reduce that friction through:
 
 Instead of:
 
-> “Here is a product.”
+> "Here is a product."
 
 the content should answer:
 
-> **“This product makes sense for this problem, space, style, or need.”**
+> **"This product makes sense for this problem, space, style, or need."**
 
 The brand, therefore, should not function as a mirror of Amazon.
 
@@ -205,6 +298,8 @@ Examples:
 
 The proportion between these levels may be modified according to the data obtained.
 
+> **Attribution note:** In Stage A, performance can be attributed by **category** (via tracking ID) and by **product** (via ASIN). Performance by content level and by context is **not fully attributable** in Stage A without additional tracking IDs. This is a known limitation of the initial measurement scope.
+
 ---
 
 # 7. Product Selection Principle
@@ -232,6 +327,8 @@ Criteria may include:
 - ease of use;
 - problem it solves.
 
+> **Operational note:** The formal selection criteria and weights are defined in the **Editorial Rubric**, an artifact owned by the Functional Specification (`A.2-FUNC-STYP-001` §7.6) and maintained by Rubric Management (`A.3-CAP-STYP-001` §17). The Rubric V0.1 weights are **provisional hypotheses**, not empirically validated coefficients. They will be revised based on evidence from Learn.
+
 ---
 
 # 8. Pin Architecture
@@ -254,6 +351,8 @@ Initially, a model in which a Pin promises five products but sends the user dire
 This protects coherence between:
 
 **promise → content → destination → product.**
+
+> **Contractual basis:** This principle is enforced downstream by **INV-1** (publication gate), **INV-3** (tracking ID consistency), and the **Consistency Validation** capability (C-06) in `A.4-CONTR-STYP-001`.
 
 ---
 
@@ -299,15 +398,27 @@ Therefore, financial projections should not assume that all products generate ex
 
 The actual economics will be determined through the data obtained during validation.
 
+> **External rule dependency:** The qualifying-sales rule, commission rates, and account-survival conditions are external parameters. They are tracked as **OI-003 and OI-004** in `PH1-REG-STYP-001` and must be verified before being treated as operational constants.
+
 ---
 
 # 11. Initial Financial Objective
 
 The first financial objective is not to reach a specific dollar amount.
 
-It is to achieve:
+It is to achieve two distinct thresholds:
+
+### Survival floor
 
 > **3 qualifying purchases within the period established by Amazon.**
+
+Below this floor, the Amazon Associates account may be terminated.
+
+### Success target
+
+> **≥ 5 qualifying purchases by the Amazon Associates deadline.**
+
+This is the evidence threshold for commercial validation.
 
 After reaching the first sales, the analysis will move to:
 
@@ -334,6 +445,8 @@ The evaluation will be:
 
 **Affiliate revenue − direct costs − economic value of time.**
 
+> **Build-time constraint.** The US$10/hour reference applies to the founder's time as a whole. During commercial validation, that time is divided between **Pin production** and **platform build**. The Engineering Proposal (`A.5-ENG-STYP-001` §32-A) caps build effort at **10 hours per week**, reserving the remainder for Pin production. This is the operational consequence of the time-economics rule: an hour spent building is an hour not spent producing, and both count against the same reference value.
+
 ---
 
 # 13. Main Metrics
@@ -351,6 +464,8 @@ Style Picks will use five main indicators:
 These metrics represent different stages of the funnel.
 
 **Production → distribution → interest → commercial intent → monetization.**
+
+> **Attribution scope (Stage A):** Impressions and outbound clicks are available at **Pin level** (Pinterest analytics). Amazon clicks and qualifying purchases are available at **tracking-ID level** (Amazon Associates reports), which in Stage A means **category level**. Pin-level Amazon attribution is **not supported** in Stage A. This is a known limitation.
 
 ---
 
@@ -370,6 +485,8 @@ Once sufficient volume exists, the following will be analyzed:
 
 These metrics should not dominate decision-making while the volume is too small.
 
+> **Attribution caveat:** Performance by **category** is fully attributable in Stage A (via tracking ID). Performance by **product** is attributable via ASIN. Performance by **content type** and by **context** is only partially attributable in Stage A, through a partial bridge between Pinterest per-Pin outbound clicks and Amazon category-level purchases. This is not a full attribution mechanism.
+
 ---
 
 # 15. Conversion Hypothesis
@@ -387,6 +504,8 @@ will also be considered.
 This does not represent a conversion promise.
 
 It is solely a tool for calculating how much commercial traffic would be necessary to achieve the initial three purchases.
+
+> **Provisional status:** The 3% figure is a planning hypothesis, not an empirically validated coefficient. The business should progressively replace it with its own data. The Functional Specification (`A.2-FUNC-STYP-001` §18.2) treats the "≥ 100 Amazon clicks" target as provisional and subject to recalibration after month 1.
 
 ---
 
@@ -412,6 +531,8 @@ The business should progressively replace these hypotheses with its own data.
 
 The weekly pace will depend on the weeks remaining until the deadline.
 
+> **The deadline is the Amazon Associates deadline (OI-002), not a fixed calendar date.** Until OI-001 is closed, the table below uses the planning assumption of approximately 26 weeks from operational start.
+
 With approximately 26 weeks available at the start:
 
 | Scenario | Total clicks | Approximate weekly average |
@@ -422,15 +543,17 @@ With approximately 26 weeks available at the start:
 
 Therefore, **4 Amazon clicks per week** will initially be the central operational objective.
 
-This number should be updated as real data becomes available.
+This number should be updated as real data becomes available and as the actual deadline is confirmed.
 
 ---
 
 # 18. Validation Horizon
 
+> **All phases are anchored to the Amazon Associates deadline (OI-002), expressed as "deadline minus N days."** The day numbers below assume a 180-day horizon from account creation.
+
 ### Phase 1 — Distribution
 
-**Days 1–30**
+**Deadline minus 180 to deadline minus 150 days**
 
 Objective:
 
@@ -447,7 +570,7 @@ A specific number of sales will not yet be required.
 
 ### Phase 2 — Commercial Traffic
 
-**Days 31–60**
+**Deadline minus 150 to deadline minus 120 days**
 
 Objective:
 
@@ -461,7 +584,7 @@ Attention will shift toward:
 
 ### Phase 3 — Conversion
 
-**Days 61–120**
+**Deadline minus 120 to deadline minus 60 days**
 
 Objective:
 
@@ -477,11 +600,23 @@ Here the following begin to acquire greater importance:
 
 ### Phase 4 — Decision
 
-**Days 121–180**
+**Deadline minus 60 to deadline (day 0)**
 
 Objective:
 
 > determine whether Style Picks should continue, be modified, or be abandoned.
+
+### Interim Checkpoints
+
+The following checkpoints are monitored continuously by Compliance & Governance (CD1):
+
+| Deadline minus | Condition | Action |
+|----------------|-----------|--------|
+| **135 days** | Outbound clicks well below expected (< 20 total) | Escalate — strategic review |
+| **135 days** | Outbound clicks present but attribution ratio < 50% | Escalate immediately — tracking failure |
+| **90 days** | Zero qualifying purchases | Escalate — strategic review |
+| **60 days** | Fewer than 2 qualifying purchases | Escalate — strategic review |
+| **30 days** | Fewer than 3 qualifying purchases | Escalate — survival threshold at risk |
 
 ---
 
@@ -498,6 +633,8 @@ A valid commercial Pin must:
 - honestly represent what the user will find after the click.
 
 The quantity of Pins will never substitute for minimum quality.
+
+> **External rule dependency:** The specific disclosure wording, placement, link-format rules, and image rules that govern the first Pin must be verified against the Amazon Associates Operating Agreement, FTC guidance, and Pinterest policies before the first Pin is published. This is tracked as **OI-005, OI-006, and OI-007**, and is a Phase 0 requirement in `A.5-ENG-STYP-001` §32-B.
 
 ---
 
@@ -559,6 +696,8 @@ Time spent on the following will be tracked:
 
 This will later make it possible to calculate the true production cost.
 
+> **Operational note:** Production time is logged per Pin. The Engineering Proposal (`A.5-ENG-STYP-001` §32-A) sets a target of **≤ 45 minutes per Pin** and caps weekly build effort at **10 hours per week** so that production is not displaced by platform development.
+
 ---
 
 # 23. Tracking
@@ -573,6 +712,8 @@ For example:
 Multiple unnecessary identifiers will not be created for every Pin during the first stage.
 
 The initial objective is to obtain enough information to compare categories and content types without turning system administration into a burden.
+
+> **Contractual basis:** The Stage A tracking ID convention (`stylepicks-home-20`, `stylepicks-org-20`) is defined in `A.3-CAP-STYP-001` §12.6.1 and enforced by **INV-3** and **INV-7** in `A.4-CONTR-STYP-001`.
 
 ---
 
@@ -642,6 +783,8 @@ It will not be abandoned because of:
 - low initial impressions;
 - zero sales after very few clicks.
 
+> **Strategic review checkpoints** (deadline minus 135, 90, 60, 30 days) are the formal moments at which this decision is evaluated.
+
 ---
 
 # 27. Review Thresholds
@@ -670,6 +813,8 @@ With approximately **100 Amazon clicks without three purchases**, the central 3%
 
 This does not automatically mean that the business has failed, because actual conversion may differ from the hypothesis.
 
+> **Statistical note (from §28):** 100 clicks without 3 purchases is a signal for review, not a verdict. See §28 for the sample-size reasoning.
+
 ---
 
 # 28. Statistical Interpretation
@@ -697,6 +842,8 @@ Every week Style Picks will answer five questions:
 5. Is the traffic producing purchases?
 
 The next question will always depend on the answer to the previous one.
+
+> **Operational basis:** These five questions are formalized as the weekly review cadence of the Learn function (`A.2-FUNC-STYP-001` §12.8; `A.3-CAP-STYP-001` §15).
 
 ---
 
@@ -730,6 +877,8 @@ It will be the accumulation of knowledge about:
 
 With sufficient volume, this knowledge can become an editorial advantage that is difficult to replicate quickly.
 
+> **Attribution caveat:** The first two items ("which needs generate traffic" and "which content works") are only **partially attributable** in Stage A. Full attribution of needs and content formats would require additional tracking IDs. See §6 and §14.
+
 ---
 
 # 32. Main Risks
@@ -756,13 +905,19 @@ There may be traffic without purchases.
 
 The business may generate insufficient revenue to justify the effort.
 
-**Mitigation:** measure hours from the beginning.
+**Mitigation:** measure hours from the beginning; cap build effort; prioritize production.
 
 ### Lack of Differentiation
 
 Content may become a simple copy of existing products.
 
 **Mitigation:** maintain a clear editorial identity.
+
+### External Rule Uncertainty
+
+Disclosure, link-format, image, and survival rules are external and may change.
+
+**Mitigation:** represent unverified parameters as unverified configuration, not hard-coded assumptions; verify the rules governing the first Pin before publishing.
 
 ---
 
@@ -782,6 +937,8 @@ The following will not be prioritized:
 - large investments;
 - building a massive audience before validating sales.
 
+> **Clarification:** "Development of a proprietary platform" means a **consumer-facing** platform. Style Picks does build a **private internal operations platform** (the Engineering Proposal's modular monolith). The distinction is between a public product and an internal tool.
+
 ---
 
 # 34. Definitive Economic Criterion
@@ -795,6 +952,8 @@ The indicator will be:
 **Affiliate revenue − direct costs − economic cost of time.**
 
 With an internal value of **US$10/hour**, the business must demonstrate that it can approach or exceed this threshold as scale increases and efficiency improves.
+
+> **Time-allocation caveat:** During validation, the founder's time is split between production and build. The Engineering Proposal (`A.5-ENG-STYP-001` §32-A) caps build at 10 hours/week. The economic criterion applies to the total, but the plan assumes production has priority.
 
 ---
 
@@ -812,6 +971,8 @@ Style Picks will only move to an expansion phase when there is evidence of:
 Scale will not be decided by follower count.
 
 It will be decided by **demonstrated economics**.
+
+> **Phase-gate basis:** The Engineering Proposal (`A.5-ENG-STYP-001` §32-A) makes the same principle operational: Phases 2–7 are **evidence-gated**, and each starts only when operational evidence justifies automating what the phase automates.
 
 ---
 
@@ -870,9 +1031,64 @@ From this point forward, the most important asset of Style Picks will not be ano
 
 It will be **the commercial evidence generated through execution**.
 
-### V1.3 Verdict
+---
 
-This version is superior to V1.2 not because it contains more content, but because it **eliminates content that does not change decisions**.
+# 40. Handoff to the Functional Specification
+
+This Business Plan defines **what the business is trying to achieve and how success will be judged.**
+
+It does **not** define:
+
+- the business functions required to deliver the value proposition;
+- the business capabilities required to execute those functions;
+- the contracts those capabilities must satisfy;
+- the engineering system that implements them.
+
+Those are defined, in order, in:
+
+| Document | Role |
+|----------|------|
+| **A.2-FUNC-STYP-001** — Value Proposition Functional Specification (v1.1 RC) | Defines the eight business functions and the value-proposition flow. |
+| **A.3-CAP-STYP-001** — Business Capabilities Specification (v1.1 RC.4) | Decomposes functions into 12 capabilities with dependencies and ownership. |
+| **A.4-CONTR-STYP-001** — Capability Contracts Specification (v1.0 RC.4) | Formalizes each capability's inputs, outputs, rules, preconditions, postconditions, and failure handling. |
+| **A.5-ENG-STYP-001** — Engineering Proposal (v1.2 Final) | Defines the system architecture, storage, execution mechanisms, and phased implementation. |
+
+### Five Business Questions (Summary of This Plan)
+
+**What do we sell?**
+Editorial product-discovery content.
+
+**To whom?**
+U.S. consumers interested in improving and organizing their homes.
+
+**How do we reach them?**
+Pinterest.
+
+**How do we monetize?**
+Amazon Associates.
+
+**How do we know if it works?**
+Distribution → traffic → purchases → economics per hour, measured against the survival floor (3) and the success target (≥ 5).
+
+That is the business plan. Everything else should be **execution and data**, not more planning.
+
+---
+
+## V1.4 Verdict
+
+This version is superior to V1.3 not because it contains more content, but because it is now **consistent with the documents that derive from it** and **codified within the Stage A pipeline**.
+
+The changes are:
+
+1. The deadline is correctly framed as **Amazon Associates account date + 180 days**, not a fixed calendar date.
+2. The distinction between **survival floor (3)** and **success target (≥ 5)** is explicit.
+3. The conversion hypothesis is qualified as **provisional**.
+4. The time-economics rule is reconciled with the Engineering Proposal's **build-time cap**.
+5. The attribution limitations of Stage A are stated where they affect planning.
+6. A **Handoff section** makes the relationship to documents A.2–A.5 explicit.
+7. The **document header** is normalized per the Stage A codification.
+8. The **Open Items Register** (`PH1-REG-STYP-001`) is the single source of truth for all OI references.
+9. Cross-references now use **Document IDs** (`A.x-XXX-STYP-001`) rather than narrative names.
 
 The architecture is reduced to five business questions:
 
@@ -892,3 +1108,43 @@ Amazon Associates.
 Distribution → traffic → purchases → economics per hour.
 
 That is the business plan. Everything else should be **execution and data**, not more planning.
+
+---
+
+## Note on OI-001
+
+> **OI-001 (Amazon Associates account creation date) is the single most consequential unclosed item in the entire Stage A pipeline.**
+>
+> Every checkpoint in §18, every survival threshold, and the entire validation schedule depend on it. It takes one minute to find in the Associates welcome email or the account dashboard.
+>
+> **Close it before writing any other document.**
+>
+> The operational start of October 7, 2026 is **not** the survival clock. The survival clock is the Amazon Associates account creation date.
+
+---
+
+## 11. Formal Sign-Off
+
+**Prepared by:** Style Picks Editorial Owner
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Stage:** A — Engineering Definition (Conceptual Level)
+
+**Level:** A.1 — Commercial Intent
+
+**Document ID:** A.1-BIZ-STYP-001
+
+**Version:** 1.4 — Commercial Intent Baseline (Baselined)
+
+**Status:** **Baselined**
+
+**Authorization:** This document is the root of the Stage A pipeline. `A.2-FUNC-STYP-001` is authorized to derive from it.
+
+**Duration:** 180 days (from Amazon Associates account creation date — OI-001)
+
+**Language:** English
+
+---
+
+*End of Business Plan and Commercial Validation — A.1-BIZ-STYP-001 v1.4*

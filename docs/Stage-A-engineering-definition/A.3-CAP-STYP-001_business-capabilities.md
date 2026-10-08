@@ -1,19 +1,40 @@
 # STYLE PICKS
+## Business Capabilities Specification
 
-## Business Capabilities Specification — V1.1 RC.4
+**Stage A.3 — Capability Definition**
+**Physical Foundation of the Style Picks Capability Model**
 
-**Business Model:** Content Commerce + Affiliate Commerce  
-**Brand:** Style Picks  
-**Target Market:** United States  
-**Initial Channel:** Pinterest  
-**Monetization:** Amazon Associates  
-**Initial Categories:** Home Decor + Home Organization  
-**Stage:** Commercial Validation  
-**Operational Start:** October 7, 2026  
-**Document Type:** Business Capabilities Specification  
-**Version:** 1.1 RC.4  
-**Status:** Release Candidate  
-**Derives from:** Value Proposition Functional Specification V1.1 Release Candidate
+**Document ID:** A.3-CAP-STYP-001
+
+**Version:** 1.1 RC.4 — Capability Definition Release Candidate
+
+**Status:** Stage A — Engineering Definition (Conceptual Level) — Release Candidate
+
+**Project:** Style Picks — Content Commerce + Affiliate Commerce
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Parent Documents:**
+- A.2-FUNC-STYP-001 — Value Proposition Functional Specification (v1.1 RC)
+- PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.0)
+
+**Child Documents:**
+- A.4-CONTR-STYP-001 — Capability Contracts Specification (v1.0 RC.4)
+
+**Domain:** Domain A.3 — Business Capabilities
+
+---
+
+**Business Model:** Content Commerce + Affiliate Commerce
+**Brand:** Style Picks
+**Target Market:** United States
+**Initial Channel:** Pinterest
+**Monetization:** Amazon Associates
+**Initial Categories:** Home Decor + Home Organization
+**Stage:** Commercial Validation
+**Operational Start:** October 7, 2026
+**Document Type:** Business Capabilities Specification
+**Derives from:** A.2-FUNC-STYP-001
 
 ---
 
@@ -26,23 +47,30 @@
 | 1.1 RC.2 | Oct 7, 2026 | Moved evidence confidence to Recommendation Generation; aligned Evidence Source Policy with Functional Spec 9.6.2; separated runtime dependencies from feedback inputs; redefined uncomputable metrics; fixed cross-reference; clarified Validation → Publication handoff; added missing dependency; relocated Open Item #9; corrected status label; defined execution notation; formally separated core and transversal capabilities |
 | 1.1 RC.3 | Oct 7, 2026 | Reconciled Medium confidence definition; added survival checkpoints to CD1; unified tracking ID source of truth; removed leftover verifiability threshold; enumerated Recommendation statuses; made reconciliation metric conditional; generalized opening statement of Section 5 to "operating loop" |
 | 1.1 RC.4 | Oct 7, 2026 | Reclassified Performance Measurement → Compliance as a **monitoring input** (not a runtime dependency); fixed cross-reference to Functional Spec; documented runtime vs monitoring dependency in Section 19 |
+| **1.1 RC.4 (Baselined header)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals register referenced; Sign-Off block added |
 
 ---
 
 ## Open Items
 
-> **This document cannot be treated as final while any of the following remain empty.**
+> **This document cannot be treated as final while any of the following remain empty. The authoritative source is `PH1-REG-STYP-001`.**
 
-| # | Open item | Owner | Status |
-|---|-----------|-------|--------|
-| 1 | Amazon Associates account creation date | Editorial Owner | **EMPTY — CLOSE FIRST** |
-| 2 | Amazon Associates deadline (account date + 180 days) | Editorial Owner | **EMPTY** |
-| 3 | Verification: qualifying-sales rule | Editorial Owner | **EMPTY** |
-| 4 | Verification: PA-API access requirements | Editorial Owner | **EMPTY** |
-| 5 | Verification: image and price display rules | Editorial Owner | **EMPTY** |
-| 6 | Verification: required disclosure wording | Editorial Owner | **EMPTY** |
-| 7 | Verification: link-format rules | Editorial Owner | **EMPTY** |
-| 8 | Evidence Source Policy — formalized (see 16.5) | Editorial Owner | **EMPTY** |
+| # | Open item | Priority | Owner | Status |
+|---|-----------|----------|-------|--------|
+| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **EMPTY — CLOSE FIRST** |
+| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **EMPTY** |
+| OI-003 | Verification: qualifying-sales rule | Defaultable | Editorial Owner | EMPTY |
+| OI-004 | Verification: Creators API access requirements | Defaultable | Editorial Owner | EMPTY |
+| OI-005 | Verification: image and price display rules | Defaultable | Editorial Owner | EMPTY |
+| OI-006 | Verification: required disclosure wording | Defaultable | Editorial Owner | EMPTY |
+| OI-007 | Verification: link-format rules | Defaultable | Editorial Owner | EMPTY |
+| OI-008 | Evidence Source Policy — formalized (see 16.5) | Defaultable | Editorial Owner | EMPTY |
+
+**Change Proposals affecting this document:**
+
+| CP ID | Title | Status |
+|-------|-------|--------|
+| CP-002 | AI-Generated Contextual Imagery | Pending |
 
 **Moved to Rubric Management backlog (not a document blocker):**
 - Rubric V0.1 empirical validation (tracked in 17.13).
@@ -51,7 +79,7 @@
 - Corrective-action window: 72 hours (13.5).
 - Post-publication validation cadence: weekly (12.7).
 
-**Deferred to Capability Contracts (definitions required but not yet formalized):**
+**Deferred to Capability Contracts (`A.4-CONTR-STYP-001`):**
 - exact definition of a "material claim";
 - exact definition of "factual error";
 - exact calculation of evidence confidence;
@@ -63,7 +91,7 @@
 
 # 1. Purpose
 
-This document defines the **business capabilities required for Style Picks to repeatedly and reliably execute the business functions established in the Value Proposition Functional Specification V1.1 Release Candidate**.
+This document defines the **business capabilities required for Style Picks to repeatedly and reliably execute the business functions established in `A.2-FUNC-STYP-001` Value Proposition Functional Specification V1.1 Release Candidate**.
 
 The document translates:
 
@@ -77,9 +105,9 @@ without prescribing the technical architecture used to implement those capabilit
 
 # 2. Relationship to Previous Specification
 
-The Business Capabilities Specification derives directly from the:
+The Business Capabilities Specification derives directly from:
 
-**Style Picks — Value Proposition Functional Specification V1.1 Release Candidate**
+**`A.2-FUNC-STYP-001` — Value Proposition Functional Specification V1.1 Release Candidate**
 
 That specification established eight business functions:
 
@@ -94,9 +122,9 @@ That specification established eight business functions:
 
 The present document decomposes them into stable capabilities. **The capability layer is not a one-to-one renaming of the functions.** It surfaces cross-cutting abilities that the function list did not name explicitly:
 
-- **Evidence Management** — deferred from Functional Spec 9.6.2.
-- **Publication & Lifecycle** — implicit in the Align failure path (Spec 11.7) but never assigned.
-- **Rubric Management** — a precondition of Evaluate in Functional Spec 7.6.4 that had no owner.
+- **Evidence Management** — deferred from `A.2-FUNC-STYP-001` §9.6.2.
+- **Publication & Lifecycle** — implicit in the Align failure path (`A.2-FUNC-STYP-001` §11.7) but never assigned.
+- **Rubric Management** — a precondition of Evaluate in `A.2-FUNC-STYP-001` §7.6.4 that had no owner.
 
 ---
 
@@ -110,7 +138,7 @@ A capability is not: a software component, an AI agent, a workflow, an API, a da
 
 A capability may be implemented through any of the execution mechanisms defined in Section 4.10.
 
-Those implementation decisions belong to the Engineering Proposal.
+Those implementation decisions belong to the Engineering Proposal (`A.5-ENG-STYP-001`).
 
 ---
 
@@ -126,7 +154,7 @@ A capability should represent a recurring business ability rather than a tempora
 Each capability must have a defined responsibility and must not duplicate another capability unnecessarily.
 
 ## 4.4 Contract readiness
-Each capability must be sufficiently defined to support a future **Capability Contract**.
+Each capability must be sufficiently defined to support a future **Capability Contract** (`A.4-CONTR-STYP-001`).
 
 ## 4.5 Evidence-based operation
 Where a capability produces factual or commercial decisions, those decisions must be traceable to appropriate business evidence.
@@ -426,9 +454,9 @@ The capability must enforce: approved category; approved price range; minimum ra
 ## 9.6 Decision States
 A candidate may be: **Eligible**, **Rejected**.
 
-Candidates whose weighted score falls below the minimum eligibility threshold (Functional Spec 7.6.2) are Rejected. **The factual verifiability criterion contributes to the weighted score only; it is not a standalone hard constraint.**
+Candidates whose weighted score falls below the minimum eligibility threshold (`A.2-FUNC-STYP-001` §7.6.2) are Rejected. **The factual verifiability criterion contributes to the weighted score only; it is not a standalone hard constraint.**
 
-> **Note:** "Human Review Required" is **not** a state of Evaluation. It is a routing state produced by Recommendation Generation when evidence confidence is Low (Functional Spec 9.6).
+> **Note:** "Human Review Required" is **not** a state of Evaluation. It is a routing state produced by Recommendation Generation when evidence confidence is Low (`A.2-FUNC-STYP-001` §9.6).
 
 ## 9.7 Preconditions
 - Valid Product Record exists.
@@ -606,7 +634,7 @@ A **Content Asset** containing:
 ## 11.5 Business Rules
 The asset must: accurately represent the recommended product; use permitted imagery; avoid misleading visual substitution; preserve the recommendation's meaning; carry the affiliate destination URL; carry the correct tracking ID; comply with approved content standards.
 
-Prices are not displayed in Pins under the V1.1 functional rule.
+Prices are not displayed in Pins under the Stage A functional rule.
 
 ## 11.6 Destination and Tracking ID — Single Source of Truth
 
@@ -703,7 +731,7 @@ Validation runs in **two phases**:
 - **Pre-publication**: before the Pin is published.
 - **Post-publication**: at a weekly cadence or on-demand when a Product Record change is detected.
 
-> **Provisional operational cadence:** weekly post-publication validation is the default for V1.1, subject to revision after the first 30 days of live operation.
+> **Provisional operational cadence:** weekly post-publication validation is the default for Stage A, subject to revision after the first 30 days of live operation.
 
 ## 12.8 Failure Path — Post-Publication
 
@@ -858,7 +886,7 @@ A **Performance Record** containing:
 - source (Pinterest or Amazon);
 - collection timestamp.
 
-## 14.5 V1.0 Attribution Scope
+## 14.5 Stage A Attribution Scope
 Supported: **tracking-ID-level** Amazon data; **ASIN-level** product data; **Pin-level** Pinterest engagement.
 
 Not fully supported without additional tracking infrastructure: exact context-level Amazon attribution; exact content-format Amazon attribution; **Pin-level Amazon attribution**.
@@ -983,7 +1011,7 @@ Maintain the record of factual evidence that supports product claims, recommenda
 ## 16.2 Business Responsibility
 Provides a single, governed source of truth for all factual claims made by Style Picks about products.
 
-> **This capability was deferred from Functional Spec 9.6.2.**
+> **This capability was deferred from `A.2-FUNC-STYP-001` §9.6.2.**
 
 ## 16.3 Inputs
 Amazon product page data, manufacturer specifications, source metadata, source reliability classification, license and permission metadata for imagery.
@@ -1005,7 +1033,7 @@ An **Evidence Record** containing:
 
 ## 16.5 Evidence Source Policy (Interim)
 
-> **This policy is aligned with Functional Spec 9.6.2.** Formalizing it is Open Item #8.
+> **This policy is aligned with `A.2-FUNC-STYP-001` §9.6.2.** Formalizing it is **OI-008** in `PH1-REG-STYP-001`.
 
 **Verified sources:**
 - Amazon product page;
@@ -1142,7 +1170,7 @@ Provides cross-cutting control across the core execution capabilities.
 
 | # | Control Domain | Rules applied |
 |---|----------------|---------------|
-| CD1 | **Amazon Associates — Eligibility & Survival** | Qualifying-sales rule; account deadline; PA-API access conditions; survival checkpoints (see 18.7) |
+| CD1 | **Amazon Associates — Eligibility & Survival** | Qualifying-sales rule; account deadline; API access conditions; survival checkpoints (see 18.7) |
 | CD2 | **Amazon Associates — Content Rules** | Image display rules; price display rules; link format rules; required disclosure |
 | CD3 | **FTC Endorsement Disclosure** | Endorsement and testimonial disclosure (US) |
 | CD4 | **Pinterest Policies** | Affiliate content policies; format requirements |
@@ -1176,7 +1204,7 @@ Compliance & Governance enforces: Amazon Associates Operating Agreement rules; F
 
 ## 18.7 Survival Checkpoints (CD1)
 
-> **Restored from Functional Spec 13.6 and 18.3.** Compliance & Governance monitors these checkpoints. Performance Measurement provides the data **as a monitoring input** — the checkpoints never gate a publication and are not a runtime prerequisite for any other capability.
+> **Restored from `A.2-FUNC-STYP-001` §13.6 and §18.3.** Compliance & Governance monitors these checkpoints. Performance Measurement provides the data **as a monitoring input** — the checkpoints never gate a publication and are not a runtime prerequisite for any other capability.
 
 | Deadline minus | Condition | Action |
 |----------------|-----------|--------|
@@ -1274,7 +1302,7 @@ D+H.
 
 **No runtime cycles.** The dependency graph is acyclic. Performance Measurement feeds Compliance **only for monitoring**, and never gates a publication.
 
-**Build order implication (for the Engineering Proposal):** Context Management, Evidence Management, and Rubric Management have no runtime dependencies and can be built first. The Engineering Proposal determines actual build order.
+**Build order implication (for the Engineering Proposal):** Context Management, Evidence Management, and Rubric Management have no runtime dependencies and can be built first. The Engineering Proposal (`A.5-ENG-STYP-001`) determines actual build order.
 
 ---
 
@@ -1299,7 +1327,7 @@ D+H.
 
 # 21. Metrics Roll-up
 
-| Functional threshold (Functional Spec 18.1) | Aggregated from |
+| Functional threshold (`A.2-FUNC-STYP-001` §18.1) | Aggregated from |
 |---------------------------------------------|-----------------|
 | Recommendations passing Align on first attempt ≥ 90% | Consistency Validation: first-pass validation rate |
 | Factual error rate ≤ 2% | Recommendation Generation: factual error rate + Compliance & Governance: violation rate |
@@ -1307,9 +1335,9 @@ D+H.
 | Governance violation rate ≤ 2% | Compliance & Governance: violation rate |
 | Attribution completeness 100% | Publication & Lifecycle: tracking ID correctness at publication |
 
-> **Naming note:** Functional Spec 18.1 defines "attribution completeness" as **Pins with a correct tracking ID** — a Pin-level, computable metric. Capability 8's metric of the same name is defined at the **tracking-ID level** (14.12) because Amazon reports per tracking ID, not per Pin.
+> **Naming note:** `A.2-FUNC-STYP-001` §18.1 defines "attribution completeness" as **Pins with a correct tracking ID** — a Pin-level, computable metric. Capability 8's metric of the same name is defined at the **tracking-ID level** (14.12) because Amazon reports per tracking ID, not per Pin.
 
-**Business Validation Thresholds (Functional Spec 18.2) are not capability metrics.** They are business outcomes tracked in the Business Plan.
+**Business Validation Thresholds (`A.2-FUNC-STYP-001` §18.2) are not capability metrics.** They are business outcomes tracked in the Business Plan (`A.1-BIZ-STYP-001`).
 
 ---
 
@@ -1336,7 +1364,7 @@ D+H.
 
 This specification represents the **V1.1 RC.4** business capability model.
 
-It becomes **V1.1 Final** only when all Open Items (1–8) are closed.
+It becomes **V1.1 Final** only when all Open Items (`OI-001` to `OI-008`) are closed.
 
 **Provisional operational rules** may evolve after the first 30 days of live operation without requiring a version increment.
 
@@ -1358,12 +1386,40 @@ Style Picks operates through **twelve business capabilities**, organized as:
 
 Together, these capabilities define the minimum business abilities required for Style Picks to transform emerging consumer demand into contextual, curated, trustworthy, and commercially useful product discovery.
 
-The next engineering artifact should be the **Capability Contracts Specification**, which will formalize each capability's inputs, outputs, rules, preconditions, postconditions, and failure handling.
+The next engineering artifact should be the **Capability Contracts Specification** (`A.4-CONTR-STYP-001`), which will formalize each capability's inputs, outputs, rules, preconditions, postconditions, and failure handling.
 
 ---
 
-## Note on Open Item #1
+## Note on OI-001
 
-> **Open Item #1 (Amazon Associates account creation date) remains the single most consequential unclosed item.** Every survival checkpoint in CD1, every escalation rule, and the entire validation schedule depend on it.
+> **OI-001 (Amazon Associates account creation date) remains the single most consequential unclosed item.** Every survival checkpoint in CD1, every escalation rule, and the entire validation schedule depend on it.
 >
-> Close it before writing the Capability Contracts.
+> Close it before writing the Capability Contracts (`A.4-CONTR-STYP-001`).
+
+---
+
+# 25. Formal Sign-Off
+
+**Prepared by:** Style Picks Editorial Owner
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Stage:** A — Engineering Definition (Conceptual Level)
+
+**Level:** A.3 — Capability Definition
+
+**Document ID:** A.3-CAP-STYP-001
+
+**Version:** 1.1 RC.4 — Capability Definition Release Candidate
+
+**Status:** **Release Candidate**
+
+**Authorization:** This document decomposes the eight functions of `A.2-FUNC-STYP-001` into twelve capabilities. `A.4-CONTR-STYP-001` is authorized to derive from it.
+
+**Blocking dependencies:** OI-001, OI-002.
+
+**Language:** English
+
+---
+
+*End of Business Capabilities Specification — A.3-CAP-STYP-001 v1.1 RC.4*

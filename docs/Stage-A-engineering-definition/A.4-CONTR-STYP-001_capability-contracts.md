@@ -1,17 +1,39 @@
 # STYLE PICKS
+## Capability Contracts Specification
 
-## Capability Contracts Specification — V1.0 RC.4
+**Stage A.4 — Contract Formalization**
+**Physical Foundation of the Style Picks Contract Model**
 
-**Business Model:** Content Commerce + Affiliate Commerce  
-**Brand:** Style Picks  
-**Target Market:** United States  
-**Initial Channel:** Pinterest  
-**Monetization:** Amazon Associates  
-**Initial Categories:** Home Decor + Home Organization  
-**Stage:** Commercial Validation  
-**Document Type:** Capability Contracts Specification  
-**Version:** 1.0 RC.4  
-**Derives from:** Business Capabilities Specification V1.1 RC.4
+**Document ID:** A.4-CONTR-STYP-001
+
+**Version:** 1.0 RC.4 — Contract Formalization Release Candidate
+
+**Status:** Stage A — Engineering Definition (Conceptual Level) — Release Candidate
+
+**Project:** Style Picks — Content Commerce + Affiliate Commerce
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Parent Documents:**
+- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.1 RC.4)
+- PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.0)
+
+**Child Documents:**
+- A.5-ENG-STYP-001 — Engineering Proposal (v1.2 Final)
+
+**Domain:** Domain A.4 — Capability Contracts
+
+---
+
+**Business Model:** Content Commerce + Affiliate Commerce
+**Brand:** Style Picks
+**Target Market:** United States
+**Initial Channel:** Pinterest
+**Monetization:** Amazon Associates
+**Initial Categories:** Home Decor + Home Organization
+**Stage:** Commercial Validation
+**Document Type:** Capability Contracts Specification
+**Derives from:** A.3-CAP-STYP-001
 
 ---
 
@@ -23,6 +45,34 @@
 | 1.0 RC.2 | Oct 7, 2026 | Part I added (schemas, state machines, invariants, error codes); Product Record ownership resolved; Change Detection added; D-6 split into states + events; Contract Failure Record added |
 | 1.0 RC.3 | Oct 7, 2026 | Sole-writer ownership for every record; Revoked state + Review cleared event; Evidence Record supports imagery; Publication Record references Validation and Compliance; disclosure field added; error table extended; Product Record versioning semantics; systemic-failure routing fixed |
 | 1.0 RC.4 | Oct 7, 2026 | INV-12 refined: re-point claims to successor evidence before revoking; "Review triggered" and "Review cleared" transitions reassigned to C-07; Revoked → Pin dependency added; Product Record references keyed to (product_id, version); E-ALIGN-02 corrected to re-link; C-10 wording tightened |
+| **1.0 RC.4 (Baselined header)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals register referenced; Sign-Off block added |
+
+---
+
+## Open Items
+
+> **This document cannot be treated as final while any of the following remain empty. The authoritative source is `PH1-REG-STYP-001`.**
+
+| # | Open item | Priority | Owner | Status |
+|---|-----------|----------|-------|--------|
+| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **EMPTY — CLOSE FIRST** |
+| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **EMPTY** |
+| OI-003 | Verification: qualifying-sales rule | Defaultable | Editorial Owner | EMPTY |
+| OI-004 | Verification: Creators API access requirements | Defaultable | Editorial Owner | EMPTY |
+| OI-005 | Verification: image and price display rules | Defaultable | Editorial Owner | EMPTY |
+| OI-006 | Verification: required disclosure wording | Defaultable | Editorial Owner | EMPTY |
+| OI-007 | Verification: link-format rules | Defaultable | Editorial Owner | EMPTY |
+| OI-008 | Evidence Source Policy — formalized | Defaultable | Editorial Owner | EMPTY |
+
+**Change Proposals affecting this document:**
+
+| CP ID | Title | Affected sections | Status |
+|-------|-------|-------------------|--------|
+| CP-001 | Re-evaluation vs Revocation on Superseded Evidence | INV-12, I.5 | Pending |
+| CP-002 | AI-Generated Contextual Imagery | C-05, CD4 | Pending |
+| CP-003 | Review Cleared Sole-Writer Assignment | C-06 postcondition #3 | Pending |
+
+> **Until CP-001, CP-002, and CP-003 are accepted, the literal wording of this document governs.**
 
 ---
 
@@ -38,7 +88,7 @@
 ### Document Structure
 
 - **Part I — Shared Contract Assets:** data dictionary, state machines, invariants, error codes, Change Detection, deferred definitions, compliance requirements.
-- **Part II — Capability Contracts:** one per capability. Each contract cites BC (Business Capabilities V1.1 RC.4) for purpose, inputs, business rules, failure conditions, dependencies, ownership, evidence requirements, boundary — and adds only verification, failure handling by code, and any contract-specific detail.
+- **Part II — Capability Contracts:** one per capability. Each contract cites BC (`A.3-CAP-STYP-001`) for purpose, inputs, business rules, failure conditions, dependencies, ownership, evidence requirements, boundary — and adds only verification, failure handling by code, and any contract-specific detail.
 
 ### Contract Identifiers
 
@@ -328,6 +378,8 @@ States are persistent. Events are transitions. A record is in exactly one state 
 
 > **Correction from RC.3:** C-06 **issues** Validation Results; C-07 **executes** lifecycle transitions. This preserves INV-10 (C-07 is sole writer of the Publication Record).
 
+> **Pending CP-003:** C-06 postcondition #3 currently states that C-06 "executes" the Review cleared event. CP-003 proposes rewording it to align with INV-13. Until CP-003 is accepted, the literal text of C-06 postcondition #3 governs.
+
 ## I.2.2 — Recommendation Status
 
 | State | Meaning | Allowed next states |
@@ -340,6 +392,8 @@ States are persistent. Events are transitions. A record is in exactly one state 
 | **Revoked** | Withdrawn after approval, typically due to superseded evidence no longer supporting a material claim. | (Terminal.) |
 
 > **Correction from RC.3:** A recommendation moves to Revoked only when **a material claim is no longer supported by any Active Evidence Record**. If successor evidence is available for the same claim, the reference is re-pointed to the successor and the recommendation remains in its current approved state.
+
+> **Pending CP-001:** This is the two-step logic that CP-001 proposes to formalize in INV-12. Until CP-001 is accepted, INV-12's literal wording governs.
 
 ## I.2.3 — Rubric Version Status
 
@@ -378,6 +432,8 @@ Exactly one version Active at a time.
 | INV-12 | **A Recommendation Record whose material claim is no longer supported by any Active Evidence Record MUST transition to Revoked.** If successor evidence is available, the claim reference is re-pointed and Revocation is not required. |
 | INV-13 | **Every lifecycle transition of a Pin is executed by C-07 only, even when triggered by a Validation Result issued by C-06.** |
 | INV-14 | **Every reference to a Product Record is of the form `(product_id, version)`.** |
+
+> **Pending CP-001:** INV-12 currently contains both the literal wording ("MUST transition to Revoked") and the two-step logic ("If successor evidence is available, the claim reference is re-pointed"). CP-001 proposes to formally adopt the two-step logic. Until CP-001 is accepted, the current wording of INV-12 governs.
 
 ---
 
@@ -426,7 +482,7 @@ Each code carries: detection method, default response, severity, deadline.
 
 **What is checked:** product identity (ASIN); dimensions, materials, functional capabilities referenced in material claims; price ±30% (informational only); availability; rating < 3.5; review count < 50; source content changes affecting Active Evidence Records.
 
-**Detection semantics (correction from RC.3):**
+**Detection semantics:**
 
 - An Evidence Record is superseded **only when the specific fact it supports changes**, not when the page snapshot changes trivially.
 - When supersession is required and a successor Evidence Record is available for the same claim, the claim reference is re-pointed (code **E-EV-04**, no status change).
@@ -446,19 +502,19 @@ Each code carries: detection method, default response, severity, deadline.
 # I.6 — Deferred Definitions (Formalized)
 
 ### D-1 — Material Claim
-Per RC.2. Includes dimensions, weight, size, materials, functional capability, compatibility (including derived statements), safety, durability, performance, availability. Subjective statements excluded.
+Includes dimensions, weight, size, materials, functional capability, compatibility (including derived statements), safety, durability, performance, availability. Subjective statements excluded.
 
 ### D-2 — Factual Error Rate
-Per RC.2. Missing Evidence Record is a **postcondition failure of C-04**, not a factual error. Rate = factual_errors / total_material_claims per reporting period.
+Missing Evidence Record is a **postcondition failure of C-04**, not a factual error. Rate = factual_errors / total_material_claims per reporting period.
 
 ### D-3 — Evidence Confidence Calculation
-Per RC.2. Only Active Evidence Records count. Postcondition failure if any material claim lacks an Active Evidence Record.
+Only Active Evidence Records count. Postcondition failure if any material claim lacks an Active Evidence Record.
 
 ### D-4 — Evidence Record Versioning
-Per RC.2 and refined in I.5: successor records are created only when the specific fact the record supports changes. Claims are re-pointed (E-EV-04) when a successor is available; Revocation (E-EV-03) only when no successor supports the claim.
+Successor records are created only when the specific fact the record supports changes. Claims are re-pointed (E-EV-04) when a successor is available; Revocation (E-EV-03) only when no successor supports the claim.
 
 ### D-5 — Material Product Change
-Per RC.2. Price ±30% is informational and does not trigger C-06.
+Price ±30% is informational and does not trigger C-06.
 
 ### D-6 — Pin Lifecycle States and Events
 Per I.2.1. States: Live, Under Review, Archived. Events: Published, Review triggered, Review cleared, Re-linked, Replaced, Archived, Restored. Executed by C-07 only (INV-13).
@@ -500,8 +556,8 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 
 # C-01 — Context Management
 
-**Outputs:** Context Record (I.1.1). Sole writer: C-01.  
-**Preconditions / Postconditions / Failure handling / Boundary:** per BC §7.6, §7.7, §7.12, §7.5.
+**Outputs:** Context Record (I.1.1). Sole writer: C-01.
+**Preconditions / Postconditions / Failure handling / Boundary:** per BC `A.3-CAP-STYP-001` §7.6, §7.7, §7.12, §7.5.
 
 **Failure codes:** E-PRE-01, E-POST-01, E-RULE-01.
 
@@ -514,7 +570,7 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 - Product Record (I.1.2). Sole writer: C-02.
 - Change-detection outcomes (per I.5). C-02 **detects**; C-10 **versions**.
 
-**Preconditions / Failure handling / Boundary:** per BC §8.6, §8.12, §8.5.
+**Preconditions / Failure handling / Boundary:** per BC `A.3-CAP-STYP-001` §8.6, §8.12, §8.5.
 
 **Failure codes:** E-PRE-01, E-EV-01, E-EV-02, E-TR-01, E-CD-01.
 
@@ -524,8 +580,8 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 
 # C-03 — Product Evaluation & Curation
 
-**Outputs:** Evaluation Record (I.1.4). Sole writer: C-03.  
-**Preconditions / Failure handling / Boundary:** per BC §9.7, §9.13, §9.6.
+**Outputs:** Evaluation Record (I.1.4). Sole writer: C-03.
+**Preconditions / Failure handling / Boundary:** per BC `A.3-CAP-STYP-001` §9.7, §9.13, §9.6.
 
 **Failure codes:** E-PRE-01, E-RULE-01, E-RUB-01.
 
@@ -553,30 +609,34 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 
 # C-05 — Content Presentation
 
-**Outputs:** Content Asset (I.1.6). Sole writer: C-05.  
-**Preconditions / Boundary:** per BC §11.7, §11.6.
+**Outputs:** Content Asset (I.1.6). Sole writer: C-05.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §11.7, §11.6.
 
 **Postconditions:** affiliate URL and tracking ID derived from the same Product Record reference (INV-3, INV-7); `disclosure_text` present; asset available to C-06.
 
 **Failure codes:** E-TR-02, E-RULE-01, E-GOV-01.
 
+**Contract-specific note:** The `contextual_image_reference` field is used for licensed or stock imagery only. AI-generated contextual imagery is not permitted until CP-002 is accepted (see `A.5-ENG-STYP-001` §47).
+
 ---
 
 # C-06 — Consistency Validation
 
-**Outputs:** Validation Result (I.1.7). Sole writer: C-06.  
-**Preconditions / Boundary:** per BC §12.9, §12.8.
+**Outputs:** Validation Result (I.1.7). Sole writer: C-06.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §12.9, §12.8.
 
 **Postconditions:** Asset has explicit state PASS, FAIL, or CLEARED; post-publication failures handed to C-07 for corrective action; **C-06 issues Validation Results but does not modify Publication Records** (INV-13).
 
 **Failure codes:** E-ALIGN-01, E-ALIGN-02, E-ALIGN-03, E-ALIGN-04, E-TR-02.
 
+**Contract-specific note:** Postcondition #3 currently states that C-06 "executes" the Review cleared event. This is the subject of CP-003. Until CP-003 is accepted, the literal text governs. Under INV-13, C-06 issues Validation Results and C-07 executes lifecycle transitions.
+
 ---
 
 # C-07 — Publication & Lifecycle
 
-**Outputs:** Publication Record (I.1.9). Sole writer: C-07.  
-**Preconditions / Boundary:** per BC §13.6, §13.5.
+**Outputs:** Publication Record (I.1.9). Sole writer: C-07.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §13.6, §13.5.
 
 **Postconditions:**
 
@@ -595,8 +655,8 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 
 # C-08 — Performance Measurement & Attribution
 
-**Outputs:** Performance Record (I.1.10). Sole writer: C-08.  
-**Preconditions / Boundary:** per BC §14.7, §14.6.
+**Outputs:** Performance Record (I.1.10). Sole writer: C-08.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §14.7, §14.6.
 
 **Postconditions:** Data available at supported attribution level; completeness and freshness recorded.
 
@@ -608,8 +668,8 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 
 # C-09 — Learning & Improvement
 
-**Outputs:** Learning Record (I.1.11). Sole writer: C-09.  
-**Preconditions / Boundary:** per BC §15.6, §15.5.
+**Outputs:** Learning Record (I.1.11). Sole writer: C-09.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §15.6, §15.5.
 
 **Postconditions:** Every Learning Record links to supporting Performance Records; every hypothesis states its evidence basis and confidence; accepted rubric change proposals handed to C-11.
 
@@ -619,8 +679,8 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 
 # C-10 — Evidence Management
 
-**Outputs:** Evidence Record (I.1.3). Sole writer: C-10.  
-**Preconditions / Boundary:** per BC §16.7, §16.6.
+**Outputs:** Evidence Record (I.1.3). Sole writer: C-10.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §16.7, §16.6.
 
 **Postconditions:**
 
@@ -636,8 +696,8 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 
 # C-11 — Rubric Management
 
-**Outputs:** Rubric Version Record (I.1.12). Sole writer: C-11.  
-**Preconditions / Boundary:** per BC §17.6, §17.5.
+**Outputs:** Rubric Version Record (I.1.12). Sole writer: C-11.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §17.6, §17.5.
 
 **Postconditions:** Exactly one rubric version Active (INV-2); change justification and approver recorded.
 
@@ -647,8 +707,8 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 
 # C-12 — Compliance & Governance
 
-**Outputs:** Compliance Record (I.1.8). Sole writer: C-12.  
-**Preconditions / Boundary:** per BC §18.10, §18.6.
+**Outputs:** Compliance Record (I.1.8). Sole writer: C-12.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §18.10, §18.6.
 
 **Postconditions:** Compliance Record exists with a decision; if Approve, asset eligible for C-07 subject to Validation = PASS (INV-1).
 
@@ -679,16 +739,16 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 
 - Does not prescribe implementation (deterministic, human, LLM, hybrid).
 - Does not prescribe architecture, storage, or APIs.
-- Does not re-open capability boundaries from Business Capabilities V1.1 RC.4.
-- Does not define business metrics — those remain in the Business Plan.
+- Does not re-open capability boundaries from `A.3-CAP-STYP-001` V1.1 RC.4.
+- Does not define business metrics — those remain in the Business Plan (`A.1-BIZ-STYP-001`).
 
 ---
 
 # Handoff to the Engineering Proposal
 
-The next document (`05_engineering_proposal.md`) MUST derive, for each contract:
+The next document (`A.5-ENG-STYP-001`) MUST derive, for each contract:
 
-- the execution mechanism (per Section 17 of the Functional Specification);
+- the execution mechanism (per Section 17 of `A.2-FUNC-STYP-001`);
 - the storage model for each record in Part I.1;
 - the tooling required to satisfy each rule;
 - the sequencing of contract implementation based on runtime dependencies;
@@ -700,12 +760,42 @@ It MUST NOT redefine contracts.
 
 ## Notes on External Facts Affecting This Document
 
-> **Amazon API:** PA-API has been deprecated and replaced by **Creators API**. Any reference to PA-API in earlier documents (spec 6.6, Open Item #4, CD1) is superseded by Creators API. Access conditions for Creators API (Associates status, recent qualifying sales) must be verified before operationalizing C-02's programmatic mode. This is tracked as Open Item #4.
+> **Amazon API:** PA-API has been deprecated and replaced by **Creators API**. Any reference to PA-API in earlier documents (`A.2-FUNC-STYP-001` §6.6, OI-004, CD1) is superseded by Creators API. Access conditions for Creators API (Associates status, recent qualifying sales) must be verified before operationalizing C-02's programmatic mode. This is tracked as **OI-004** in `PH1-REG-STYP-001`.
 
-> **Pinterest Storefront Linking:** Pinterest permits creators enrolled in the Amazon Influencer Program to connect an Amazon Storefront, after which affiliate attribution is applied automatically when eligible products are tagged. If adopted, this may bypass Style Picks' own tracking ID design and break INV-3. This is a **business decision** for the destination model in the Functional Specification, not for the Engineering Proposal. Until decided, the publication model assumes Style Picks remains the source of truth for the tracking ID.
+> **Pinterest Storefront Linking:** Pinterest permits creators enrolled in the Amazon Influencer Program to connect an Amazon Storefront, after which affiliate attribution is applied automatically when eligible products are tagged. If adopted, this may bypass Style Picks' own tracking ID design and break INV-3. This is a **business decision** for the destination model in `A.2-FUNC-STYP-001`, not for the Engineering Proposal. Until decided, the publication model assumes Style Picks remains the source of truth for the tracking ID.
 
 ---
 
-## Note on Open Item #1
+## Note on OI-001
 
-> Survival checkpoints (C-12 / CD1) are fully specified in structure; their external parameters (Associates account creation date, deadline, qualifying-sales rule) remain unverified. The contract distinguishes **rule exists** from **rule parameters verified**. Closing Open Item #1 does not block writing the Engineering Proposal; it blocks operationalizing the CD1 calendar.
+> Survival checkpoints (C-12 / CD1) are fully specified in structure; their external parameters (Associates account creation date, deadline, qualifying-sales rule) remain unverified. The contract distinguishes **rule exists** from **rule parameters verified**. Closing OI-001 does not block writing the Engineering Proposal; it blocks operationalizing the CD1 calendar.
+
+---
+
+# Formal Sign-Off
+
+**Prepared by:** Style Picks Editorial Owner
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Stage:** A — Engineering Definition (Conceptual Level)
+
+**Level:** A.4 — Contract Formalization
+
+**Document ID:** A.4-CONTR-STYP-001
+
+**Version:** 1.0 RC.4 — Contract Formalization Release Candidate
+
+**Status:** **Release Candidate**
+
+**Authorization:** This document formalizes the twelve capabilities of `A.3-CAP-STYP-001` into twelve capability contracts. `A.5-ENG-STYP-001` is authorized to derive from it.
+
+**Blocking dependencies:** OI-001, OI-002.
+
+**Pending Change Proposals:** CP-001, CP-002, CP-003.
+
+**Language:** English
+
+---
+
+*End of Capability Contracts Specification — A.4-CONTR-STYP-001 v1.0 RC.4*

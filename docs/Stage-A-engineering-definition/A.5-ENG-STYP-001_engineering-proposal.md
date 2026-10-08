@@ -1,22 +1,43 @@
 # STYLE PICKS
+## Engineering Proposal
 
-## Engineering Proposal — V1.2 Final
+**Stage A.5 — Engineering Definition**
+**Physical Foundation of the Style Picks Operational System**
 
-**Business Model:** Content Commerce + Affiliate Commerce  
-**Brand:** Style Picks  
-**Target Market:** United States  
-**Initial Channel:** Pinterest  
-**Monetization:** Amazon Associates  
-**Initial Categories:** Home Decor + Home Organization  
-**Stage:** Commercial Validation  
-**Document Type:** Engineering Proposal  
-**Version:** 1.2 Final  
-**Status:** Frozen  
-**Derives from:**  
-- Business Plan V1.3
-- Functional Specifications V1.1 RC
-- Business Capabilities Specification V1.1 RC.4
-- Capability Contracts Specification V1.0 RC.4
+**Document ID:** A.5-ENG-STYP-001
+
+**Version:** 1.2 — Engineering Definition Baseline (Frozen)
+
+**Status:** Stage A — Engineering Definition (Conceptual Level) — Frozen
+
+**Project:** Style Picks — Content Commerce + Affiliate Commerce
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Parent Documents:**
+- A.1-BIZ-STYP-001 — Business Plan and Commercial Validation (v1.4)
+- A.2-FUNC-STYP-001 — Value Proposition Functional Specification (v1.1 RC)
+- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.1 RC.4)
+- A.4-CONTR-STYP-001 — Capability Contracts Specification (v1.0 RC.4)
+- PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.0)
+
+**Child Documents:**
+- STAGE-A-CONSOL-REPORT-STYP-001 — Stage A Consolidation Report (v1.0)
+- None (terminal document in Stage A)
+
+**Domain:** Domain A.5 — Engineering
+
+---
+
+**Business Model:** Content Commerce + Affiliate Commerce
+**Brand:** Style Picks
+**Target Market:** United States
+**Initial Channel:** Pinterest
+**Monetization:** Amazon Associates
+**Initial Categories:** Home Decor + Home Organization
+**Stage:** Commercial Validation
+**Document Type:** Engineering Proposal
+**Derives from:** A.1-BIZ-STYP-001, A.2-FUNC-STYP-001, A.3-CAP-STYP-001, A.4-CONTR-STYP-001
 
 ---
 
@@ -27,7 +48,43 @@
 | 1.0 | Oct 8, 2026 | Initial Engineering Proposal (sections 1–45) |
 | 1.1 | Oct 8, 2026 | Added Phase 0 / FOM; committed default stack; added external dependency fallbacks; filed three change proposals |
 | 1.2 | Oct 8, 2026 | Build-time budget and evidence-gated phases; compliance verification in Phase 0; ED-05 closed; AI provider default; CP-02 and CP-03 wording corrected; Workflow Execution Model added; refined defaults |
-| **1.2 Final** | Oct 8, 2026 | Phase 0 uses Django models + admin directly on PostgreSQL (no SQLite, no migration from spreadsheets); scheduling mechanism unified to cron + management commands (APScheduler dropped); status set to Frozen |
+| 1.2 Final | Oct 8, 2026 | Phase 0 uses Django models + admin directly on PostgreSQL (no SQLite, no migration from spreadsheets); scheduling mechanism unified to cron + management commands (APScheduler dropped); status set to Frozen |
+| **1.2 Final (Baselined header)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals and Engineering Dependencies registers integrated; Sign-Off block added |
+
+---
+
+## Open Items
+
+> **This document depends on the same Open Items as the rest of Stage A. The authoritative source is `PH1-REG-STYP-001`.**
+
+| # | Open item | Priority | Owner | Status |
+|---|-----------|----------|-------|--------|
+| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **EMPTY — CLOSE FIRST** |
+| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **EMPTY** |
+| OI-003 | Verification: qualifying-sales rule | Defaultable | Editorial Owner | EMPTY |
+| OI-004 | Verification: Creators API access requirements | Defaultable | Editorial Owner | EMPTY |
+| OI-005 | Verification: image and price display rules | Defaultable | Editorial Owner | EMPTY |
+| OI-006 | Verification: required disclosure wording | Defaultable | Editorial Owner | EMPTY |
+| OI-007 | Verification: link-format rules | Defaultable | Editorial Owner | EMPTY |
+| OI-008 | Evidence Source Policy — formalized | Defaultable | Editorial Owner | EMPTY |
+
+**Change Proposals filed against this document (also affecting A.4-CONTR-STYP-001):**
+
+| CP ID | Title | Affected sections | Status |
+|-------|-------|-------------------|--------|
+| CP-001 | Re-evaluation vs Revocation on Superseded Evidence | §19, §47 | Pending |
+| CP-002 | AI-Generated Contextual Imagery | §12, §47 | Pending |
+| CP-003 | Review Cleared Sole-Writer Assignment | §13, §47 | Pending |
+
+**Engineering Dependencies Register:**
+
+| ED ID | Description | Status |
+|-------|-------------|--------|
+| ED-001 | Amazon External Parameters | Open |
+| ED-002 | Amazon API Availability | Open |
+| ED-003 | Pinterest API Capabilities | Open |
+| ED-004 | AI Provider Selection | **Closed** — Anthropic Claude |
+| ED-005 | Infrastructure Selection | **Closed** — §39-A |
 
 ---
 
@@ -37,7 +94,7 @@ This Engineering Proposal defines how Style Picks will be implemented as a softw
 
 It translates contractual requirements into system architecture, execution mechanisms, storage models, tooling, external integrations, automation, human-in-the-loop controls, sequencing, and operational infrastructure.
 
-This document does **not** redefine business capabilities or capability contracts. Where an implementation constraint makes a contractual requirement impossible or materially impractical, the implementation **must** return a formal change proposal to the Capability Contracts Specification rather than silently changing the contract.
+This document does **not** redefine business capabilities or capability contracts. Where an implementation constraint makes a contractual requirement impossible or materially impractical, the implementation **must** return a formal change proposal to `A.4-CONTR-STYP-001` rather than silently changing the contract.
 
 ---
 
@@ -67,7 +124,7 @@ External systems: Pinterest, Amazon Associates infrastructure, Amazon product da
 
 # 4. Engineering Principles
 
-- **EP-01 — Contract First.** Capability Contracts are authoritative.
+- **EP-01 — Contract First.** Capability Contracts (`A.4-CONTR-STYP-001`) are authoritative.
 - **EP-02 — Single Ownership.** Enforce sole-writer rule at service and, where practical, data layer.
 - **EP-03 — Traceability by Default.** Every material operation leaves an auditable trail.
 - **EP-04 — Human Control at Critical Gates.** AI must not silently bypass publication gates, compliance decisions, material evidence requirements, rubric approval, exceptional lifecycle actions.
@@ -156,13 +213,13 @@ The initial dashboard is provided by **Django Admin** for CRUD over the Part I r
 **Mechanism:** Hybrid automated + human-assisted discovery.
 
 **Product sources (preferred order):**
-1. Amazon product data interface currently available to the account (see §16 and ED-02).
+1. Amazon product data interface currently available to the account (see §16 and ED-002).
 2. Manufacturer/product pages.
 3. Other approved evidence sources.
 
 **Fallback when programmatic access is unavailable:** manual entry through the Django admin. The manual path uses the same record schemas and the same contract checks as the automated path. Only the source of the data differs.
 
-**Change detection:** daily scheduled worker when compliant automated access is available; otherwise, **weekly manual change-detection over live Product Records only** (see §24 and I.5).
+**Change detection:** daily scheduled worker when compliant automated access is available; otherwise, **weekly manual change-detection over live Product Records only** (see §24 and `A.4-CONTR-STYP-001` I.5).
 
 **Human role:** review required when product identity is ambiguous, sources conflict, destination cannot be verified, evidence is insufficient, or extraction confidence is low.
 
@@ -186,7 +243,7 @@ System supplies: approved Context Record, eligible Product Record, Evaluation Re
 
 **Rule:** No recommendation becomes Approved merely because an LLM generated it.
 
-**Confidence:** calculated from Evidence Records using D-3.
+**Confidence:** calculated from Evidence Records using `A.4-CONTR-STYP-001` D-3.
 
 **Human review:** Low-Confidence → Human Review → Human-Review-Approved / Rejected.
 
@@ -212,15 +269,15 @@ Images are treated separately from product factual evidence.
 - Every image used as evidence has an associated Evidence Record where required by the contract.
 - AI-generated contextual imagery must not be represented as a photograph of the actual product unless that representation is truthful and permitted.
 - The system distinguishes **Actual Product Image** vs. **Contextual / Generated Image**.
-- Use of AI-generated imagery is contingent on **CP-02** (§47), which amends both the Functional Specification and the Capability Contracts to admit AI imagery under labeling and evidence conditions, and references CD4 (Pinterest policies on AI-generated content labeling).
+- Use of AI-generated imagery is contingent on **CP-002** (§47), which amends both `A.2-FUNC-STYP-001` and `A.4-CONTR-STYP-001` to admit AI imagery under labeling and evidence conditions, and references CD4 (Pinterest policies on AI-generated content labeling).
 
-**Until CP-02 is accepted:** only licensed and stock imagery are used.
+**Until CP-002 is accepted:** only licensed and stock imagery are used.
 
 ---
 
 # 13. C-06 — Consistency Validation
 
-Primarily deterministic. The seven validation checks defined by the Functional Specification and Capability Contracts are implemented as executable validation rules.
+Primarily deterministic. The seven validation checks defined by `A.2-FUNC-STYP-001` and `A.4-CONTR-STYP-001` are implemented as executable validation rules.
 
 **Validator checks:** Pin promise vs. content; product identity; destination; tracking ID; recommendation/content consistency; required metadata; relevant evidence relationships.
 
@@ -228,7 +285,7 @@ Primarily deterministic. The seven validation checks defined by the Functional S
 
 Human review may be required for ambiguous semantic checks.
 
-**Lifecycle transitions triggered by a Validation Result are executed by C-07 only** (see §47, CP-03).
+**Lifecycle transitions triggered by a Validation Result are executed by C-07 only** (see §47, CP-003).
 
 ---
 
@@ -256,7 +313,7 @@ Pinterest is an external distribution platform. The integration layer isolates P
 
 **Rule:** do not assume every lifecycle operation is available through the Pinterest API. Unsupported operations remain operator-assisted.
 
-**Storefront Linking:** the business decision about whether to adopt Pinterest ↔ Amazon Storefront Linking is owned by the Functional Specification's destination model, not by this Engineering Proposal. Until that decision is made, the system assumes **Style Picks remains the source of truth for the tracking ID** (INV-3 holds). If Storefront Linking is later adopted, it must be reflected in the destination model, in INV-3, and in C-05's derivation logic.
+**Storefront Linking:** the business decision about whether to adopt Pinterest ↔ Amazon Storefront Linking is owned by the destination model in `A.2-FUNC-STYP-001`, not by this Engineering Proposal. Until that decision is made, the system assumes **Style Picks remains the source of truth for the tracking ID** (INV-3 holds). If Storefront Linking is later adopted, it must be reflected in the destination model, in INV-3, and in C-05's derivation logic.
 
 ---
 
@@ -264,7 +321,7 @@ Pinterest is an external distribution platform. The integration layer isolates P
 
 Amazon is an external commerce and affiliate dependency.
 
-**Preferred interface for product data:** Amazon Creators API (PA-API is deprecated). Access conditions must be verified under ED-02. Where the account does not yet meet the requirements, the manual path in §8 applies.
+**Preferred interface for product data:** Amazon Creators API (PA-API is deprecated). Access conditions must be verified under ED-002. Where the account does not yet meet the requirements, the manual path in §8 applies.
 
 **Integration layer supports, where available and permitted:** product discovery; product information retrieval; identifiers; variations; destination generation; affiliate attribution; performance data.
 
@@ -304,7 +361,7 @@ Dedicated governance layer. System maintains evidence identity, source, source c
 Evidence v1 → Superseded → Evidence v2
 ```
 
-**Re-evaluation semantics (pending CP-01):** when a material claim's supporting evidence is superseded, this Engineering Proposal adopts the two-step logic — re-point the claim to the successor if it supports the claim, otherwise Revoke the recommendation. This semantics **differs from the literal wording of INV-12 in doc 04** and is filed as **CP-01**. Until CP-01 is accepted, the literal wording of INV-12 governs.
+**Re-evaluation semantics (pending CP-001):** when a material claim's supporting evidence is superseded, this Engineering Proposal adopts the two-step logic — re-point the claim to the successor if it supports the claim, otherwise Revoke the recommendation. This semantics **differs from the literal wording of INV-12 in `A.4-CONTR-STYP-001`** and is filed as **CP-001**. Until CP-001 is accepted, the literal wording of INV-12 governs.
 
 ---
 
@@ -344,7 +401,7 @@ Unverified external parameters are represented as **unverified configuration**, 
 
 **Core entities:** Context, Product, Evidence, Evaluation, Recommendation, ContentAsset, ValidationResult, ComplianceRecord, Publication, Performance, Learning, RubricVersion, ContractFailure.
 
-**Rules:** relationships through stable IDs; historical records remain queryable; no destructive updates for records requiring historical traceability. Product Records are keyed by `(product_id, version)` per I.1.2.1.
+**Rules:** relationships through stable IDs; historical records remain queryable; no destructive updates for records requiring historical traceability. Product Records are keyed by `(product_id, version)` per `A.4-CONTR-STYP-001` I.1.2.1.
 
 ---
 
@@ -456,7 +513,7 @@ Check INV-3, INV-7, disclosure, required references
 PASS / CONTRACT FAILURE
 ```
 
-**Failure routing (aligned with I.7.3 of doc 04):**
+**Failure routing (aligned with `A.4-CONTR-STYP-001` I.7.3):**
 - Operational → Contract Failure Record with `escalated_to_learning = false`.
 - Material → Contract Failure Record with `escalated_to_learning = true`.
 - Systemic → Contract Failure Record with `escalated_to_learning = true` and a review proposal routed to the affected capability.
@@ -532,7 +589,7 @@ The implementation follows dependency order, not visual feature order. All build
 - Manual publishing of Pins on Pinterest.
 - Production-time logging per Pin (a simple field on the Publication Record).
 - A simple failure log for manual operations.
-- **External rule verification (§32-B):** disclosure wording, link-format rules, image rules. Closes Open Items #3–#7 of doc 04.
+- **External rule verification (§32-B):** disclosure wording, link-format rules, image rules. Closes OI-003 through OI-007.
 
 **Estimated effort:** ~1 day for setup (Django project + models + admin) plus the external rule verification (a few hours of reading).
 
@@ -541,31 +598,31 @@ The implementation follows dependency order, not visual feature order. All build
 **Milestone (First Operational Milestone, §46):** the first Pin is live on Pinterest with a complete internal record trail.
 
 ## Phase 1 — Platform Foundation
-**Deliverables:** custom operator views beyond admin; contract validation framework (extending §27); audit trail middleware; error handling; dashboard shell.  
+**Deliverables:** custom operator views beyond admin; contract validation framework (extending §27); audit trail middleware; error handling; dashboard shell.
 **Estimated effort:** 1–2 weeks.
 
 ## Phase 2 — Product Intelligence
-**Deliverables:** automated Context Management UI; Product Discovery ingestion; Evidence Management versioning; change detection command.  
+**Deliverables:** automated Context Management UI; Product Discovery ingestion; Evidence Management versioning; change detection command.
 **Estimated effort:** 2–3 weeks.
 
 ## Phase 3 — Evaluation & Recommendation
-**Deliverables:** Rubric Management; deterministic evaluation engine; LLM-assisted Recommendation Generation with post-generation checks; human review workflow.  
+**Deliverables:** Rubric Management; deterministic evaluation engine; LLM-assisted Recommendation Generation with post-generation checks; human review workflow.
 **Estimated effort:** 2 weeks.
 
 ## Phase 4 — Content Production
-**Deliverables:** Content Assets; image management; AI content generation; disclosure; destination/tracking derivation.  
+**Deliverables:** Content Assets; image management; AI content generation; disclosure; destination/tracking derivation.
 **Estimated effort:** 1–2 weeks.
 
 ## Phase 5 — Governance & Publication
-**Deliverables:** Consistency Validation engine; Compliance rule engine; Pinterest integration; Publication & Lifecycle workflow.  
+**Deliverables:** Consistency Validation engine; Compliance rule engine; Pinterest integration; Publication & Lifecycle workflow.
 **Estimated effort:** 2 weeks.
 
 ## Phase 6 — Measurement
-**Deliverables:** Pinterest measurement; Amazon attribution; Performance Records; reconciliation; CSV import fallback.  
+**Deliverables:** Pinterest measurement; Amazon attribution; Performance Records; reconciliation; CSV import fallback.
 **Estimated effort:** 1–2 weeks.
 
 ## Phase 7 — Learning
-**Deliverables:** Learning Records; performance analysis; failure analysis; learning proposals; rubric-change workflow.  
+**Deliverables:** Learning Records; performance analysis; failure analysis; learning proposals; rubric-change workflow.
 **Estimated effort:** 1–2 weeks.
 
 **Total estimated effort if all phases are built unconditionally:** 12–18 weeks.
@@ -574,11 +631,11 @@ The implementation follows dependency order, not visual feature order. All build
 
 > **This section is the operational consequence of EP-07 and EP-08.**
 
-**Capacity reality.** One operator. The validation targets in spec 18.2 (120 Pins at ≤45 min each) already require roughly 90 hours of production. A 12–18 week build program consumes most of the 180-day survival window. **Every hour of build is an hour not spent producing Pins.**
+**Capacity reality.** One operator. The validation targets in `A.2-FUNC-STYP-001` §18.2 (120 Pins at ≤45 min each) already require roughly 90 hours of production. A 12–18 week build program consumes most of the 180-day survival window. **Every hour of build is an hour not spent producing Pins.**
 
 **Budget cap.** Build effort during commercial validation is capped at **10 hours per week**, with the remaining operator time reserved for Pin production. If a phase cannot be completed within the cap, it is deferred, not expanded.
 
-**Evidence gating.** Phases 2–7 do **not** start automatically. Each phase starts **only when the operational evidence justifies automating what the phase automates** (consistent with Functional Spec §17.1):
+**Evidence gating.** Phases 2–7 do **not** start automatically. Each phase starts **only when the operational evidence justifies automating what the phase automates** (consistent with `A.2-FUNC-STYP-001` §17.1):
 
 | Phase | Start condition (evidence gate) |
 |-------|--------------------------------|
@@ -604,7 +661,7 @@ Before the first Pin is published, the following external rules must be verified
 | Image use and permitted sources | Amazon Associates Program Policies + Pinterest policies | Non-compliant visual content |
 | Price display rules | Amazon Associates Operating Agreement | Governs whether prices may appear on Pins |
 
-**Estimated effort:** a few hours of reading. Completion closes Open Items #3–#7 of doc 04.
+**Estimated effort:** a few hours of reading. Completion closes OI-003 through OI-007.
 
 ---
 
@@ -661,11 +718,11 @@ Until verified, such parameters are represented as **unverified configuration**,
 
 # 37. Open Engineering Dependencies
 
-- **ED-01 — Amazon External Parameters.** Resolve remaining Amazon Associates rules.
-- **ED-02 — Amazon API Availability.** Confirm exact APIs and account permissions available to Style Picks (Creators API access conditions; any qualifying-sales requirement).
-- **ED-03 — Pinterest API Capabilities.** Confirm which publication, board, Pin, and analytics operations are available.
-- **ED-04 — AI Provider Selection.** **Closed.** Default: Anthropic Claude (primary LLM). Image generation deferred to Phase 4. Revisions require a change proposal.
-- **ED-05 — Infrastructure Selection.** **Closed.** Covered by §39-A.
+- **ED-001 — Amazon External Parameters.** Resolve remaining Amazon Associates rules.
+- **ED-002 — Amazon API Availability.** Confirm exact APIs and account permissions available to Style Picks (Creators API access conditions; any qualifying-sales requirement).
+- **ED-003 — Pinterest API Capabilities.** Confirm which publication, board, Pin, and analytics operations are available.
+- **ED-004 — AI Provider Selection.** **Closed.** Default: Anthropic Claude (primary LLM). Image generation deferred to Phase 4. Revisions require a change proposal.
+- **ED-005 — Infrastructure Selection.** **Closed.** Covered by §39-A.
 
 ## 37-A — Fallbacks for Unresolved Dependencies
 
@@ -682,15 +739,15 @@ Until verified, such parameters are represented as **unverified configuration**,
 
 # 38. Technology Selection Criteria
 
-1. Contract compliance.  
-2. Reliability.  
-3. API maturity.  
-4. Development speed.  
-5. Operating cost.  
-6. Observability.  
-7. Data portability.  
-8. Vendor lock-in.  
-9. Security.  
+1. Contract compliance.
+2. Reliability.
+3. API maturity.
+4. Development speed.
+5. Operating cost.
+6. Observability.
+7. Data portability.
+8. Vendor lock-in.
+9. Security.
 10. Ability to scale beyond initial validation.
 
 ---
@@ -718,7 +775,7 @@ This is preferable to microservices at this stage. The architecture maintains cl
 | Object storage | Local filesystem initially; S3-compatible (MinIO or Wasabi) if remote access needed | No premature cloud dependency. |
 | Scheduling | **cron + Django management commands** | Single, mature, universally available. No in-process scheduler. No Celery until volume justifies it. |
 | Secrets | Development `.env` and production `.env.production` strictly separated; both uncommitted; local encrypted file for production credentials | Prevents dev credentials from accidentally reaching production systems. |
-| AI provider | **Anthropic Claude** (primary LLM, ED-04 closed); image generation deferred to Phase 4 | Single vendor initially to reduce operational surface. |
+| AI provider | **Anthropic Claude** (primary LLM, ED-004 closed); image generation deferred to Phase 4 | Single vendor initially to reduce operational surface. |
 | Hosting | Single VPS (small tier) or equivalent managed service | Cost control and portability. |
 | Logging | Structured JSON to local files; rotation enabled | Sufficient for observability (§35). |
 | Backups | Daily PostgreSQL dump + object storage snapshot; weekly restore test | Verified backup is a security requirement (§29). |
@@ -830,33 +887,33 @@ The First Operational Milestone is the state in which:
 
 ---
 
-# 47. Change Proposals Against Document 04
+# 47. Change Proposals Against `A.4-CONTR-STYP-001`
 
 Under EP-01, where this Engineering Proposal diverges from the Capability Contracts Specification, a formal change proposal is required.
 
-## CP-01 — Re-evaluation vs Revocation on Superseded Evidence
+## CP-001 — Re-evaluation vs Revocation on Superseded Evidence
 
-**Divergence:** Section 19 describes two-step logic — re-point if successor supports the claim, Revoke otherwise. INV-12 in doc 04 RC.4 states that recommendations whose supporting evidence is superseded "MUST transition to Revoked."
+**Divergence:** Section 19 describes two-step logic — re-point if successor supports the claim, Revoke otherwise. INV-12 in `A.4-CONTR-STYP-001` RC.4 states that recommendations whose supporting evidence is superseded "MUST transition to Revoked."
 
 **Proposed resolution:** Adopt the two-step logic. **Impact:** INV-12 and I.5 need rewording. **Status:** Pending.
 
-## CP-02 — AI-Generated Contextual Imagery
+## CP-002 — AI-Generated Contextual Imagery
 
-**Divergence:** This document permits AI-generated contextual imagery. Functional Spec 10.6 explicitly approved licensed or stock imagery as the primary source. Admitting AI imagery is a change to a decision, not a gap-fill. Pinterest has its own policies on AI-generated content labeling (CD4).
+**Divergence:** This document permits AI-generated contextual imagery. `A.2-FUNC-STYP-001` §10.6 explicitly approved licensed or stock imagery as the primary source. Admitting AI imagery is a change to a decision, not a gap-fill. Pinterest has its own policies on AI-generated content labeling (CD4).
 
-**Proposed resolution:** Amend spec 10.6 and corresponding contracts to admit AI-generated contextual imagery under labeling, non-substitution, and evidence-registration conditions, and to reference CD4 for labeling compliance.
+**Proposed resolution:** Amend `A.2-FUNC-STYP-001` §10.6 and corresponding contracts to admit AI-generated contextual imagery under labeling, non-substitution, and evidence-registration conditions, and to reference CD4 for labeling compliance.
 
 **Impact:** Content Asset schema gains a `contextual_image_type` field; C-05 gains one clause; CD4 gains an explicit AI-content labeling reference.
 
 **Status:** Pending. **Until accepted, only licensed and stock imagery are used.**
 
-## CP-03 — Review Cleared Sole-Writer Assignment
+## CP-003 — Review Cleared Sole-Writer Assignment
 
-**Divergence:** Doc 04 RC.4 C-06 postcondition #3 says C-06 "executes" the Review cleared event, contradicting INV-10 (C-07 is sole writer of the Publication Record).
+**Divergence:** `A.4-CONTR-STYP-001` RC.4 C-06 postcondition #3 says C-06 "executes" the Review cleared event, contradicting INV-10 (C-07 is sole writer of the Publication Record).
 
 **Proposed resolution:** Reword C-06 postcondition #3 to: *"C-06 issues a Validation Result with status = CLEARED; C-07 executes the corresponding lifecycle transition on the Publication Record."*
 
-**Impact:** Documentation-only text change in doc 04.
+**Impact:** Documentation-only text change in `A.4-CONTR-STYP-001`.
 
 **Status:** Pending.
 
@@ -864,19 +921,19 @@ Under EP-01, where this Engineering Proposal diverges from the Capability Contra
 
 # 48. Reference Note on Amazon API
 
-PA-API is deprecated and replaced by **Creators API**. All references in documents 02–04 that mention PA-API should be read as referring to Creators API.
+PA-API is deprecated and replaced by **Creators API**. All references in documents `A.2-FUNC-STYP-001` through `A.4-CONTR-STYP-001` that mention PA-API should be read as referring to Creators API.
 
 ---
 
 # 49. Reference Note on Pinterest Storefront Linking
 
-Pinterest permits creators enrolled in the Amazon Influencer Program to connect an Amazon Storefront, after which affiliate attribution is applied automatically. If adopted, per-category tracking IDs may be bypassed and INV-3 may be affected. This is a business decision for the Functional Specification's destination model, not for this document. Until decided, Style Picks remains the source of truth for the tracking ID.
+Pinterest permits creators enrolled in the Amazon Influencer Program to connect an Amazon Storefront, after which affiliate attribution is applied automatically. If adopted, per-category tracking IDs may be bypassed and INV-3 may be affected. This is a business decision for the destination model in `A.2-FUNC-STYP-001`, not for this document. Until decided, Style Picks remains the source of truth for the tracking ID.
 
 ---
 
-# 50. Note on Open Item #1
+# 50. Note on OI-001
 
-The Amazon Associates survival clock runs from account creation. Every phase estimate assumes the clock is running. Closing Open Item #1 of doc 04 is the single most consequential administrative action for the project.
+The Amazon Associates survival clock runs from account creation. Every phase estimate assumes the clock is running. Closing OI-001 is the single most consequential administrative action for the project.
 
 **The First Operational Milestone (§46) is designed to be achievable regardless of how much time remains on the survival clock — provided §32-B is completed before the first Pin.**
 
@@ -884,19 +941,19 @@ The Amazon Associates survival clock runs from account creation. Every phase est
 
 # 51. What Comes Next
 
-This document closes the documentation phase of the pipeline:
+This document closes the documentation phase of the Stage A pipeline:
 
 ```
-01 Business Plan
-02 Functional Specifications
-03 Business Capabilities
-04 Capability Contracts
-05 Engineering Proposal  ← this document (Frozen)
+A.1-BIZ-STYP-001        Business Plan
+A.2-FUNC-STYP-001       Functional Specifications
+A.3-CAP-STYP-001        Business Capabilities
+A.4-CONTR-STYP-001      Capability Contracts
+A.5-ENG-STYP-001        Engineering Proposal  ← this document (Frozen)
 ```
 
 The next artifacts are not documents:
 
-1. **External rule verification (§32-B)** — closes Open Items #3–#7 of doc 04.
+1. **External rule verification (§32-B)** — closes OI-003 through OI-007.
 2. **The first Pin, published manually, with a complete internal record trail** (FOM, §46).
 3. **The Phase 0 Django project** — initialized against §39-A, PostgreSQL, cron + management commands.
 
@@ -906,4 +963,34 @@ Any further document — technical design notes, implementation logs, runbooks �
 
 ## Freeze Note
 
-**Version 1.2 Final is frozen.** The three change proposals (CP-01, CP-02, CP-03) remain pending in document 04; they do not block the start of Phase 0. The next review cycle is triggered by operational evidence, not by further drafting. The next thing to look at is not this document — it is the result of §32-B, the account creation date (Open Item #1), and the production-time log from the first ten Pins.
+**Version 1.2 Final is frozen.** The three change proposals (CP-001, CP-002, CP-003) remain pending in `A.4-CONTR-STYP-001`; they do not block the start of Phase 0. The next review cycle is triggered by operational evidence, not by further drafting. The next thing to look at is not this document — it is the result of §32-B, the account creation date (OI-001), and the production-time log from the first ten Pins.
+
+---
+
+# 52. Formal Sign-Off
+
+**Prepared by:** Style Picks Editorial Owner
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Stage:** A — Engineering Definition (Conceptual Level)
+
+**Level:** A.5 — Engineering Definition
+
+**Document ID:** A.5-ENG-STYP-001
+
+**Version:** 1.2 — Engineering Definition Baseline (Frozen)
+
+**Status:** **Frozen**
+
+**Authorization:** This document closes Stage A. `STAGE-A-CONSOL-REPORT-STYP-001` is authorized to consolidate Stage A and authorize Stage B (System Architecture — HLD).
+
+**Blocking dependencies:** OI-001, OI-002.
+
+**Pending Change Proposals:** CP-001, CP-002, CP-003.
+
+**Language:** English
+
+---
+
+*End of Engineering Proposal — A.5-ENG-STYP-001 v1.2 Final*
