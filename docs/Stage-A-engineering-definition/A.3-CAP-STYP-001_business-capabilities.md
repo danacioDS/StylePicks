@@ -57,8 +57,8 @@
 
 | # | Open item | Priority | Owner | Status |
 |---|-----------|----------|-------|--------|
-| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **EMPTY — CLOSE FIRST** |
-| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **EMPTY** |
+| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **CLOSED — 2026-04-15** |
+| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **CLOSED — 2026-10-12** |
 | OI-003 | Verification: qualifying-sales rule | Defaultable | Editorial Owner | EMPTY |
 | OI-004 | Verification: Creators API access requirements | Defaultable | Editorial Owner | EMPTY |
 | OI-005 | Verification: image and price display rules | Defaultable | Editorial Owner | EMPTY |
@@ -921,7 +921,7 @@ D+H.
 
 > **These metrics measure whether measurement is working, not whether the business is succeeding.**
 
-- **tracking-ID attribution completeness** — % of active tracking IDs with Amazon-side data returned.
+- **Tracking-ID attribution coverage** — % of active tracking IDs with Amazon-side data returned.
 - **tracking-ID reconciliation errors** — active tracking IDs where **Pinterest shows outbound clicks > 0** but Amazon records no clicks, **or** Amazon records clicks for a tracking ID not in the active list.
 - **data freshness** — time since last collection.
 - **coverage** — % of the reporting period with complete data.
@@ -1333,9 +1333,9 @@ D+H.
 | Factual error rate ≤ 2% | Recommendation Generation: factual error rate + Compliance & Governance: violation rate |
 | Recommendation-context match rate ≥ 95% | Recommendation Generation: context-match rate |
 | Governance violation rate ≤ 2% | Compliance & Governance: violation rate |
-| Attribution completeness 100% | Publication & Lifecycle: tracking ID correctness at publication |
+| Pin-level ID integrity 100% | Publication | Attribution completeness 100% | Publication & Lifecycle: tracking ID correctness at publication | Lifecycle: tracking ID correctness at publication |
 
-> **Naming note:** `A.2-FUNC-STYP-001` §18.1 defines "attribution completeness" as **Pins with a correct tracking ID** — a Pin-level, computable metric. Capability 8's metric of the same name is defined at the **tracking-ID level** (14.12) because Amazon reports per tracking ID, not per Pin.
+> **Naming note:** `A.2-FUNC-STYP-001` §18.1 defines **Pin-level ID integrity** as **Pins with a correct tracking ID** — a Pin-level, computable metric. Capability 8's metric is now named **Tracking-ID attribution coverage** (14.12) because Amazon reports per tracking ID, not per Pin. The two were previously both named "attribution completeness."
 
 **Business Validation Thresholds (`A.2-FUNC-STYP-001` §18.2) are not capability metrics.** They are business outcomes tracked in the Business Plan (`A.1-BIZ-STYP-001`).
 
@@ -1390,36 +1390,13 @@ The next engineering artifact should be the **Capability Contracts Specification
 
 ---
 
+
+---
+
 ## Note on OI-001
 
-> **OI-001 (Amazon Associates account creation date) remains the single most consequential unclosed item.** Every survival checkpoint in CD1, every escalation rule, and the entire validation schedule depend on it.
+> **OI-001 is CLOSED.** Amazon Associates account was created on **2026-04-15**.
 >
-> Close it before writing the Capability Contracts (`A.4-CONTR-STYP-001`).
-
----
-
-# 25. Formal Sign-Off
-
-**Prepared by:** Style Picks Editorial Owner
-
-**Engagement:** STYP-VALIDATION-2026
-
-**Stage:** A — Engineering Definition (Conceptual Level)
-
-**Level:** A.3 — Capability Definition
-
-**Document ID:** A.3-CAP-STYP-001
-
-**Version:** 1.1 RC.4 — Capability Definition Release Candidate
-
-**Status:** **Release Candidate**
-
-**Authorization:** This document decomposes the eight functions of `A.2-FUNC-STYP-001` into twelve capabilities. `A.4-CONTR-STYP-001` is authorized to derive from it.
-
-**Blocking dependencies:** OI-001, OI-002.
-
-**Language:** English
-
----
-
-*End of Business Capabilities Specification — A.3-CAP-STYP-001 v1.1 RC.4*
+> The survival deadline is **2026-10-12** (account date + 180 days).
+>
+> All checkpoints in this document are now computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock.

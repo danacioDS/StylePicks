@@ -33,8 +33,8 @@
 **Initial Categories:** Home Decor + Home Organization
 **Stage:** Commercial Validation
 **Operational Start:** October 7, 2026
-**Amazon Associates Account Created:** [OI-001]
-**Amazon Associates Deadline:** [OI-002]
+**Amazon Associates Account Created:** 2026-04-15
+**Amazon Associates Deadline:** 2026-10-12
 **Validation Horizon:** Ends at the Amazon Associates deadline
 **Destination Model:** Pinterest → Amazon (direct link)
 **Document Type:** Business Functional Specification
@@ -58,8 +58,8 @@
 
 | # | Open item | Priority | Owner | Status |
 |---|-----------|----------|-------|--------|
-| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **EMPTY — CLOSE FIRST** |
-| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **EMPTY** |
+| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **CLOSED — 2026-04-15** |
+| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **CLOSED — 2026-10-12** |
 | OI-003 | Verification: qualifying-sales rule | Defaultable | Editorial Owner | EMPTY |
 | OI-004 | Verification: Creators API access requirements | Defaultable | Editorial Owner | EMPTY |
 | OI-005 | Verification: image and price display rules | Defaultable | Editorial Owner | EMPTY |
@@ -766,9 +766,9 @@ These measure whether the **functions** are working.
 | Factual error rate found in review | ≤ 2% | Every Pin for the first 30; then 1 in 5 |
 | Recommendation-context match rate | ≥ 95% | Every Pin for the first 30; then 1 in 5 |
 | Governance violation rate | ≤ 2% | Every Pin for the first 30; then 1 in 5 |
-| Attribution completeness (Pins with correct tracking ID) | 100% | Every Pin |
+| Pin-level ID integrity (Pins with correct tracking ID) | 100% | Every Pin |
 
-> **Naming note:** "Attribution completeness" here is a **Pin-level** metric: Pins with a correct tracking ID. `A.3-CAP-STYP-001` §14.12 defines a **tracking-ID-level** metric of the same name because Amazon reports per tracking ID, not per Pin. The two metrics are related but distinct. See `A.3-CAP-STYP-001` §21.
+> **Naming note:** This metric was previously named "Attribution completeness." It is now named **Pin-level ID integrity** to distinguish it from the tracking-ID-level metric in `A.3-CAP-STYP-001` §14.12, now named **Tracking-ID attribution coverage**. The two metrics are related but distinct. See `A.3-CAP-STYP-001` §21.
 
 ## 18.2 Business Validation Thresholds
 
@@ -875,38 +875,13 @@ Together, these functions define the minimum business behavior required for Styl
 
 ---
 
+
+---
+
 ## Note on OI-001
 
-> **OI-001 (Amazon Associates account creation date) is the single most consequential unclosed item in this document.**
+> **OI-001 is CLOSED.** Amazon Associates account was created on **2026-04-15**.
 >
-> Every checkpoint in Section 13.6 and Section 18.3, every survival threshold, and the entire validation schedule depend on it. It takes one minute to find in the Associates welcome email or the account dashboard.
+> The survival deadline is **2026-10-12** (account date + 180 days).
 >
-> **Close it before writing any other document.**
-
----
-
-# 24. Formal Sign-Off
-
-**Prepared by:** Style Picks Editorial Owner
-
-**Engagement:** STYP-VALIDATION-2026
-
-**Stage:** A — Engineering Definition (Conceptual Level)
-
-**Level:** A.2 — Functional Definition
-
-**Document ID:** A.2-FUNC-STYP-001
-
-**Version:** 1.1 — Functional Definition Release Candidate
-
-**Status:** **Release Candidate**
-
-**Authorization:** This document defines the eight business functions that the rest of Stage A formalizes. `A.3-CAP-STYP-001` is authorized to derive from it.
-
-**Blocking dependencies:** OI-001, OI-002.
-
-**Language:** English
-
----
-
-*End of Value Proposition Functional Specification — A.2-FUNC-STYP-001 v1.1 RC*
+> All checkpoints in this document are now computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock.

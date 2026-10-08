@@ -33,8 +33,8 @@
 **Monetization:** Amazon Associates
 **Initial Categories:** Home Decor + Home Organization
 **Operational Start:** October 7, 2026
-**Amazon Associates Account Created:** [OI-001]
-**Amazon Associates Deadline:** [OI-002]
+**Amazon Associates Account Created:** 2026-04-15
+**Amazon Associates Deadline:** 2026-10-12
 **Validation Horizon:** Ends at the Amazon Associates deadline
 **Survival Floor:** 3 qualifying purchases
 **Success Target:** ≥ 5 qualifying purchases by deadline
@@ -58,8 +58,8 @@
 
 | # | Open item | Priority | Owner | Status |
 |---|-----------|----------|-------|--------|
-| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **EMPTY — CLOSE FIRST** |
-| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **EMPTY** |
+| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **CLOSED — 2026-04-15** |
+| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **CLOSED — 2026-10-12** |
 | OI-003 | Verification: qualifying-sales rule | Defaultable | Editorial Owner | EMPTY |
 | OI-004 | Verification: Creators API access requirements | Defaultable | Editorial Owner | EMPTY |
 | OI-005 | Verification: image and price display rules | Defaultable | Editorial Owner | EMPTY |
@@ -67,7 +67,6 @@
 | OI-007 | Verification: link-format rules | Defaultable | Editorial Owner | EMPTY |
 | OI-008 | Evidence Source Policy — formalized | Defaultable | Editorial Owner | EMPTY |
 
-> **Note on OI-001.** Every checkpoint, survival threshold, and validation schedule in this plan depends on the Amazon Associates account creation date. The operational start of October 7, 2026 is **not** the survival clock. The survival clock is the Amazon Associates account creation date. These may differ. Until OI-001 is closed, the deadline in this document is a placeholder, not a date.
 
 ---
 
@@ -1111,15 +1110,6 @@ That is the business plan. Everything else should be **execution and data**, not
 
 ---
 
-## Note on OI-001
-
-> **OI-001 (Amazon Associates account creation date) is the single most consequential unclosed item in the entire Stage A pipeline.**
->
-> Every checkpoint in §18, every survival threshold, and the entire validation schedule depend on it. It takes one minute to find in the Associates welcome email or the account dashboard.
->
-> **Close it before writing any other document.**
->
-> The operational start of October 7, 2026 is **not** the survival clock. The survival clock is the Amazon Associates account creation date.
 
 ---
 
@@ -1148,3 +1138,13 @@ That is the business plan. Everything else should be **execution and data**, not
 ---
 
 *End of Business Plan and Commercial Validation — A.1-BIZ-STYP-001 v1.4*
+
+---
+
+## Note on OI-001
+
+> **OI-001 is CLOSED.** Amazon Associates account was created on **2026-04-15**.
+>
+> The survival deadline is **2026-10-12** (account date + 180 days).
+>
+> All checkpoints in this document are now computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock.

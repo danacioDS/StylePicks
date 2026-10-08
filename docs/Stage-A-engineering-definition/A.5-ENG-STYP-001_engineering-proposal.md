@@ -50,6 +50,7 @@
 | 1.2 | Oct 8, 2026 | Build-time budget and evidence-gated phases; compliance verification in Phase 0; ED-05 closed; AI provider default; CP-02 and CP-03 wording corrected; Workflow Execution Model added; refined defaults |
 | 1.2 Final | Oct 8, 2026 | Phase 0 uses Django models + admin directly on PostgreSQL (no SQLite, no migration from spreadsheets); scheduling mechanism unified to cron + management commands (APScheduler dropped); status set to Frozen |
 | **1.2 Final (Baselined header)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals and Engineering Dependencies registers integrated; Sign-Off block added |
+| 1.2.1 | Oct 8, 2026 | CP-001 accepted. §19 re-evaluation semantics aligned with INV-12 of A.4. No divergence remains. |
 
 ---
 
@@ -59,8 +60,8 @@
 
 | # | Open item | Priority | Owner | Status |
 |---|-----------|----------|-------|--------|
-| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **EMPTY — CLOSE FIRST** |
-| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **EMPTY** |
+| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **CLOSED — 2026-04-15** |
+| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **CLOSED — 2026-10-12** |
 | OI-003 | Verification: qualifying-sales rule | Defaultable | Editorial Owner | EMPTY |
 | OI-004 | Verification: Creators API access requirements | Defaultable | Editorial Owner | EMPTY |
 | OI-005 | Verification: image and price display rules | Defaultable | Editorial Owner | EMPTY |
@@ -72,7 +73,7 @@
 
 | CP ID | Title | Affected sections | Status |
 |-------|-------|-------------------|--------|
-| CP-001 | Re-evaluation vs Revocation on Superseded Evidence | §19, §47 | Pending |
+| CP-001 | Re-evaluation vs Revocation on Superseded Evidence | §19, §47 | **Accepted 2026-10-08** |
 | CP-002 | AI-Generated Contextual Imagery | §12, §47 | Pending |
 | CP-003 | Review Cleared Sole-Writer Assignment | §13, §47 | Pending |
 
@@ -361,7 +362,7 @@ Dedicated governance layer. System maintains evidence identity, source, source c
 Evidence v1 → Superseded → Evidence v2
 ```
 
-**Re-evaluation semantics (pending CP-001):** when a material claim's supporting evidence is superseded, this Engineering Proposal adopts the two-step logic — re-point the claim to the successor if it supports the claim, otherwise Revoke the recommendation. This semantics **differs from the literal wording of INV-12 in `A.4-CONTR-STYP-001`** and is filed as **CP-001**. Until CP-001 is accepted, the literal wording of INV-12 governs.
+**Re-evaluation semantics (CP-001 accepted, 2026-10-08):** when a material claim's supporting evidence is superseded, the system adopts the two-step logic — re-point the claim to the successor if it supports the claim, otherwise Revoke the recommendation. This semantics is now formalized in INV-12 of `A.4-CONTR-STYP-001`. **No further divergence exists between A.4 and A.5 on this point.**
 
 ---
 
@@ -931,11 +932,6 @@ Pinterest permits creators enrolled in the Amazon Influencer Program to connect 
 
 ---
 
-# 50. Note on OI-001
-
-The Amazon Associates survival clock runs from account creation. Every phase estimate assumes the clock is running. Closing OI-001 is the single most consequential administrative action for the project.
-
-**The First Operational Milestone (§46) is designed to be achievable regardless of how much time remains on the survival clock — provided §32-B is completed before the first Pin.**
 
 ---
 
@@ -994,3 +990,12 @@ Any further document — technical design notes, implementation logs, runbooks �
 ---
 
 *End of Engineering Proposal — A.5-ENG-STYP-001 v1.2 Final*
+---
+
+## Note on OI-001
+
+> **OI-001 is CLOSED.** Amazon Associates account was created on **2026-04-15**.
+>
+> The survival deadline is **2026-10-12** (account date + 180 days).
+>
+> All checkpoints in this document are now computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock.

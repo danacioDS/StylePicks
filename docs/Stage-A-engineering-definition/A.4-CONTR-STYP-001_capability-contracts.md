@@ -46,6 +46,7 @@
 | 1.0 RC.3 | Oct 7, 2026 | Sole-writer ownership for every record; Revoked state + Review cleared event; Evidence Record supports imagery; Publication Record references Validation and Compliance; disclosure field added; error table extended; Product Record versioning semantics; systemic-failure routing fixed |
 | 1.0 RC.4 | Oct 7, 2026 | INV-12 refined: re-point claims to successor evidence before revoking; "Review triggered" and "Review cleared" transitions reassigned to C-07; Revoked → Pin dependency added; Product Record references keyed to (product_id, version); E-ALIGN-02 corrected to re-link; C-10 wording tightened |
 | **1.0 RC.4 (Baselined header)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals register referenced; Sign-Off block added |
+| 1.0 RC.5 | Oct 8, 2026 | CP-001 accepted: INV-12 formalized as two-step logic (re-point if successor exists, Revoke otherwise). Aligns A.4 with A.5 §19. |
 
 ---
 
@@ -55,8 +56,8 @@
 
 | # | Open item | Priority | Owner | Status |
 |---|-----------|----------|-------|--------|
-| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **EMPTY — CLOSE FIRST** |
-| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **EMPTY** |
+| **OI-001** | Amazon Associates account creation date | **Blocking** | Editorial Owner | **CLOSED — 2026-04-15** |
+| **OI-002** | Amazon Associates deadline (account date + 180 days) | **Blocking** | Editorial Owner | **CLOSED — 2026-10-12** |
 | OI-003 | Verification: qualifying-sales rule | Defaultable | Editorial Owner | EMPTY |
 | OI-004 | Verification: Creators API access requirements | Defaultable | Editorial Owner | EMPTY |
 | OI-005 | Verification: image and price display rules | Defaultable | Editorial Owner | EMPTY |
@@ -68,7 +69,7 @@
 
 | CP ID | Title | Affected sections | Status |
 |-------|-------|-------------------|--------|
-| CP-001 | Re-evaluation vs Revocation on Superseded Evidence | INV-12, I.5 | Pending |
+| CP-001 | Re-evaluation vs Revocation on Superseded Evidence | INV-12, I.5 | **Accepted 2026-10-08** |
 | CP-002 | AI-Generated Contextual Imagery | C-05, CD4 | Pending |
 | CP-003 | Review Cleared Sole-Writer Assignment | C-06 postcondition #3 | Pending |
 
@@ -164,7 +165,7 @@ When a record must reference "the current Product Record," it stores `(product_i
 | claim | string | O | Required for Claim-level. |
 | source | string | R | |
 | source_url | string | R | |
-| source_classification | enum | R | Verified / Unverified. |
+| source_classification | enum | R | Verified / Unverified. **Note:** a future `Limited Reliability` value will be added when OI-008 (Evidence Source Policy) is closed. Until then, Evidence Confidence = Medium is unreachable (see A.3-CAP-STYP-001 §10.6). |
 | retrieval_timestamp | timestamp | R | |
 | content_snapshot | string | O | |
 | license_or_permission | string | O | Required for Imagery. |
@@ -174,6 +175,8 @@ When a record must reference "the current Product Record," it stores `(product_i
 | linked_recommendation_id | reference | O | Required for Claim-level. |
 | status | enum | R | Active / Superseded. |
 | superseded_by | reference | O | Required when Superseded. |
+
+> **On the `Limited Reliability` tier:** The current enum has two values (`Verified`, `Unverified`). A third value (`Limited Reliability`) is reserved for the future Evidence Source Policy (OI-008). Until OI-008 is closed, Evidence Confidence = Medium cannot be produced by any recommendation. The High/Low dichotomy is the only operational dichotomy in Stage A.
 
 ## I.1.4 — Evaluation Record
 
@@ -391,9 +394,9 @@ States are persistent. Events are transitions. A record is in exactly one state 
 | **Rejected** | Withdrawn before presentation. | (Terminal.) |
 | **Revoked** | Withdrawn after approval, typically due to superseded evidence no longer supporting a material claim. | (Terminal.) |
 
-> **Correction from RC.3:** A recommendation moves to Revoked only when **a material claim is no longer supported by any Active Evidence Record**. If successor evidence is available for the same claim, the reference is re-pointed to the successor and the recommendation remains in its current approved state.
+> **CP-001 accepted (2026-10-08):** A recommendation moves to Revoked only when **a material claim is no longer supported by any Active Evidence Record**. If successor evidence is available for the same claim, the reference is re-pointed to the successor and the recommendation remains in its current approved state. This two-step logic is now formalized in INV-12.
 
-> **Pending CP-001:** This is the two-step logic that CP-001 proposes to formalize in INV-12. Until CP-001 is accepted, INV-12's literal wording governs.
+
 
 ## I.2.3 — Rubric Version Status
 
@@ -429,11 +432,12 @@ Exactly one version Active at a time.
 | INV-9 | Performance Measurement is a monitoring input to Compliance (CD1), never a runtime gate for publication. |
 | INV-10 | Every record type in I.1 has exactly one sole writer, except the Contract Failure Record which is written by the detecting contract. |
 | INV-11 | Every published Pin has a Publication Record whose `validation_result_id` and `compliance_record_id` are set. |
-| INV-12 | **A Recommendation Record whose material claim is no longer supported by any Active Evidence Record MUST transition to Revoked.** If successor evidence is available, the claim reference is re-pointed and Revocation is not required. |
+| INV-12 | **A Recommendation Record whose material claim is no longer supported by any Active Evidence Record MUST follow the two-step logic:** (1) if a successor Evidence Record supports the same claim, the claim reference is re-pointed to the successor and the recommendation retains its current approved state; (2) if no successor supports the claim, the recommendation transitions to Revoked. |
 | INV-13 | **Every lifecycle transition of a Pin is executed by C-07 only, even when triggered by a Validation Result issued by C-06.** |
 | INV-14 | **Every reference to a Product Record is of the form `(product_id, version)`.** |
 
-> **Pending CP-001:** INV-12 currently contains both the literal wording ("MUST transition to Revoked") and the two-step logic ("If successor evidence is available, the claim reference is re-pointed"). CP-001 proposes to formally adopt the two-step logic. Until CP-001 is accepted, the current wording of INV-12 governs.
+> **CP-001 accepted (2026-10-08).** INV-12 now formally adopts the two-step logic. This aligns A.4 with the implementation described in A.5-ENG-STYP-001 §19. No divergence remains between the contract and the built system on this point.
+
 
 ---
 
@@ -485,8 +489,8 @@ Each code carries: detection method, default response, severity, deadline.
 **Detection semantics:**
 
 - An Evidence Record is superseded **only when the specific fact it supports changes**, not when the page snapshot changes trivially.
-- When supersession is required and a successor Evidence Record is available for the same claim, the claim reference is re-pointed (code **E-EV-04**, no status change).
-- When no successor is available for a material claim, the recommendation transitions to **Revoked** (code **E-EV-03**).
+- When supersession is required and a successor Evidence Record is available for the same claim, the claim reference is re-pointed (code **E-EV-04**, no status change). **This is now the formal behavior per INV-12.**
+- When no successor is available for a material claim, the recommendation transitions to **Revoked** (code **E-EV-03**). **This is now the formal behavior per INV-12.** **This is now the formal behavior per INV-12.**
 
 **What it produces:**
 
@@ -766,36 +770,13 @@ It MUST NOT redefine contracts.
 
 ---
 
+
+---
+
 ## Note on OI-001
 
-> Survival checkpoints (C-12 / CD1) are fully specified in structure; their external parameters (Associates account creation date, deadline, qualifying-sales rule) remain unverified. The contract distinguishes **rule exists** from **rule parameters verified**. Closing OI-001 does not block writing the Engineering Proposal; it blocks operationalizing the CD1 calendar.
-
----
-
-# Formal Sign-Off
-
-**Prepared by:** Style Picks Editorial Owner
-
-**Engagement:** STYP-VALIDATION-2026
-
-**Stage:** A — Engineering Definition (Conceptual Level)
-
-**Level:** A.4 — Contract Formalization
-
-**Document ID:** A.4-CONTR-STYP-001
-
-**Version:** 1.0 RC.4 — Contract Formalization Release Candidate
-
-**Status:** **Release Candidate**
-
-**Authorization:** This document formalizes the twelve capabilities of `A.3-CAP-STYP-001` into twelve capability contracts. `A.5-ENG-STYP-001` is authorized to derive from it.
-
-**Blocking dependencies:** OI-001, OI-002.
-
-**Pending Change Proposals:** CP-001, CP-002, CP-003.
-
-**Language:** English
-
----
-
-*End of Capability Contracts Specification — A.4-CONTR-STYP-001 v1.0 RC.4*
+> **OI-001 is CLOSED.** Amazon Associates account was created on **2026-04-15**.
+>
+> The survival deadline is **2026-10-12** (account date + 180 days).
+>
+> All checkpoints in this document are now computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock.
