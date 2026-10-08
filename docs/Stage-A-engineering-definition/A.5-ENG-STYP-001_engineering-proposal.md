@@ -6,7 +6,7 @@
 
 **Document ID:** A.5-ENG-STYP-001
 
-**Version:** 1.3 — Engineering Definition Baseline (Reconciled)
+**Version:** 1.4 — Engineering Definition Baseline (Traction Demonstration Reconciled)
 
 **Status:** Stage A — Engineering Definition (Conceptual Level) — Baselined
 
@@ -15,14 +15,14 @@
 **Engagement:** STYP-VALIDATION-2026
 
 **Parent Documents:**
-- A.1-BIZ-STYP-001 — Business Plan and Commercial Validation (v1.5 Reconciled)
-- A.2-FUNC-STYP-001 — Value Proposition Functional Specification (v1.2 Reconciled)
-- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.2 Reconciled)
+- A.1-BIZ-STYP-001 — Business Plan and Commercial Validation (v2.0 Traction Demonstration Baseline)
+- A.2-FUNC-STYP-001 — Value Proposition Functional Specification (v1.3 Traction Demonstration Reconciled)
+- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.3 Traction Demonstration Reconciled)
 - A.4-CONTR-STYP-001 — Capability Contracts Specification (v1.0 Reconciled)
-- PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.0)
+- PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.1)
 
 **Child Documents:**
-- STAGE-A-CONSOL-REPORT-STYP-001 — Stage A Consolidation Report (v1.0)
+- STAGE-A-CONSOL-REPORT-STYP-001 — Stage A Consolidation Report (v1.1)
 - None (terminal document in Stage A)
 
 **Domain:** Domain A.5 — Engineering
@@ -35,9 +35,14 @@
 **Initial Channel:** Pinterest
 **Monetization:** Amazon Associates
 **Initial Categories:** Home Decor + Home Organization
-**Stage:** Commercial Validation
+**Stage:** Traction Demonstration
+**Amazon Associates Account Created:** 2026-04-15
+**Amazon Associates Deadline:** 2026-10-12
+**Operating Window:** From 2026-10-07 to 2026-10-12 (5 days)
+**Actual Objective for This Cycle:** First Operational Milestone (FOM) — one published Pin with complete internal traceability
+**Deferred Objective:** Commercial validation (≥ 5 qualifying purchases) — next cycle
 **Document Type:** Engineering Proposal
-**Derives from:** A.1-BIZ-STYP-001, A.2-FUNC-STYP-001, A.3-CAP-STYP-001, A.4-CONTR-STYP-001
+**Derives from:** A.1-BIZ-STYP-001 v2.0, A.2-FUNC-STYP-001 v1.3, A.3-CAP-STYP-001 v1.3, A.4-CONTR-STYP-001 v1.0
 
 ---
 
@@ -51,7 +56,8 @@
 | 1.2 Final | Oct 8, 2026 | Phase 0 uses Django models + admin directly on PostgreSQL (no SQLite, no migration from spreadsheets); scheduling mechanism unified to cron + management commands (APScheduler dropped); status set to Frozen |
 | 1.2 Final (Baselined header) | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals and Engineering Dependencies registers integrated; Sign-Off block added |
 | 1.2.1 | Oct 8, 2026 | CP-001 accepted. §19 re-evaluation semantics aligned with INV-12 of A.4. No divergence remains. |
-| **1.3** | Oct 8, 2026 | **Consistency reconciliation with A.1 v1.5, A.2 v1.2, A.3 v1.2, A.4 v1.0 Reconciled.** (1) CP-003 status corrected from Pending to **Accepted 2026-10-08** in the header table and §47. (2) §13 wording aligned with A.4 C-06 postcondition #3 (C-06 issues; C-07 executes). (3) §32-A references the checkpoint relevance note from A.1 v1.5 §18 and A.3 v1.2 §18.7. (4) §46 FOM aligns with A.4 INV-13. (5) All parent document versions updated. (6) Formal Sign-Off updated to Baselined. |
+| 1.3 | Oct 8, 2026 | **Consistency reconciliation with A.1 v1.5, A.2 v1.2, A.3 v1.2, A.4 v1.0 Reconciled.** (1) CP-003 status corrected from Pending to **Accepted 2026-10-08** in the header table and §47. (2) §13 wording aligned with A.4 C-06 postcondition #3 (C-06 issues; C-07 executes). (3) §32-A references the checkpoint relevance note from A.1 v1.5 §18 and A.3 v1.2 §18.7. (4) §46 FOM aligns with A.4 INV-13. (5) All parent document versions updated. (6) Formal Sign-Off updated to Baselined. |
+| **1.4** | Oct 8, 2026 | **Structural reconciliation with A.1 v2.0, A.2 v1.3, A.3 v1.3 (Traction Demonstration Baseline).** (1) The document no longer treats commercial validation as the objective of this cycle. The **First Operational Milestone (FOM)** is now the declared objective, per A.1 v2.0 §17-A. (2) §32-A is restructured: only **Phase 0** is attempted in this cycle; Phases 1–7 are explicitly deferred. The evidence-gating table is retained as the activation rule for the next cycle. (3) §32-A replaces the "checkpoint relevance" note with a reference to A.1 v2.0 §18-A. (4) §46 (FOM) gains an explicit reference to A.1 v2.0 §17-A. (5) §51 (What Comes Next) is rewritten: the next artifacts are the Phase 0 Django project, the external rule verification, and the first Pin — not more documents. (6) §33 (MVP Definition) distinguishes the FOM from the MVP more sharply. (7) §34 (Automation Maturity) adds a cycle note: this cycle targets **Level 0 (Manual)**. (8) §44 (Acceptance Criteria) gains criterion 15: the FOM is achievable without any resolved external dependency. (9) All parent document versions updated. (10) Formal Sign-Off updated to Baselined. |
 
 ---
 
@@ -102,6 +108,26 @@ It translates contractual requirements into system architecture, execution mecha
 
 This document does **not** redefine business capabilities or capability contracts. Where an implementation constraint makes a contractual requirement impossible or materially impractical, the implementation **must** return a formal change proposal to `A.4-CONTR-STYP-001` rather than silently changing the contract.
 
+## 1.1 What This Cycle Attempts — And What It Does Not
+
+This document inherits the objective structure of `A.1-BIZ-STYP-001` v2.0.
+
+**This cycle attempts:**
+
+> **The First Operational Milestone (FOM): produce, validate, publish, and record one Pin end-to-end within the Style Picks internal system.**
+
+**This cycle does not attempt:**
+
+- commercial validation;
+- reaching the survival floor of 3 qualifying purchases;
+- reaching the success target of ≥ 5 qualifying purchases;
+- building the full MVP;
+- automating any capability beyond what the FOM requires.
+
+**Engineering consequence:** Only **Phase 0 — Manual Operating Baseline** (§32) is attempted in this cycle. Phases 1–7 are deferred. Their evidence gates are retained as the activation rule for the next cycle.
+
+The operating window is 5 days (2026-10-07 to 2026-10-12). It cannot support building a platform. It can support building the minimum internal record structure and publishing one Pin.
+
 ---
 
 # 2. Engineering Objective
@@ -113,6 +139,8 @@ Pinterest and Amazon are external systems and channels. They are not the Style P
 The initial engineering objective is:
 
 > Build a controlled internal system that orchestrates product research, evidence, evaluation, recommendation, content production, validation, compliance, publication, attribution, and learning across external commerce and distribution platforms.
+
+> **Cycle note:** In this cycle, "build" means **instantiate the Part I record schemas as working records for one Pin.** The full orchestration described above is the target of the next cycle. The FOM is the first instance of the system operating.
 
 ---
 
@@ -126,6 +154,8 @@ The Style Picks platform owns: contexts, product records, evidence records, eval
 
 External systems: Pinterest, Amazon Associates infrastructure, Amazon product data interfaces, external manufacturer/product sources, AI model providers, image-generation providers, analytics sources, authentication infrastructure where externally provided.
 
+> **Cycle note:** For the FOM, the only external system that **must** be operational is **Pinterest** (for manual publication). Amazon is used as a **data source** (product page) but the Creators API is not required. AI providers are not required. The FOM depends on one external system and one external rule set.
+
 ---
 
 # 4. Engineering Principles
@@ -138,6 +168,7 @@ External systems: Pinterest, Amazon Associates infrastructure, Amazon product da
 - **EP-06 — Automation Is Incremental and Evidence-Gated.** Automate deterministic work first, and only when operational evidence justifies it.
 - **EP-07 — Operational Velocity Is a Safety Requirement.** The Associates survival clock runs from account creation. The system must enable the first Pin quickly, not only the full platform eventually.
 - **EP-08 — Build Time Is a Scarce Resource.** During validation, build capacity competes directly with Pin production capacity. Every hour spent building is an hour not spent producing. Build effort is capped, and Pin production has priority.
+- **EP-09 — The FOM Is the First Deliverable (added in v1.4).** The system must be able to achieve the FOM before any other engineering objective is pursued. The FOM is not a milestone on the way to the MVP; it is the deliverable of this cycle.
 
 ---
 
@@ -176,6 +207,8 @@ The initial architecture is a **modular monolith**.
 
 Favor simplicity, observability, and rapid iteration over premature distribution.
 
+> **Cycle note:** For the FOM, the **PostgreSQL box and the Django admin UI** are the only parts that must be operational. The integration layer is **manual** (operator interacts with Pinterest and Amazon directly). The cron and management-command box is not exercised until Phase 2. This is the architecture's minimum viable subset for this cycle.
+
 ---
 
 # 6. User Interface
@@ -202,6 +235,8 @@ The initial dashboard is provided by **Django Admin** for CRUD over the Part I r
 
 **Governance Workspace** — inspect compliance decisions, contract failures, evidence history, rubric versions, audit history.
 
+> **Cycle note:** For the FOM, only the **Django admin** is used. The seven workspaces above are the target of Phase 1. The admin provides CRUD over the Part I record types, which is sufficient to produce the FOM's audit trail.
+
 ---
 
 # 7. Execution Mechanism by Contract
@@ -211,6 +246,8 @@ The initial dashboard is provided by **Django Admin** for CRUD over the Part I r
 **Mechanism:** Human-assisted form (Django admin). Operator creates or edits Context Record. System validates required fields, approved categories, price range, status transitions. Approval is human-controlled.
 
 **Storage:** PostgreSQL record.
+
+> **Cycle note:** For the FOM, one Context Record is created via Django admin. This is the first record in the FOM's audit trail.
 
 ---
 
@@ -229,6 +266,8 @@ The initial dashboard is provided by **Django Admin** for CRUD over the Part I r
 
 **Human role:** review required when product identity is ambiguous, sources conflict, destination cannot be verified, evidence is insufficient, or extraction confidence is low.
 
+> **Cycle note:** For the FOM, Product Discovery is **entirely manual**. The operator identifies one product candidate through Amazon search or Best Sellers, records the Product Record via Django admin, and registers the primary evidence (Amazon product page snapshot) as an Evidence Record.
+
 ---
 
 # 9. C-03 — Product Evaluation & Curation
@@ -238,6 +277,8 @@ The initial dashboard is provided by **Django Admin** for CRUD over the Part I r
 **Human role:** operator may review borderline products, rejected products, unusual evidence, rubric exceptions.
 
 **Rule:** evaluation engine records the exact rubric version used.
+
+> **Cycle note:** For the FOM, evaluation is **entirely manual**. The operator applies Rubric V0.1 to the one candidate product and records the Evaluation Record. The exact `rubric_version = V0.1` is recorded.
 
 ---
 
@@ -253,6 +294,8 @@ System supplies: approved Context Record, eligible Product Record, Evaluation Re
 
 **Human review:** Low-Confidence → Human Review → Human-Review-Approved / Rejected.
 
+> **Cycle note:** For the FOM, the recommendation is **authored manually** by the Editorial Owner. LLM assistance is optional. The expected evidence confidence is **High**, because the only material claims made are drawn directly from the Amazon product page.
+
 ---
 
 # 11. C-05 — Content Presentation
@@ -262,6 +305,8 @@ System supplies: approved Context Record, eligible Product Record, Evaluation Re
 AI may generate title, description, editorial framing, visual concepts. Deterministic logic controls destination, tracking ID, disclosure, product identity, required metadata.
 
 **Rule:** generative layer must not invent or modify critical commerce fields.
+
+> **Cycle note:** For the FOM, the Content Asset is produced **manually**. The affiliate URL and tracking ID are derived from the Product Record's approved destination reference. The disclosure text is inserted from the verified configuration (§32-B).
 
 ---
 
@@ -279,11 +324,13 @@ Images are treated separately from product factual evidence.
 
 **Until CP-002 is accepted:** only licensed and stock imagery are used.
 
+> **Cycle note:** For the FOM, if a suitable licensed or stock image cannot be found within the operating window, the operator may publish a Pin using the Amazon product image alone, provided the Associates Program permissions allow it (per `A.2-FUNC-STYP-001` v1.3 §10.9). The imagery Evidence Record must still be created.
+
 ---
 
 # 13. C-06 — Consistency Validation
 
-Primarily deterministic. The seven validation checks defined by `A.2-FUNC-STYP-001` §11.3 and `A.4-CONTR-STYP-001` I.1.7 are implemented as executable validation rules.
+Primarily deterministic. The seven validation checks defined by `A.2-FUNC-STYP-001` v1.3 §11.3 and `A.4-CONTR-STYP-001` I.1.7 are implemented as executable validation rules.
 
 **Validator checks:** Pin promise vs. content; product identity; destination; tracking ID; recommendation/content consistency; required metadata; relevant evidence relationships.
 
@@ -292,6 +339,8 @@ Primarily deterministic. The seven validation checks defined by `A.2-FUNC-STYP-0
 Human review may be required for ambiguous semantic checks.
 
 **Lifecycle transitions triggered by a Validation Result are executed by C-07 only** (INV-13; CP-003 accepted 2026-10-08). C-06 issues Validation Results; C-07 executes lifecycle transitions. This aligns with `A.4-CONTR-STYP-001` C-06 postcondition #3 and §47 CP-003.
+
+> **Cycle note:** For the FOM, Consistency Validation is performed **manually** by the Editorial Owner immediately before publication. The seven checks are executed explicitly and recorded in the Validation Result.
 
 ---
 
@@ -311,6 +360,8 @@ Operator may trigger publication manually. Where approved Pinterest API capabili
 
 **INV-13 (CP-003 accepted 2026-10-08):** Every lifecycle transition — including Review triggered, Review cleared, Re-linked, Replaced, Archived, Restored — is executed by C-07 only, even when triggered by a Validation Result issued by C-06.
 
+> **Cycle note:** For the FOM, publication is **manual**. The operator publishes the Pin on Pinterest directly, then records the Publication Record (including the Pin URL, the tracking ID used, the timestamp, and the authorizing Validation Result and Compliance Record). This is the terminal step of the FOM.
+
 ---
 
 # 15. Pinterest Integration
@@ -322,6 +373,8 @@ Pinterest is an external distribution platform. The integration layer isolates P
 **Rule:** do not assume every lifecycle operation is available through the Pinterest API. Unsupported operations remain operator-assisted.
 
 **Storefront Linking:** the business decision about whether to adopt Pinterest ↔ Amazon Storefront Linking is owned by the destination model in `A.2-FUNC-STYP-001`, not by this Engineering Proposal. Until that decision is made, the system assumes **Style Picks remains the source of truth for the tracking ID** (INV-3 holds). If Storefront Linking is later adopted, it must be reflected in the destination model, in INV-3, and in C-05's derivation logic.
+
+> **Cycle note:** For the FOM, Pinterest integration is **entirely manual**. The operator publishes the Pin through the Pinterest UI. No API integration is required.
 
 ---
 
@@ -337,6 +390,8 @@ Amazon is an external commerce and affiliate dependency.
 
 **Fallbacks (see §37-A):** manual Discover, CSV-based performance import for C-08, manual Pinterest publishing.
 
+> **Cycle note:** For the FOM, the Amazon integration is **read-only and manual**: the operator reads the Amazon product page to populate the Product Record and the primary Evidence Record. No API is required.
+
 ---
 
 # 17. C-08 — Performance Measurement & Attribution
@@ -347,6 +402,8 @@ Amazon is an external commerce and affiliate dependency.
 
 **Separation:** Performance data is Monitoring → Learning → Compliance survival monitoring. It is **not** a runtime publication gate (INV-9).
 
+> **Cycle note:** For the FOM, performance data collection is **manual and low-frequency**. One Performance Record (or a small set) is entered at window close. This satisfies the C-08 record-creation requirement without requiring automation.
+
 ---
 
 # 18. C-09 — Learning & Improvement
@@ -356,6 +413,8 @@ Amazon is an external commerce and affiliate dependency.
 System identifies patterns such as high engagement / low conversion, low engagement, repeated product failures, recurring compliance failures, recurring evidence failures, recurring content failures. AI may propose hypotheses. Human approval is required before material changes to rubric, governance rules, or business strategy.
 
 Learning Records preserve the evidence behind decisions.
+
+> **Cycle note:** For the FOM, Learning produces **one Learning Record** whose content is: *"The FOM was achieved (or not achieved), and the production-time baseline for the first Pin was X minutes."* This record feeds the Decision Frame (`A.1-BIZ-STYP-001` v2.0 §18-A), not a rubric revision.
 
 ---
 
@@ -371,6 +430,8 @@ Evidence v1 → Superseded → Evidence v2
 
 **Re-evaluation semantics (CP-001 accepted, 2026-10-08):** when a material claim's supporting evidence is superseded, the system adopts the two-step logic — re-point the claim to the successor if it supports the claim, otherwise Revoke the recommendation. This semantics is formalized in INV-12 of `A.4-CONTR-STYP-001`. No divergence exists between A.4 and A.5 on this point.
 
+> **Cycle note:** For the FOM, Evidence Management is the **audit backbone**. At least three Evidence Records are created: one primary (Amazon product page), one claim-level per material claim, one imagery per image used. The FOM is not achievable without these records.
+
 ---
 
 # 20. C-11 — Rubric Management
@@ -382,6 +443,8 @@ Draft → Active → Retired
 ```
 
 Only one version can be Active. Activation requires the designated approver. Evaluation records retain the rubric version used so historical decisions remain reproducible.
+
+> **Cycle note:** For the FOM, Rubric Management's role is **to ensure that Rubric V0.1 exists as a versioned, approved artifact before Product Evaluation uses it**. No change to the rubric is proposed in this cycle.
 
 ---
 
@@ -401,6 +464,8 @@ Unverified external parameters are represented as **unverified configuration**, 
 
 **Phase 0 requirement (see §32-B):** the specific external rules that govern the **first Pin** — required disclosure wording, link-format rules, image rules — must be verified against the Associates Operating Agreement, FTC guidance, and Pinterest policies before the first Pin is published.
 
+> **Cycle note:** For the FOM, the Compliance Record must confirm the verification of OI-005, OI-006, and OI-007. This is the terminal audit artifact before publication.
+
 ---
 
 # 22. Data Storage Model
@@ -411,6 +476,8 @@ Unverified external parameters are represented as **unverified configuration**, 
 
 **Rules:** relationships through stable IDs; historical records remain queryable; no destructive updates for records requiring historical traceability. Product Records are keyed by `(product_id, version)` per `A.4-CONTR-STYP-001` I.1.2.1.
 
+> **Cycle note:** For the FOM, PostgreSQL is instantiated with the Part I models via Django migrations. All 13 record types are created as Django models in Phase 0, even if only a subset is populated for the first Pin.
+
 ---
 
 # 23. Object / File Storage
@@ -418,6 +485,8 @@ Unverified external parameters are represented as **unverified configuration**, 
 Large or binary assets are not stored in relational records.
 
 Object storage holds generated images, approved image assets, content exports, source snapshots where permitted, other large artifacts. Database records retain references. Initial implementation: local filesystem; S3-compatible (MinIO or Wasabi) only if remote access is needed.
+
+> **Cycle note:** For the FOM, local filesystem storage is sufficient. The imagery Evidence Record references the local file path.
 
 ---
 
@@ -446,6 +515,8 @@ Object storage holds generated images, approved image assets, content exports, s
 **Fallback when automated change detection is not possible:** weekly manual change-detection pass over live Product Records only, using the Django admin.
 
 Jobs must be observable and retryable. Missed scheduled jobs must be detectable (E-CD-01). Each management command writes a structured log entry on start, success, and failure.
+
+> **Cycle note:** For the FOM, **no scheduled job is required**. The FOM is achieved through operator actions in the Django admin. The `check_invariants` command (see §46) is the only management command that must exist for the FOM.
 
 ## 24-A — Workflow Execution Model
 
@@ -483,6 +554,8 @@ Contract Failure Record (if applicable)
 
 **Idempotency requirement:** asynchronous operations that create external side effects (most importantly publication) must carry a stable request identifier so retries cannot produce duplicate external records.
 
+> **Cycle note:** For the FOM, only the **synchronous path** is exercised. The operator creates records in the Django admin; the contract checks are performed inline by the admin's model validation and by the `check_invariants` command. No asynchronous path is required.
+
 ---
 
 # 25. AI Architecture
@@ -495,6 +568,8 @@ AI is an execution component, not the source of truth.
 
 > **AI generates and assists; the contract engine verifies and governs.**
 
+> **Cycle note:** For the FOM, **no AI component is required**. All records are created manually. The AI architecture described here is the target of Phases 3–4.
+
 ---
 
 # 26. Human-in-the-Loop Model
@@ -502,6 +577,8 @@ AI is an execution component, not the source of truth.
 **Human approval required initially for:** Context approval; low-confidence recommendations; exceptional product decisions; rubric activation; compliance ambiguity; exceptional Pin restoration; major learning/rule changes.
 
 **Automation preferred for:** field validation; evidence linkage; score calculation; tracking consistency; lifecycle transitions where deterministic; scheduled monitoring; data collection; routine validation.
+
+> **Cycle note:** For the FOM, **all operations are human**. The human-in-the-loop model is the entire model in this cycle.
 
 ---
 
@@ -528,6 +605,8 @@ PASS / CONTRACT FAILURE
 
 Contract enforcement must not depend exclusively on human discipline.
 
+> **Cycle note:** For the FOM, the contract enforcement layer is implemented as a single management command (`check_invariants`) that validates INV-1, INV-3, and INV-4 before publication. The full enforcement layer is the target of Phase 1.
+
 ---
 
 # 28. Audit Trail
@@ -535,6 +614,8 @@ Contract enforcement must not depend exclusively on human discipline.
 Maintain audit history for material operations: record creation, modification, state transition, evidence supersession, recommendation revocation, rubric activation, compliance decision, publication, corrective action, contract failure, learning decision.
 
 **Fields:** actor, timestamp, action, affected record, previous state where applicable, resulting state, reason where required.
+
+> **Cycle note:** For the FOM, Django admin's built-in history is sufficient as the initial audit trail. The dedicated audit trail described here is the target of Phase 1.
 
 ---
 
@@ -555,6 +636,8 @@ Maintain audit history for material operations: record creation, modification, s
 
 Affiliate and API credentials must never be stored in frontend code.
 
+> **Cycle note:** For the FOM, the security requirements reduce to: authenticated access to the Django admin, credentials stored in `.env.production` (uncommitted), and a tested database backup. The remaining requirements become operational as the platform grows.
+
 ---
 
 # 30. External Dependency Isolation
@@ -571,6 +654,8 @@ Style Picks Core → Integration Interface
 
 External API changes must not rewrite business logic.
 
+> **Cycle note:** For the FOM, no adapter is required. External dependencies are handled manually by the operator. The adapter pattern is the target of Phases 2 and 5.
+
 ---
 
 # 31. Failure and Recovery
@@ -579,13 +664,17 @@ Every asynchronous external operation supports timeout, safe retry, failure logg
 
 **Publication operations** require protection against duplicate publication. A publication request must be identifiable and recoverable without accidentally creating duplicate Pins.
 
+> **Cycle note:** For the FOM, manual publication eliminates the duplicate-publication risk. The operator publishes once. The Publication Record records the Pin URL.
+
 ---
 
 # 32. Implementation Sequence
 
 The implementation follows dependency order, not visual feature order. All build activity is subject to the budget in §32-A.
 
-## Phase 0 — Manual Operating Baseline (runs from day one)
+> **Cycle restructuring (v1.4):** Only **Phase 0** is attempted in this cycle. Phases 1–7 are **deferred** to the next cycle. Their deliverables and evidence gates are retained as the activation rule for the next cycle.
+
+## Phase 0 — Manual Operating Baseline (this cycle)
 
 **Goal:** operate the business before the full platform exists, using the Part I record schemas as Django models.
 
@@ -605,45 +694,49 @@ The implementation follows dependency order, not visual feature order. All build
 
 **Milestone (First Operational Milestone, §46):** the first Pin is live on Pinterest with a complete internal record trail.
 
-## Phase 1 — Platform Foundation
+**Phase 0 is the only phase attempted in this cycle.** The 5-day operating window is not sufficient for Phase 1 or beyond.
+
+## Phase 1 — Platform Foundation (deferred)
 **Deliverables:** custom operator views beyond admin; contract validation framework (extending §27); audit trail middleware; error handling; dashboard shell.
 **Estimated effort:** 1–2 weeks.
 
-## Phase 2 — Product Intelligence
+## Phase 2 — Product Intelligence (deferred)
 **Deliverables:** automated Context Management UI; Product Discovery ingestion; Evidence Management versioning; change detection command.
 **Estimated effort:** 2–3 weeks.
 
-## Phase 3 — Evaluation & Recommendation
+## Phase 3 — Evaluation & Recommendation (deferred)
 **Deliverables:** Rubric Management; deterministic evaluation engine; LLM-assisted Recommendation Generation with post-generation checks; human review workflow.
 **Estimated effort:** 2 weeks.
 
-## Phase 4 — Content Production
+## Phase 4 — Content Production (deferred)
 **Deliverables:** Content Assets; image management; AI content generation; disclosure; destination/tracking derivation.
 **Estimated effort:** 1–2 weeks.
 
-## Phase 5 — Governance & Publication
+## Phase 5 — Governance & Publication (deferred)
 **Deliverables:** Consistency Validation engine; Compliance rule engine; Pinterest integration; Publication & Lifecycle workflow.
 **Estimated effort:** 2 weeks.
 
-## Phase 6 — Measurement
+## Phase 6 — Measurement (deferred)
 **Deliverables:** Pinterest measurement; Amazon attribution; Performance Records; reconciliation; CSV import fallback.
 **Estimated effort:** 1–2 weeks.
 
-## Phase 7 — Learning
+## Phase 7 — Learning (deferred)
 **Deliverables:** Learning Records; performance analysis; failure analysis; learning proposals; rubric-change workflow.
 **Estimated effort:** 1–2 weeks.
 
-**Total estimated effort if all phases are built unconditionally:** 12–18 weeks.
+**Total estimated effort if all phases are built unconditionally:** 12–18 weeks. **This exceeds the operating window by two orders of magnitude.** The FOM is achievable only because Phase 0 is a subset.
 
 ## 32-A — Build-Time Budget and Evidence-Gated Phases
 
-> **This section is the operational consequence of EP-07 and EP-08.**
+> **This section is the operational consequence of EP-07, EP-08, and EP-09.**
 
-**Capacity reality.** One operator. The validation targets in `A.2-FUNC-STYP-001` v1.2 §18.2 (120 Pins at ≤45 min each) already require roughly 90 hours of production. A 12–18 week build program consumes most of the 180-day survival window. **Every hour of build is an hour not spent producing Pins.**
+**Capacity reality.** One operator. The validation targets in `A.2-FUNC-STYP-001` v1.3 §18.2 (120 Pins at ≤45 min each) already require roughly 90 hours of production. A 12–18 week build program consumes most of the 180-day survival window. **Every hour of build is an hour not spent producing Pins.**
 
 **Budget cap.** Build effort during commercial validation is capped at **10 hours per week**, with the remaining operator time reserved for Pin production. If a phase cannot be completed within the cap, it is deferred, not expanded.
 
-**Evidence gating.** Phases 2–7 do **not** start automatically. Each phase starts **only when the operational evidence justifies automating what the phase automates** (consistent with `A.2-FUNC-STYP-001` v1.2 §17.1):
+**Cycle reality.** The current operating window is **5 days**. At the cap of 10 hours/week, that is ~7 hours of build time available in this cycle. Phase 0 (~1 day, plus a few hours of rule verification) fits. Phase 1 (1–2 weeks) does not.
+
+**Evidence gating.** Phases 2–7 do **not** start automatically. Each phase starts **only when the operational evidence justifies automating what the phase automates** (consistent with `A.2-FUNC-STYP-001` v1.3 §17.1):
 
 | Phase | Start condition (evidence gate) |
 |-------|--------------------------------|
@@ -654,9 +747,11 @@ The implementation follows dependency order, not visual feature order. All build
 | 6 | Manual performance data collection is a measured bottleneck **or** the survival checkpoints (CD1) require structured data. |
 | 7 | Sufficient performance data exists to make learning non-speculative. |
 
-**Consequence.** In a realistic validation window, **Phases 0–3 are likely to be the only ones that justify themselves before the deadline.** Phases 4–7 may legitimately be deferred past the first survival checkpoint. This is not a failure of the plan; it is the plan working as designed.
+**Consequence.** In a realistic next-cycle window, **Phases 0–3 are likely to be the only ones that justify themselves before the next survival checkpoint.** Phases 4–7 may legitimately be deferred past the first survival checkpoint. This is not a failure of the plan; it is the plan working as designed.
 
-> **Note on the compressed operating window (aligned with `A.1-BIZ-STYP-001` v1.5 §18 and `A.3-CAP-STYP-001` v1.2 §18.7):** The survival clock began on 2026-04-15 and the deadline is 2026-10-12. The operational start is 2026-10-07. The remaining operating window from the operational start to the deadline is short. If the window is shorter than the largest checkpoint offset (135 days), the checkpoints have either already passed or are not actionable, and the Editorial Owner must decide whether to treat the current date as the effective checkpoint, request a deadline extension, or accept that the survival floor may not be reached. This does not change the engineering plan; it changes the operational expectations against which the plan is executed.
+**Decision Frame at window close (replaces the V1.3 "checkpoint relevance" note).** At the close of the current operating window, the Editorial Owner chooses one of four paths, defined in `A.1-BIZ-STYP-001` v2.0 §18-A: extend the survival clock, reapply for Amazon Associates, operate without Amazon Associates, or redefine the model. The engineering plan does not change as a result; the operational expectations against which it is executed do.
+
+> **Note on the compressed operating window (aligned with `A.1-BIZ-STYP-001` v2.0 §17-A and §18-A, and `A.3-CAP-STYP-001` v1.3 §18.7):** The survival clock began on 2026-04-15 and the deadline is 2026-10-12. The operational start is 2026-10-07. The remaining operating window from the operational start to the deadline is **5 days**. This cycle attempts the FOM, not validation. The Decision Frame at window close determines the next cycle's shape.
 
 ## 32-B — External Rule Verification (Phase 0)
 
@@ -673,6 +768,8 @@ Before the first Pin is published, the following external rules must be verified
 
 **Estimated effort:** a few hours of reading. Completion closes OI-003 through OI-007.
 
+> **Cycle note:** This is the **only Phase 0 deliverable that depends on external sources**. Everything else in Phase 0 is internal.
+
 ---
 
 # 33. MVP Definition
@@ -688,6 +785,8 @@ The MVP does **not** require complete automation, and it does **not** require al
 
 **Distinction:** the First Operational Milestone (§46) is achieved at the end of Phase 0. The MVP is what Phases 1–5 (or fewer, per §32-A) produce. The two are not the same, and the survival clock binds to the FOM, not to the MVP.
 
+> **Cycle note (v1.4):** This cycle targets the **FOM**, not the MVP. The MVP is the target of the next cycle, if the Decision Frame (§32-A) selects a path that preserves the business.
+
 **"The full MVP is a target, not a prerequisite for validation."**
 
 ---
@@ -702,6 +801,8 @@ The MVP does **not** require complete automation, and it does **not** require al
 
 **Initial Commercial Validation targets Levels 1–2.** Higher automation is earned through operational evidence, consistent with §32-A.
 
+> **Cycle note (v1.4):** This cycle targets **Level 0 (Manual)**. The FOM is achievable at Level 0. Levels 1–4 are the target of the next cycle.
+
 ---
 
 # 35. Observability
@@ -715,6 +816,8 @@ The system exposes operational metrics: workflow failures, failed jobs, contract
 **Operational dashboard:** pending jobs, recent failures, data freshness, publication state by Pin.
 
 Purpose is operational reliability, not business reporting alone.
+
+> **Cycle note:** For the FOM, observability reduces to the Django admin's model validation and the `check_invariants` command. Full observability is the target of Phase 1.
 
 ---
 
@@ -734,6 +837,8 @@ Until verified, such parameters are represented as **unverified configuration**,
 - **ED-004 — AI Provider Selection.** **Closed.** Default: Anthropic Claude (primary LLM). Image generation deferred to Phase 4. Revisions require a change proposal.
 - **ED-005 — Infrastructure Selection.** **Closed.** Covered by §39-A.
 
+> **Cycle note:** For the FOM, **none of the open EDs blocks the deliverable**. ED-001 and ED-002 affect the next cycle; ED-003 affects Phase 5; ED-004 affects Phases 3–4. The FOM depends only on the manual fallbacks in §37-A.
+
 ## 37-A — Fallbacks for Unresolved Dependencies
 
 | Dependency | If unavailable | Fallback |
@@ -744,6 +849,8 @@ Until verified, such parameters are represented as **unverified configuration**,
 | Pinterest analytics API | Not available | Manual weekly data entry |
 | Automated change detection | Compliant automated access unavailable | Weekly manual change-detection over live Product Records only (§24) |
 | Storefront Linking | (business decision) | Style Picks remains the tracking-ID source of truth |
+
+> **Cycle note:** All six fallbacks are exercised in the FOM. This is the intended design: the FOM is achievable **because** every external dependency has a manual fallback.
 
 ---
 
@@ -794,6 +901,8 @@ This is preferable to microservices at this stage. The architecture maintains cl
 
 **Django vs FastAPI — trade-off note.** Django was chosen over FastAPI because the scarce resource in this phase is operator time (EP-08), and Django's built-in admin, auth, ORM, and migrations replace a substantial amount of hand-built scaffolding.
 
+> **Cycle note:** For the FOM, the stack reduces to: **Python 3.11+, Django 5.x, PostgreSQL 15+, Django admin, local filesystem, `.env.production`.** No HTMX, no AI provider, no cron, no object storage is required for the FOM.
+
 ---
 
 # 40. Scaling Path
@@ -827,6 +936,8 @@ No service is extracted merely because a capability has a separate name.
 | C-11 | Versioned rubric configuration | 0 (manual), 3 |
 | C-12 | Compliance rule engine + human review | 0 (manual), 5 |
 
+> **Cycle note:** For the FOM, all contracts are exercised in their **Phase 0 (manual)** form. The `Phase 2/3/4/5/6/7` entries describe the automation target of the next cycle.
+
 ---
 
 # 42. Non-Goals
@@ -842,6 +953,8 @@ A public Style Picks website or landing page may be introduced later as a separa
 The proposed V1 architecture is:
 
 > **A private, modular, AI-assisted commerce operations platform built on Django and PostgreSQL, with an operator dashboard, object storage, cron-driven background commands, deterministic contract enforcement, human approval gates, and adapters for Pinterest, Amazon, and AI providers.**
+
+> **Cycle note:** In this cycle, only the **operator dashboard (Django admin) + PostgreSQL** are instantiated. Everything else is the target of the next cycle.
 
 ---
 
@@ -863,6 +976,7 @@ Implementable when:
 12. External rule uncertainties are isolated from hard-coded assumptions, **and the specific rules governing the first Pin are verified before publication (§32-B)**.
 13. The First Operational Milestone is achieved without depending on any unresolved external dependency.
 14. Build effort is capped and phases are evidence-gated (§32-A).
+15. **(v1.4) The FOM is achievable using only Phase 0 deliverables.** The FOM does not require any Phase 1–7 deliverable, any resolved external dependency, or any automated integration.
 
 ---
 
@@ -875,6 +989,8 @@ Style Picks is engineered as a:
 whose first operational surface is a web dashboard, whose first external execution channels are Pinterest and Amazon, and whose first operational milestone is a manually-run Pin with a complete internal record trail.
 
 The platform's fundamental engineering property is controlled traceability.
+
+> **Cycle note:** The platform's **first instance** — the FOM — is not a scaled-down version of the platform. It is the platform's minimum viable subset: the Part I records, the operator's manual actions, and the `check_invariants` command. Everything else is the platform's growth path.
 
 ---
 
@@ -894,6 +1010,8 @@ The First Operational Milestone is the state in which:
 **The FOM does depend on:** verification of the specific external rules governing the first Pin (§32-B).
 
 **The FOM is the target of Phase 0.** It aligns with `A.4-CONTR-STYP-001` INV-13 (C-07 executes lifecycle transitions) and with the reconciled state of CP-001 and CP-003.
+
+> **Cycle reference (v1.4):** The FOM is declared the objective of this cycle in `A.1-BIZ-STYP-001` v2.0 §17-A. The Decision Frame that follows the FOM's achievement or non-achievement is defined in `A.1-BIZ-STYP-001` v2.0 §18-A. This document implements the FOM; it does not redefine it.
 
 ---
 
@@ -941,35 +1059,7 @@ Pinterest permits creators enrolled in the Amazon Influencer Program to connect 
 
 ---
 
-# 51. What Comes Next
-
-This document closes the documentation phase of the Stage A pipeline:
-
-```
-A.1-BIZ-STYP-001        Business Plan
-A.2-FUNC-STYP-001       Functional Specifications
-A.3-CAP-STYP-001        Business Capabilities
-A.4-CONTR-STYP-001      Capability Contracts
-A.5-ENG-STYP-001        Engineering Proposal  ← this document (Baselined)
-```
-
-The next artifacts are not documents:
-
-1. **External rule verification (§32-B)** — closes OI-003 through OI-007.
-2. **The first Pin, published manually, with a complete internal record trail** (FOM, §46).
-3. **The Phase 0 Django project** — initialized against §39-A, PostgreSQL, cron + management commands.
-
-Any further document — technical design notes, implementation logs, runbooks — is produced **reactively**, driven by real implementation needs, not by documentary completeness.
-
----
-
-## Freeze Note
-
-**Version 1.3 is Baselined.** CP-001 and CP-003 are accepted and reflected in `A.4-CONTR-STYP-001` v1.0 Reconciled. CP-002 remains pending and does not block the start of Phase 0. The next review cycle is triggered by operational evidence, not by further drafting. The next thing to look at is not this document — it is the result of §32-B, the production-time log from the first ten Pins, and the operational reality of the compressed remaining window.
-
----
-
-# 52. Formal Sign-Off
+# 50. Formal Sign-Off
 
 **Prepared by:** Style Picks Editorial Owner
 
@@ -981,11 +1071,11 @@ Any further document — technical design notes, implementation logs, runbooks �
 
 **Document ID:** A.5-ENG-STYP-001
 
-**Version:** 1.3 — Engineering Definition Baseline (Reconciled)
+**Version:** 1.4 — Engineering Definition Baseline (Traction Demonstration Reconciled)
 
 **Status:** **Baselined**
 
-**Authorization:** This document closes Stage A. `STAGE-A-CONSOL-REPORT-STYP-001` is authorized to consolidate Stage A and authorize Stage B (System Architecture — HLD).
+**Authorization:** This document closes Stage A. `STAGE-A-CONSOL-REPORT-STYP-001` v1.1 is authorized to consolidate Stage A and authorize Stage B (System Architecture — HLD).
 
 **Blocking dependencies:** OI-001, OI-002 (both CLOSED).
 
@@ -997,7 +1087,7 @@ Any further document — technical design notes, implementation logs, runbooks �
 
 ---
 
-*End of Engineering Proposal — A.5-ENG-STYP-001 v1.3*
+*End of Engineering Proposal — A.5-ENG-STYP-001 v1.4*
 
 ---
 
@@ -1007,4 +1097,38 @@ Any further document — technical design notes, implementation logs, runbooks �
 >
 > **OI-002 is CLOSED.** The survival deadline is **2026-10-12** (account date + 180 days).
 >
-> All checkpoints in this document are computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock. The remaining operating window from the operational start to the deadline is short; §32-A carries the note on checkpoint relevance, aligned with `A.1-BIZ-STYP-001` v1.5 §18 and `A.3-CAP-STYP-001` v1.2 §18.7.
+> The operational start of October 7, 2026 is confirmed as **not** the survival clock. The operating window is **5 days**.
+>
+> **This cycle does not attempt commercial validation.** It attempts the **First Operational Milestone (FOM)** — one published Pin with complete internal traceability. The survival floor and success target are deferred to the next cycle, per `A.1-BIZ-STYP-001` v2.0 §11 and §18-A.
+>
+> The single operative checkpoint is at **window close (2026-10-12)**: was the FOM achieved? The Decision Frame in §32-A (by reference to A.1 v2.0 §18-A) governs what happens next.
+
+---
+
+# 51. What Comes Next
+
+This document closes the documentation phase of the Stage A pipeline:
+
+```
+A.1-BIZ-STYP-001 v2.0    Business Plan (Traction Demonstration)
+A.2-FUNC-STYP-001 v1.3   Functional Specifications
+A.3-CAP-STYP-001 v1.3    Business Capabilities
+A.4-CONTR-STYP-001 v1.0  Capability Contracts (unchanged)
+A.5-ENG-STYP-001 v1.4    Engineering Proposal  ← this document (Baselined)
+```
+
+The next artifacts are **not documents**:
+
+1. **External rule verification (§32-B)** — closes OI-003 through OI-007.
+2. **The Phase 0 Django project** — initialized against §39-A, PostgreSQL, Django admin. ~1 day of work.
+3. **The first Pin, published manually, with a complete internal record trail** (FOM, §46).
+
+Any further document — technical design notes, implementation logs, runbooks — is produced **reactively**, driven by real implementation needs, not by documentary completeness.
+
+> **Cycle directive (v1.4):** The pipeline is now internally consistent. The next action is **execution**: verify the external rules, stand up the Phase 0 Django project, and publish the first Pin. The Decision Frame (`A.1-BIZ-STYP-001` v2.0 §18-A) will determine what follows.
+
+---
+
+## Freeze Note
+
+**Version 1.4 is Baselined.** CP-001 and CP-003 are accepted and reflected in `A.4-CONTR-STYP-001` v1.0 Reconciled. CP-002 remains pending and does not block the start of Phase 0. The next review cycle is triggered by operational evidence (the FOM's outcome and the Decision Frame), not by further drafting. The next thing to look at is not this document — it is the result of §32-B, the production-time log from the first Pin, and the operational reality of the compressed remaining window.

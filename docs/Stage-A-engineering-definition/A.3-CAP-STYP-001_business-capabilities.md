@@ -6,7 +6,7 @@
 
 **Document ID:** A.3-CAP-STYP-001
 
-**Version:** 1.2 — Capability Definition (Reconciled)
+**Version:** 1.3 — Capability Definition (Traction Demonstration Reconciled)
 
 **Status:** Stage A — Engineering Definition (Conceptual Level) — Baselined
 
@@ -15,11 +15,11 @@
 **Engagement:** STYP-VALIDATION-2026
 
 **Parent Documents:**
-- A.2-FUNC-STYP-001 — Value Proposition Functional Specification (v1.1 RC)
-- PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.0)
+- A.2-FUNC-STYP-001 — Value Proposition Functional Specification (v1.3 Traction Demonstration Reconciled)
+- PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.1)
 
 **Child Documents:**
-- A.4-CONTR-STYP-001 — Capability Contracts Specification (v1.0 RC.4)
+- A.4-CONTR-STYP-001 — Capability Contracts Specification (v1.0 Reconciled)
 
 **Domain:** Domain A.3 — Business Capabilities
 
@@ -31,9 +31,14 @@
 **Initial Channel:** Pinterest
 **Monetization:** Amazon Associates
 **Initial Categories:** Home Decor + Home Organization
-**Stage:** Commercial Validation
+**Stage:** Traction Demonstration
+**Amazon Associates Account Created:** 2026-04-15
+**Amazon Associates Deadline:** 2026-10-12
+**Operating Window:** From 2026-10-07 to 2026-10-12 (5 days)
+**Actual Objective for This Cycle:** First Operational Milestone (FOM) — one published Pin with complete internal traceability
+**Deferred Objective:** Commercial validation (≥ 5 qualifying purchases) — next cycle
 **Document Type:** Business Capabilities Specification
-**Derives from:** A.2-FUNC-STYP-001
+**Derives from:** A.2-FUNC-STYP-001 v1.3
 
 ---
 
@@ -46,8 +51,9 @@
 | 1.1 RC.2 | Oct 7, 2026 | Moved evidence confidence to Recommendation Generation; aligned Evidence Source Policy with Functional Spec 9.6.2; separated runtime dependencies from feedback inputs; redefined uncomputable metrics; fixed cross-reference; clarified Validation → Publication handoff; added missing dependency; relocated Open Item #9; corrected status label; defined execution notation; formally separated core and transversal capabilities |
 | 1.1 RC.3 | Oct 7, 2026 | Reconciled Medium confidence definition; added survival checkpoints to CD1; unified tracking ID source of truth; removed leftover verifiability threshold; enumerated Recommendation statuses; made reconciliation metric conditional; generalized opening statement of Section 5 to "operating loop" |
 | 1.1 RC.4 | Oct 7, 2026 | Reclassified Performance Measurement → Compliance as a **monitoring input** (not a runtime dependency); fixed cross-reference to Functional Spec; documented runtime vs monitoring dependency in Section 19 |
-| **1.1 RC.4 (Baselined header)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals register referenced; Sign-Off block added |
-| **1.2** | Oct 8, 2026 | **Consistency reconciliation.** (1) §21 metrics roll-up table cleaned — the malformed row for "Pin-level ID integrity" now has exactly two columns. (2) §18.7 survival checkpoint table now carries a note on checkpoint relevance when the remaining operating window is shorter than the checkpoint offset, aligned with `A.1-BIZ-STYP-001` v1.5 §18. (3) §14.12 metric named "Tracking-ID attribution coverage" is now the only name used; the obsolete term "attribution completeness" is removed from §21. (4) §16.5 note on the future `Limited Reliability` tier aligned with `A.4-CONTR-STYP-001` I.1.3 and `A.2-FUNC-STYP-001` §9.6.2. (5) §22 ownership table confirmed against `A.4-CONTR-STYP-001` INV-10 and Part II contracts. (6) Change Proposals register updated to reflect CP-001 acceptance. |
+| 1.1 RC.4 (Baselined header) | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals register referenced; Sign-Off block added |
+| 1.2 | Oct 8, 2026 | **Consistency reconciliation.** (1) §21 metrics roll-up table cleaned. (2) §18.7 survival checkpoint table now carries a note on checkpoint relevance when the remaining operating window is shorter than the checkpoint offset, aligned with `A.1-BIZ-STYP-001` v1.5 §18. (3) §14.12 metric named "Tracking-ID attribution coverage" is now the only name used. (4) §16.5 note on the future `Limited Reliability` tier aligned with `A.4-CONTR-STYP-001` I.1.3 and `A.2-FUNC-STYP-001` §9.6.2. (5) §22 ownership table confirmed against `A.4-CONTR-STYP-001` INV-10 and Part II contracts. (6) Change Proposals register updated to reflect CP-001 acceptance. |
+| **1.3** | Oct 8, 2026 | **Structural reconciliation with A.1 v2.0 and A.2 v1.3 (Traction Demonstration Baseline).** (1) The document no longer treats commercial validation as the objective of this cycle. The **First Operational Milestone (FOM)** is now the declared objective, per A.1 v2.0 §17-A and A.2 v1.3 §18.2. (2) §18.7 (Survival Checkpoints CD1) is restructured: the 135/90/60/30-day table is moved to a **historical note**; the only operative checkpoint is the **FOM check at window close**. The survival floor is retained as a **long-term** Amazon account condition, not as a this-cycle objective. (3) §14.6 (Business Rules) is qualified: performance data collection during the 5-day window is **manual and low-frequency**. (4) §14.12 adds a cycle note: attribution coverage metrics are **not** FOM-critical; they become meaningful in the next cycle. (5) §18.7 adds the **Decision Frame at window close** by reference to A.1 v2.0 §18-A. (6) §23 (Version Control) adds the "cycle objective change" trigger. (7) All cross-references to A.1 updated from v1.5 §18 to v2.0 §17-A and §18-A; all cross-references to A.2 updated to v1.3. (8) Header parent documents updated. |
 
 ---
 
@@ -96,7 +102,7 @@
 
 # 1. Purpose
 
-This document defines the **business capabilities required for Style Picks to repeatedly and reliably execute the business functions established in `A.2-FUNC-STYP-001` Value Proposition Functional Specification V1.1 Release Candidate**.
+This document defines the **business capabilities required for Style Picks to repeatedly and reliably execute the business functions established in `A.2-FUNC-STYP-001` Value Proposition Functional Specification V1.3**.
 
 The document translates:
 
@@ -106,13 +112,33 @@ without prescribing the technical architecture used to implement those capabilit
 
 > **Business capabilities describe what the business must be able to do consistently. Engineering determines how those capabilities are implemented.**
 
+## 1.1 What This Cycle Attempts — And What It Does Not
+
+This document inherits the objective structure of `A.1-BIZ-STYP-001` v2.0 and `A.2-FUNC-STYP-001` v1.3.
+
+**This cycle attempts:**
+
+> **The First Operational Milestone (FOM): produce, validate, publish, and record one Pin end-to-end within the Style Picks internal system.**
+
+The FOM is defined operationally in `A.5-ENG-STYP-001` §46.
+
+**This cycle does not attempt:**
+
+- commercial validation;
+- reaching the survival floor of 3 qualifying purchases;
+- reaching the success target of ≥ 5 qualifying purchases;
+- producing statistically meaningful performance data;
+- automating any capability beyond what the FOM requires.
+
+**Capability consequence:** All twelve capabilities must be **executable at least once, manually**, within the operating window. None of them needs to be automated, scaled, or optimized in this cycle. The capability model is the target; the FOM is the first instance of it operating.
+
 ---
 
 # 2. Relationship to Previous Specification
 
 The Business Capabilities Specification derives directly from:
 
-**`A.2-FUNC-STYP-001` — Value Proposition Functional Specification V1.1 Release Candidate**
+**`A.2-FUNC-STYP-001` — Value Proposition Functional Specification V1.3**
 
 That specification established eight business functions:
 
@@ -130,6 +156,8 @@ The present document decomposes them into stable capabilities. **The capability 
 - **Evidence Management** — deferred from `A.2-FUNC-STYP-001` §9.6.2.
 - **Publication & Lifecycle** — implicit in the Align failure path (`A.2-FUNC-STYP-001` §11.7) but never assigned.
 - **Rubric Management** — a precondition of Evaluate in `A.2-FUNC-STYP-001` §7.6.4 that had no owner.
+
+> **Cycle note:** The three cross-cutting capabilities are precisely the ones that make the FOM auditable. Evidence Management provides the traceable source for claims; Publication & Lifecycle records the published Pin; Rubric Management ensures the evaluation used a defined rubric. None of them requires automation for the FOM.
 
 ---
 
@@ -187,6 +215,8 @@ When a business ability cuts across multiple functions, the capability layer nam
 | **H+AI** | Human-led with AI-assisted drafting |
 | **H+D+AI** | Human-led with both deterministic and AI support |
 | **D+H** | Deterministic with human exception handling |
+
+> **Cycle note:** For the FOM, **all capabilities are executed as H (human)**. The notation above describes the target mechanism for the next cycle. Manual execution is a valid instantiation of each capability per `A.5-ENG-STYP-001` §32 (Phase 0).
 
 ---
 
@@ -266,6 +296,8 @@ The Style Picks capability model distinguishes two formal categories:
 ```
 
 **Total: 9 core execution capabilities + 3 cross-cutting capabilities = 12 capabilities.**
+
+> **Cycle note:** For the FOM, all twelve capabilities are exercised **once**. The core loop is executed end-to-end for a single Pin. The three cross-cutting capabilities provide the audit trail, the evaluation basis, and the publication record for that Pin.
 
 ---
 
@@ -348,6 +380,9 @@ H+D, H+AI, or H+D+AI (Engineering discretion).
 - missing constraints;
 - outdated context.
 
+## 7.13 Cycle Note
+For the FOM, **one context** is created, approved, and used. It belongs to one of the two approved categories. The Context Record is the first record in the FOM's audit trail.
+
 ---
 
 # 8. Capability 2 — Product Discovery
@@ -423,6 +458,9 @@ H initially; D and H+D in later stages.
 > **Primary evidence** — raw facts retrieved from a source (e.g., an Amazon product page snapshot) — may be registered **independently of whether a recommendation exists**. Product Discovery registers primary evidence as part of candidate creation. Recommendation Generation later registers **claim-level evidence** — the specific facts that support the specific claims being made — by linking to the primary evidence already registered.
 
 There is no circular dependency. Evidence Management is foundational; Product Discovery and Recommendation Generation consume it at different levels of abstraction.
+
+## 8.14 Cycle Note
+For the FOM, Product Discovery operates **entirely manually**. The operator identifies one product candidate through Amazon search or Best Sellers, records the Product Record, and registers the primary evidence (Amazon product page snapshot). The Creators API is not required. The fallback in `A.5-ENG-STYP-001` §37-A applies.
 
 ---
 
@@ -504,6 +542,9 @@ H+D+AI.
 - inconsistent evaluation;
 - stale product information;
 - rubric version drift.
+
+## 9.14 Cycle Note
+For the FOM, evaluation is **manual**, using Rubric V0.1 as authored. The Evaluation Record documents the criterion scores, the weighted score, and the eligibility decision for the one candidate product. The "rejection rate" and "review overturn rate" metrics are not meaningful with a sample of one; they become meaningful in the next cycle.
 
 ---
 
@@ -611,6 +652,9 @@ H+D+AI.
 - recommendation produced for a candidate not in the Eligible state;
 - editorial inconsistency.
 
+## 10.14 Cycle Note
+For the FOM, the recommendation is **authored manually by the Editorial Owner** using the structured fields in 10.4. LLM assistance is optional and not required. The expected evidence confidence is **High**, because the only material claims made are drawn directly from the Amazon product page. If a claim requires a source other than the Amazon product page or the manufacturer site, the recommendation is either revised to remove the claim or routed to human review (which, in this cycle, is the Editorial Owner reviewing their own draft).
+
 ---
 
 # 11. Capability 5 — Content Presentation
@@ -693,6 +737,9 @@ H+D+AI.
 - content mismatch;
 - unauthorized imagery;
 - incomplete metadata.
+
+## 11.14 Cycle Note
+For the FOM, one Content Asset is produced manually. If a suitable licensed or stock image cannot be found within the operating window, the Editorial Owner may publish a Pin using the Amazon product image alone, provided the Associates Program permissions allow it (per `A.2-FUNC-STYP-001` v1.3 §10.9). This is a permissible simplification for the FOM.
 
 ---
 
@@ -794,6 +841,9 @@ D+H.
 - tracking ID mismatch between URL and asset;
 - failed corrective handoff.
 
+## 12.16 Cycle Note
+For the FOM, Consistency Validation is performed **manually by the Editorial Owner** immediately before publication. The seven checks in 12.6 are executed explicitly and recorded in the Validation Result. Post-publication validation is scheduled but not required within the 5-day window unless the Pin is published early enough to allow one check.
+
 ---
 
 # 13. Capability 7 — Publication & Lifecycle
@@ -872,6 +922,9 @@ H+D.
 - lifecycle state not updated after action;
 - orphaned Pin.
 
+## 13.13 Cycle Note
+For the FOM, publication is **manual**: the Editorial Owner publishes the Pin on Pinterest directly, then records the Publication Record (including the Pin URL, the tracking ID used, the timestamp, and the authorizing Validation Result and Compliance Record). This is the terminal step of the FOM.
+
 ---
 
 # 14. Capability 8 — Performance Measurement & Attribution
@@ -904,6 +957,8 @@ Not fully supported without additional tracking infrastructure: exact context-le
 ## 14.6 Business Rules
 Every published Pin must have the correct tracking identifier according to the active tracking strategy. Performance data must be collected at a defined cadence and reconciled against Publication Records **at the tracking-ID level**.
 
+> **Cycle note (V1.3):** During the 5-day operating window, performance data collection is **manual and low-frequency**. Automated collection is not required for the FOM. The defined cadence becomes operational in the next cycle. The reconciliation rule remains in force but is satisfied by a single manual reconciliation at window close (if any Amazon data exists at all).
+
 ## 14.7 Preconditions
 Published content contains valid tracking metadata. Publication Records exist for the period being measured.
 
@@ -917,7 +972,7 @@ Performance data is available for analysis at the supported attribution level. D
 - **External sources**: Pinterest analytics, Amazon Associates reports.
 
 **Monitoring outputs** (not runtime dependencies of any capability, but consumed by CD1):
-- Performance Records feed CD1's survival-checkpoint monitoring (see 18.7). This is a **monitoring relationship**, not a runtime dependency: no publication is gated by Performance Measurement, and no capability is blocked if measurement data is late.
+- Performance Records feed CD1's checkpoint monitoring (see 18.7). This is a **monitoring relationship**, not a runtime dependency: no publication is gated by Performance Measurement, and no capability is blocked if measurement data is late.
 
 **Feedback inputs:** Learning & Improvement.
 
@@ -937,6 +992,8 @@ D+H.
 - **coverage** — % of the reporting period with complete data.
 - **ID integrity** — % of published Pins whose tracking ID matches the Publication Record.
 
+> **Cycle note (V1.3):** For the FOM, these metrics are **not FOM-critical**. A single Pin with a single tracking ID does not produce meaningful attribution coverage data. The metrics are recorded once, at window close, as a baseline. They become meaningful in the next cycle.
+
 ## 14.13 Failure Modes
 - missing tracking ID;
 - incorrect tracking ID;
@@ -945,6 +1002,9 @@ D+H.
 - unavailable performance data;
 - stale data;
 - unreconciled data.
+
+## 14.14 Cycle Note
+For the FOM, Performance Measurement produces **one Performance Record** (or a small set), manually entered from Pinterest analytics and Amazon Associates reports at window close. Its purpose is to establish a baseline, not to support analysis. The five weekly review questions (`A.2-FUNC-STYP-001` v1.3 §12.8) are answered once, at window close, as inputs to the Decision Frame.
 
 ---
 
@@ -1010,6 +1070,9 @@ H+D+AI.
 - overfitting;
 - undocumented rule changes;
 - confusing correlation with causation.
+
+## 15.13 Cycle Note
+For the FOM, Learning produces **one Learning Record** whose content is: *"The FOM was achieved (or not achieved), and the production-time baseline for the first Pin was X minutes."* The five weekly review questions are answered once, at window close. No rubric change is proposed in this cycle, because the sample is a single Pin. The output of this capability feeds the Decision Frame (`A.1-BIZ-STYP-001` v2.0 §18-A), not a rubric revision.
 
 ---
 
@@ -1103,6 +1166,15 @@ H+D+AI.
 - duplicate evidence records;
 - evidence not versioned after source change.
 
+## 16.14 Cycle Note
+For the FOM, Evidence Management is the **audit backbone**. For the first Pin, at least:
+
+- one **primary** Evidence Record for the Amazon product page;
+- one **claim-level** Evidence Record for each material claim made in the recommendation;
+- one **imagery** Evidence Record per image used in the Content Asset, recording license and permission.
+
+The FOM is not achievable without these records. This is the single most important cross-cutting capability for the current cycle.
+
 ---
 
 # 17. Capability 11 — Rubric Management
@@ -1170,6 +1242,9 @@ H.
 ## 17.13 Backlog
 - Rubric V0.1 empirical validation. Cannot be completed until validation data exists.
 
+## 17.14 Cycle Note
+For the FOM, Rubric Management's role is **to ensure that Rubric V0.1 exists as a versioned, approved artifact before Product Evaluation uses it**. No change to the rubric is proposed in this cycle. The Evaluation Record must cite `rubric_version = V0.1` explicitly.
+
 ---
 
 # 18. Capability 12 — Compliance & Governance
@@ -1193,8 +1268,10 @@ Provides cross-cutting control across the core execution capabilities.
 
 Each domain has its own verification record, last-verified date, and escalation conditions.
 
+> **Cycle note:** For the FOM, the **mandatory** verification is limited to the external rules governing the **first Pin**: required disclosure wording (OI-006), link-format rules (OI-007), and image and price display rules (OI-005). These are Phase 0 requirements per `A.5-ENG-STYP-001` §32-B.
+
 ## 18.4 Inputs
-External policies, business rules, editorial rules, Content Assets, Recommendations, Product Records, Evidence Records, compliance requirements, **Performance Records (as a monitoring input for CD1 survival checkpoints — see 18.7)**.
+External policies, business rules, editorial rules, Content Assets, Recommendations, Product Records, Evidence Records, compliance requirements, **Performance Records (as a monitoring input for CD1 checkpoints — see 18.7)**.
 
 ## 18.5 Outputs
 A **Compliance Record** containing:
@@ -1216,21 +1293,37 @@ Compliance & Governance enforces: Amazon Associates Operating Agreement rules; F
 
 **No asset may be published without a Compliance Record with decision = Approve.**
 
-## 18.7 Survival Checkpoints (CD1)
+## 18.7 Survival Checkpoints (CD1) — Restructured for V1.3
 
 > **Restored from `A.2-FUNC-STYP-001` §13.6 and §18.3.** Compliance & Governance monitors these checkpoints. Performance Measurement provides the data **as a monitoring input** — the checkpoints never gate a publication and are not a runtime prerequisite for any other capability.
 
-| Deadline minus | Condition | Action |
-|----------------|-----------|--------|
-| **135 days** | Outbound clicks well below expected (< 20 total) | Escalate — strategic review |
-| **135 days** | Outbound clicks present but attribution ratio < 50% | Escalate immediately — tracking failure |
-| **90 days** | Zero qualifying purchases | Escalate — strategic review |
-| **60 days** | Fewer than 2 qualifying purchases | Escalate — strategic review |
-| **30 days** | Fewer than 3 qualifying purchases | Escalate — survival threshold at risk |
+### Single Operative Checkpoint
 
-> **Survival floor:** 3 qualifying purchases is the minimum to keep the Associates account, not evidence that the value proposition works.
+> **All checkpoints are anchored to the Amazon Associates deadline (OI-002 = 2026-10-12).**
 
-> **Note on checkpoint relevance (aligned with `A.1-BIZ-STYP-001` v1.5 §18):** All checkpoints are anchored to the Amazon Associates deadline (OI-002 = 2026-10-12). If the remaining operating window is shorter than the largest checkpoint offset (135 days), the checkpoint has either already passed or is not actionable. In that case, the Editorial Owner must decide whether to (a) treat the current date as the effective checkpoint, (b) request a deadline extension, or (c) accept that the survival floor may not be reached and plan accordingly.
+| Checkpoint | Condition | Action |
+|------------|-----------|--------|
+| **Window close (2026-10-12)** | FOM achieved | Proceed to Decision Frame (`A.1-BIZ-STYP-001` v2.0 §18-A) |
+| **Window close (2026-10-12)** | FOM not achieved | Diagnose blocker (technical / rule-verification / time / external). Proceed to Decision Frame. |
+
+> **Survival floor:** 3 qualifying purchases is the minimum to keep the Associates account, **not evidence that the value proposition works**. It is **not attempted in this cycle**.
+
+### Historical Note (V1.2 Checkpoints)
+
+The V1.2 checkpoint table (deadline minus 135/90/60/30 days) is retained in `A.1-BIZ-STYP-001` v2.0 §18 as a historical artifact but is **not operative** in the current cycle. All those checkpoints fall before the operational start (2026-10-07) and were never actionable. The note on checkpoint relevance that V1.2 carried is now replaced by §18-A of A.1 v2.0.
+
+### Decision Frame at Window Close (New)
+
+At the close of the operating window, the Editorial Owner chooses one of four paths, defined in `A.1-BIZ-STYP-001` v2.0 §18-A:
+
+| Path | When | Action |
+|------|------|--------|
+| **1 — Extend the survival clock** | OI-003 verification or Amazon extension changes the deadline | Recompute the operating window; if large enough, revert to validation framing |
+| **2 — Reapply for Amazon Associates** | Account lapses; business still pursues Amazon monetization | Reapply; use the new window to attempt validation with the system already built |
+| **3 — Operate without Amazon Associates** | Account lapses; reapplication not immediately possible | Continue publishing without affiliate monetization; pursue alternative monetization |
+| **4 — Redefine the model** | Diagnosis reveals the model is not viable under available conditions | Redefine business model, channel, monetization, or target market; re-enter Stage A |
+
+> **The Decision Frame forces an explicit choice.** It does not permit declaring "validation in progress" when validation was never attempted. It does not permit treating the FOM as if it were the survival floor.
 
 ## 18.8 Decision States
 **Approve** / **Reject** / **Correct** / **Escalate**
@@ -1243,10 +1336,10 @@ Compliance & Governance enforces: Amazon Associates Operating Agreement rules; F
 | Soft constraint violation | Return with error code |
 | Recurring violation of the same rule | Escalate and trigger rubric review |
 | Stale external rule (used beyond verification date) | Escalate and update Open Items |
-| **Survival checkpoint triggered (18.7)** | Escalate to Editorial Owner |
+| **At window close: FOM not achieved** | **Escalate to Editorial Owner** — proceed to Decision Frame (`A.1-BIZ-STYP-001` v2.0 §18-A) |
 
 ## 18.10 Preconditions
-A Content Asset or Recommendation exists that is being considered for publication. **For CD1 survival checkpoints, Performance Records must exist for the current period.**
+A Content Asset or Recommendation exists that is being considered for publication.
 
 ## 18.11 Postconditions
 A Compliance Record exists with a decision. If Approve, the asset is eligible for Publication & Lifecycle (in combination with Consistency Validation = PASS).
@@ -1259,7 +1352,7 @@ A Compliance Record exists with a decision. If Approve, the asset is eligible fo
 - **External sources**: Amazon Associates Operating Agreement, FTC guidance, Pinterest policies.
 
 **Monitoring inputs** (not runtime dependencies):
-- **Performance Measurement & Attribution** — supplies data for CD1 survival checkpoints. Late or missing measurement data does not block any compliance check that gates publication.
+- **Performance Measurement & Attribution** — supplies data for CD1 checkpoints. Late or missing measurement data does not block any compliance check that gates publication.
 
 **Feedback inputs:** Learning & Improvement.
 
@@ -1276,7 +1369,7 @@ D+H.
 - verification freshness per control domain;
 - escalation rate;
 - corrective-action rate;
-- survival checkpoint monitoring rate.
+- checkpoint monitoring rate.
 
 ## 18.16 Failure Modes
 - missing disclosure;
@@ -1291,7 +1384,18 @@ D+H.
 - stale external rules;
 - compliance record not linked to the asset it approves;
 - domain coverage gap;
-- survival checkpoint missed.
+- checkpoint missed.
+
+## 18.17 Cycle Note
+For the FOM, the Compliance Record must confirm that:
+
+- required disclosure wording was verified against the Amazon Associates Operating Agreement (OI-006);
+- link format was verified against the Amazon Associates Operating Agreement (OI-007);
+- image and price display rules were verified (OI-005);
+- FTC endorsement disclosure requirements were applied;
+- Pinterest affiliate content policies were applied.
+
+The Compliance Record for the first Pin is the terminal audit artifact before publication.
 
 ---
 
@@ -1314,11 +1418,13 @@ D+H.
 | Learning & Improvement | Performance Measurement & Attribution | — | — |
 | Evidence Management | (External sources) | — | — |
 | Rubric Management | — | — | Learning & Improvement |
-| Compliance & Governance | Content Presentation, Evidence Management | Performance Measurement & Attribution (for CD1 survival checkpoints only) | Learning & Improvement |
+| Compliance & Governance | Content Presentation, Evidence Management | Performance Measurement & Attribution (for CD1 checkpoints only) | Learning & Improvement |
 
 **No runtime cycles.** The dependency graph is acyclic. Performance Measurement feeds Compliance **only for monitoring**, and never gates a publication.
 
 **Build order implication (for the Engineering Proposal):** Context Management, Evidence Management, and Rubric Management have no runtime dependencies and can be built first. The Engineering Proposal (`A.5-ENG-STYP-001`) determines actual build order.
+
+> **Cycle note (V1.3):** For the FOM, the dependency graph is traversed **once**. All runtime dependencies must be satisfied for the single Pin. The three dependency-free capabilities (Context Management, Evidence Management, Rubric Management) must be seeded first: Context for the single context, Evidence for the primary product page snapshot, Rubric for V0.1. Then the core loop executes linearly.
 
 ---
 
@@ -1335,25 +1441,29 @@ D+H.
 | Compliance Record | Compliance & Governance | Publication & Lifecycle (as precondition), Editorial Owner (survival escalations) |
 | Publication Record | Publication & Lifecycle | Performance Measurement |
 | Performance Record | Performance Measurement | Learning & Improvement, Compliance & Governance (monitoring input for CD1) |
-| Learning Record | Learning & Improvement | Rubric Management (feedback input) |
+| Learning Record | Learning & Improvement | Rubric Management (feedback input), Decision Frame at window close |
 | Evidence Record | Evidence Management | Product Discovery, Product Evaluation, Recommendation Generation, Content Presentation, Consistency Validation, Compliance & Governance |
 | Rubric Version Record | Rubric Management | Product Evaluation & Curation |
+
+> **Cycle note:** For the FOM, each data object is instantiated **exactly once** (or a small fixed number of times, in the case of Evidence Records). The flow is traversed once. The arrows in this table describe the model, not a loop.
 
 ---
 
 # 21. Metrics Roll-up
 
-| Functional threshold (`A.2-FUNC-STYP-001` §18.1) | Aggregated from |
-|--------------------------------------------------|-----------------|
+| Functional threshold (`A.2-FUNC-STYP-001` v1.3 §18.1) | Aggregated from |
+|--------------------------------------------------------|-----------------|
 | Recommendations passing Align on first attempt ≥ 90% | Consistency Validation: first-pass validation rate |
 | Factual error rate ≤ 2% | Recommendation Generation: factual error rate + Compliance & Governance: violation rate |
 | Recommendation-context match rate ≥ 95% | Recommendation Generation: context-match rate |
 | Governance violation rate ≤ 2% | Compliance & Governance: violation rate |
 | Pin-level ID integrity 100% | Publication & Lifecycle: tracking ID correctness at publication |
 
-> **Naming note:** `A.2-FUNC-STYP-001` §18.1 defines **Pin-level ID integrity** as **Pins with a correct tracking ID** — a Pin-level, computable metric. Capability 8's metric is named **Tracking-ID attribution coverage** (§14.12) because Amazon reports per tracking ID, not per Pin. The two metrics are related but distinct, and they are not the same metric. The obsolete term "attribution completeness" is no longer used anywhere in this document.
+> **Naming note:** `A.2-FUNC-STYP-001` v1.3 §18.1 defines **Pin-level ID integrity** as **Pins with a correct tracking ID** — a Pin-level, computable metric. Capability 8's metric is named **Tracking-ID attribution coverage** (§14.12) because Amazon reports per tracking ID, not per Pin. The two metrics are related but distinct, and they are not the same metric. The obsolete term "attribution completeness" is no longer used anywhere in this document.
 
-**Business Validation Thresholds (`A.2-FUNC-STYP-001` §18.2) are not capability metrics.** They are business outcomes tracked in the Business Plan (`A.1-BIZ-STYP-001`).
+> **Cycle note (V1.3):** For the FOM, these thresholds are **audited on the first Pin**. With a sample of one, a "rate" is either 0% or 100%. The audit's purpose in this cycle is to confirm that the checks were performed, not to compute a statistical rate. The "1 in 5" sampling cadence becomes meaningful in the next cycle.
+
+**Business Validation Thresholds (`A.2-FUNC-STYP-001` v1.3 §18.2) are not capability metrics.** The FOM is the only current-cycle target. The survival floor and success target are deferred to the next cycle and tracked in the Business Plan (`A.1-BIZ-STYP-001` v2.0).
 
 ---
 
@@ -1380,13 +1490,15 @@ D+H.
 
 # 23. Version Control
 
-This specification represents the **V1.2** business capability model.
+This specification represents the **V1.3** business capability model.
 
-It becomes **V1.2 Final** only when all Open Items (`OI-001` to `OI-008`) are closed.
+It becomes **V1.3 Final** only when all Open Items (`OI-001` to `OI-008`) are closed.
 
 **Provisional operational rules** may evolve after the first 30 days of live operation without requiring a version increment.
 
 Changes to capability structure, boundaries, runtime dependencies, or the dependency classification (runtime / monitoring / feedback) require a version increment.
+
+> **Cycle note (V1.3):** The **cycle objective change** from commercial validation to traction demonstration is itself a trigger for a version increment, as it modifies the meaning of "success" against which the capability model is judged. A.3 v1.3 is that increment. It derives from A.2 v1.3, which derives from A.1 v2.0.
 
 ---
 
@@ -1404,7 +1516,9 @@ Style Picks operates through **twelve business capabilities**, organized as:
 
 Together, these capabilities define the minimum business abilities required for Style Picks to transform emerging consumer demand into contextual, curated, trustworthy, and commercially useful product discovery.
 
-The next engineering artifact should be the **Capability Contracts Specification** (`A.4-CONTR-STYP-001`), which will formalize each capability's inputs, outputs, rules, preconditions, postconditions, and failure handling.
+> **Cycle note (V1.3):** In this cycle, all twelve capabilities are exercised **once**, manually, to achieve the **First Operational Milestone**. The capability model is the target. The FOM is the first instance of it operating.
+
+The next engineering artifact is the **Capability Contracts Specification** (`A.4-CONTR-STYP-001`), which formalizes each capability's inputs, outputs, rules, preconditions, postconditions, and failure handling. `A.4` v1.0 (Reconciled) remains valid: it contains no dates or cycle objectives, and its invariants apply identically to the FOM and to the next cycle.
 
 ---
 
@@ -1420,17 +1534,17 @@ The next engineering artifact should be the **Capability Contracts Specification
 
 **Document ID:** A.3-CAP-STYP-001
 
-**Version:** 1.2 — Capability Definition (Reconciled)
+**Version:** 1.3 — Capability Definition (Traction Demonstration Reconciled)
 
 **Status:** **Baselined**
 
-**Authorization:** This document derives from `A.2-FUNC-STYP-001`. `A.4-CONTR-STYP-001` is authorized to derive from it.
+**Authorization:** This document derives from `A.2-FUNC-STYP-001` v1.3. `A.4-CONTR-STYP-001` v1.0 (Reconciled) is authorized to remain in force as the derived contract specification.
 
 **Language:** English
 
 ---
 
-*End of Business Capabilities Specification — A.3-CAP-STYP-001 v1.2*
+*End of Business Capabilities Specification — A.3-CAP-STYP-001 v1.3*
 
 ---
 
@@ -1440,4 +1554,8 @@ The next engineering artifact should be the **Capability Contracts Specification
 >
 > **OI-002 is CLOSED.** The survival deadline is **2026-10-12** (account date + 180 days).
 >
-> All checkpoints in this document are computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock. The remaining operating window from the operational start to the deadline is short; §18.7 carries the note on checkpoint relevance.
+> The operational start of October 7, 2026 is confirmed as **not** the survival clock. The operating window is **5 days**.
+>
+> **This cycle does not attempt commercial validation.** It attempts the **First Operational Milestone (FOM)** — one published Pin with complete internal traceability. The survival floor and success target are deferred to the next cycle, per `A.1-BIZ-STYP-001` v2.0 §11 and §18-A, and `A.2-FUNC-STYP-001` v1.3 §18.2 and §18.4.
+>
+> The single operative checkpoint is at **window close (2026-10-12)**: was the FOM achieved? The Decision Frame in §18.7 governs what happens next.

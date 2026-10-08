@@ -6,7 +6,7 @@
 
 **Document ID:** A.2-FUNC-STYP-001
 
-**Version:** 1.2 — Functional Definition (Reconciled)
+**Version:** 1.3 — Functional Definition (Traction Demonstration Reconciled)
 
 **Status:** Stage A — Engineering Definition (Conceptual Level) — Baselined
 
@@ -15,11 +15,11 @@
 **Engagement:** STYP-VALIDATION-2026
 
 **Parent Documents:**
-- A.1-BIZ-STYP-001 — Business Plan and Commercial Validation (v1.5 Reconciled)
-- PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.0)
+- A.1-BIZ-STYP-001 — Business Plan and Commercial Validation (v2.0 Traction Demonstration Baseline)
+- PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.1)
 
 **Child Documents:**
-- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.2 Reconciled)
+- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.3 Traction Demonstration Reconciled)
 
 **Domain:** Domain A.2 — Business Functions
 
@@ -31,10 +31,12 @@
 **Initial Channel:** Pinterest
 **Monetization:** Amazon Associates
 **Initial Categories:** Home Decor + Home Organization
-**Stage:** Commercial Validation
+**Stage:** Traction Demonstration
 **Amazon Associates Account Created:** 2026-04-15
 **Amazon Associates Deadline:** 2026-10-12
-**Validation Horizon:** Ends at the Amazon Associates deadline
+**Operating Window:** From 2026-10-07 to 2026-10-12 (5 days)
+**Actual Objective for This Cycle:** First Operational Milestone (FOM) — one published Pin with complete internal traceability
+**Deferred Objective:** Commercial validation (≥ 5 qualifying purchases) — next cycle
 **Destination Model:** Pinterest → Amazon (direct link)
 **Document Type:** Business Functional Specification
 
@@ -48,7 +50,8 @@
 | 1.1 | Oct 7, 2026 | Govern diagram, Align/Govern boundary, confidence model, thresholds, imagery, FTC/Pinterest disclosure, attribution scope, sources |
 | 1.1 RC | Oct 7, 2026 | Checkpoint 135d split into two distinct alarms; interim evidence rule added; 12.3 attribution slip corrected; version label aligned with Section 22 |
 | 1.1 RC (Baselined header) | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals register referenced; Sign-Off block added |
-| **1.2** | Oct 8, 2026 | **Consistency reconciliation with A.1 v1.5, A.3 v1.2, A.4 v1.0 Reconciled, A.5 v1.2.1.** (1) §13.3.1 placeholders `[OI-001]` and `[OI-002]` replaced with the actual closed values. (2) §18.2 marks "Amazon clicks ≥ 100" as **Provisional**, aligning with A.1 v1.5 §15. (3) §18.3 adds a note on checkpoint relevance when the remaining operating window is shorter than the checkpoint offset, aligning with A.1 v1.5 §18 and A.3 v1.2 §18.7. (4) §22 version label updated to reflect Baselined status. (5) §6.6 and §13.3.2 reference note about PA-API → Creators API aligned with A.4 and A.5 §48. (6) §10.6 explicit reference to CP-002 pending status retained. (7) Formal Sign-Off block added. |
+| 1.2 | Oct 8, 2026 | **Consistency reconciliation with A.1 v1.5, A.3 v1.2, A.4 v1.0 Reconciled, A.5 v1.2.1.** (1) §13.3.1 placeholders `[OI-001]` and `[OI-002]` replaced with the actual closed values. (2) §18.2 marks "Amazon clicks ≥ 100" as **Provisional**, aligning with A.1 v1.5 §15. (3) §18.3 adds a note on checkpoint relevance when the remaining operating window is shorter than the checkpoint offset, aligning with A.1 v1.5 §18 and A.3 v1.2 §18.7. (4) §22 version label updated to reflect Baselined status. (5) §6.6 and §13.3.2 reference note about PA-API → Creators API aligned with A.4 and A.5 §48. (6) §10.6 explicit reference to CP-002 pending status retained. (7) Formal Sign-Off block added. |
+| **1.3** | Oct 8, 2026 | **Structural reconciliation with A.1 v2.0 (Traction Demonstration Baseline).** (1) The document no longer declares commercial validation as the objective of this cycle. The **First Operational Milestone (FOM)** is now the declared objective, per A.1 v2.0 §17-A and A.5-ENG-STYP-001 §46. (2) §18.2 (Business Validation Thresholds) is restructured: the FOM appears as the **current-cycle** target; the survival floor (3) and success target (≥5) are marked as **deferred to the next cycle**. (3) §18.3 (Interim Checkpoints) is replaced by a **single end-of-window checkpoint** — "Was the FOM achieved?" — with the 135/90/60/30-day table moved to a historical note. (4) §15 (Conversion Hypothesis) clarifies that the 3% figure and the "≥100 Amazon clicks" target are planning tools for the next cycle, not commitments of this one. (5) §18.4 (new) defines the **Decision Frame at Window Close** by reference to A.1 v2.0 §18-A. (6) §22 version label updated. (7) §1 (Purpose) gains an explicit statement of what this cycle attempts and does not attempt. (8) All cross-references to A.1 updated from v1.5 §18 to v2.0 §17-A and §18-A. |
 
 ---
 
@@ -84,6 +87,27 @@ This document defines the **business functions required to deliver the Style Pic
 > **Business functions define what Style Picks must accomplish. Engineering determines how those functions are executed.**
 
 No technology, agent architecture, LLM framework, or implementation mechanism is prescribed.
+
+## 1.1 What This Cycle Attempts — And What It Does Not
+
+This document inherits the objective structure of `A.1-BIZ-STYP-001` v2.0.
+
+**This cycle attempts:**
+
+> **The First Operational Milestone (FOM): produce, validate, publish, and record one Pin end-to-end within the Style Picks internal system.**
+
+The FOM is defined operationally in `A.5-ENG-STYP-001` §46.
+
+**This cycle does not attempt:**
+
+- commercial validation;
+- reaching the survival floor of 3 qualifying purchases;
+- reaching the success target of ≥ 5 qualifying purchases;
+- producing statistically meaningful performance data.
+
+The operating window is 5 days (2026-10-07 to 2026-10-12). It cannot support validation. It can support the FOM.
+
+**Functional consequence:** The eight business functions defined below must be executable **at least once, manually**, within the operating window. They do not need to be automated, scaled, or optimized in this cycle. The functional model is the target; the FOM is the first instance of it operating.
 
 ---
 
@@ -124,6 +148,8 @@ Measurement & Learning
 
 Governance operates transversally across the entire flow.
 
+> **Cycle note:** In this cycle, the flow is executed **once**, manually, for the first Pin. The feedback arrow (Measurement & Learning) is present in the model but produces no statistically meaningful input in 5 days. It becomes operational in the next cycle.
+
 ---
 
 # 4. Functional Model
@@ -138,6 +164,8 @@ Governance operates transversally across the entire flow.
 | 6 | **Align** | Verify internal consistency between promise, content, product, and destination |
 | 7 | **Learn** | Measure outcomes and improve future decisions |
 | 8 | **Govern** | Enforce conformance to external rules and constraints |
+
+> **Cycle note:** All eight functions must be executable at least once for the FOM. Function 7 (Learn) produces its first record but no actionable insight in this cycle.
 
 ---
 
@@ -160,6 +188,9 @@ Context Definition does **not** select products.
 
 ## 5.6 Ownership
 **Editorial Owner.** No automated system introduces a new context without explicit editorial approval.
+
+## 5.7 Cycle Note
+For the FOM, **one context** is defined. It belongs to one of the two approved categories (Home Decor or Home Organization). Multiple contexts are deferred to the next cycle.
 
 ---
 
@@ -202,6 +233,9 @@ Amazon Best Sellers, Movers & Shakers, Amazon search within approved categories,
 
 ## 6.7 Ownership
 **Editorial Owner**, supported by deterministic scripts when available.
+
+## 6.8 Cycle Note
+For the FOM, Discover operates **entirely manually**. The operator identifies one product candidate through Amazon search or Best Sellers. Source A (Creators API) is not required for the FOM. The fallback path in `A.5-ENG-STYP-001` §37-A applies.
 
 ---
 
@@ -264,6 +298,9 @@ Documented as a versioned update, justified by evidence from Learn, approved by 
 ## 7.7 Ownership
 **Editorial Owner.** No automated system modifies the rubric.
 
+## 7.8 Cycle Note
+For the FOM, the rubric is applied **manually** to one candidate product. Rubric V0.1 is used as authored. No empirical validation is attempted in this cycle.
+
 ---
 
 # 8. Function 4 — Recommend
@@ -285,6 +322,9 @@ Recommend does not independently discover products nor replace Select.
 
 ## 8.6 Ownership
 **Editorial Owner.** LLM-assisted output is a **draft** until it passes Align and Govern.
+
+## 8.7 Cycle Note
+For the FOM, the recommendation is **authored by the Editorial Owner** using the structured fields defined in §9.4. LLM assistance is optional and not required.
 
 ---
 
@@ -365,6 +405,9 @@ This rule is deliberately strict. It keeps routing operable from the first Pin a
 
 > **Tracked as OI-008** in `PH1-REG-STYP-001`.
 
+## 9.7 Cycle Note
+For the FOM, the recommendation is expected to be **High confidence**, because the only material claims made are drawn directly from the Amazon product page. If a claim requires a source other than the Amazon product page or the manufacturer site, it is either removed or the recommendation is routed to human review (which, in this cycle, is the Editorial Owner reviewing their own draft).
+
 ---
 
 # 10. Function 5 — Present
@@ -422,6 +465,9 @@ Publication-ready content asset.
 
 ## 10.8 Ownership
 **Editorial Owner.** Tools assist but do not decide.
+
+## 10.9 Cycle Note
+For the FOM, one Content Asset is produced. If a suitable licensed or stock image cannot be found within the operating window, the Editorial Owner may publish a Pin with the Amazon product image alone, provided the Associates Program permissions allow it. This is a permissible simplification for the FOM.
 
 ---
 
@@ -482,6 +528,9 @@ Align does not create the recommendation. It determines whether the result is st
 
 ## 11.11 Ownership
 **Editorial Owner.** Deterministic checks may be automated; non-deterministic checks remain human.
+
+## 11.12 Cycle Note
+For the FOM, Align is performed **manually by the Editorial Owner** immediately before publication. Post-publication Align checks are scheduled but not required within the 5-day window unless the Pin is published early enough to allow one check.
 
 ---
 
@@ -566,6 +615,11 @@ May subdivide by context if Amazon tracking ID capacity allows.
 ## 12.9 Ownership
 **Editorial Owner**, assisted by analytical tools.
 
+## 12.10 Cycle Note
+For the FOM, Learn produces **one Learning Record** whose content is: *"The FOM was achieved (or not achieved), and the production-time baseline for the first Pin was X minutes."* The five weekly review questions are answered **once**, at window close, as inputs to the Decision Frame (`A.1-BIZ-STYP-001` v2.0 §18-A).
+
+The weekly cadence in 12.7 is aspirational for this cycle. It becomes operational in the next cycle.
+
 ---
 
 # 13. Function 8 — Govern
@@ -588,7 +642,8 @@ Each rule below requires verification against its current source. Verification s
 - The Style Picks **survival horizon** = Associates account creation date + 180 days
 - **Account created:** 2026-04-15 (OI-001, CLOSED)
 - **Actual deadline:** 2026-10-12 (OI-002, CLOSED)
-- The survival clock is **not** the operational start of October 7, 2026. The operating window from the operational start to the deadline is short.
+- The survival clock is **not** the operational start of October 7, 2026. The operating window from the operational start to the deadline is 5 days.
+- **This cycle does not attempt to reach the survival floor.** The qualifying-sales rule governs the account's long-term survival, not this cycle's objective. See §18.2.
 
 ### 13.3.2 Amazon Associates — API Access
 
@@ -630,22 +685,27 @@ Approve, Reject, Correct, Escalate, Compliance evidence.
 |-----------|--------|
 | Hard constraint violation (missing disclosure, prohibited claim, non-conforming link format, non-conforming price display) | **Block** and **escalate** |
 | Soft constraint violation (factual inconsistency, tone issue) | **Return** with error code |
-| **Deadline minus 135 days:** outbound clicks are **well below expected levels** (< 20 total) | **Escalate** — strategic review of context, category, or content |
-| **Deadline minus 135 days:** outbound clicks occurring but **not reflected in Amazon clicks** (attribution ratio < 50%) | **Escalate immediately** — tracking, link, or destination failure |
-| **Deadline minus 90 days:** zero qualifying purchases | **Escalate** for strategic review |
-| **Deadline minus 60 days:** fewer than 2 qualifying purchases | **Escalate** for strategic review |
-| **Deadline minus 30 days:** fewer than 3 qualifying purchases | **Escalate**; survival threshold at risk |
+| **At window close:** FOM not achieved | **Escalate** to Editorial Owner — proceed to Decision Frame (`A.1-BIZ-STYP-001` v2.0 §18-A) |
 | Recurring violation of the same rule | **Escalate** and trigger rubric review |
 
 > **Note:** Broken destination is an **Align** failure (11.3), not a Govern violation.
 
-> **Why two rows at 135 days:** They measure different things. The first detects "no one is engaging with our content at all." The second detects "people are clicking, but Amazon isn't seeing them," which points to a broken link, wrong tracking ID, or a redirect that is being dropped.
+> **Historical note (V1.3):** The V1.2 checkpoint table (deadline minus 135/90/60/30 days) is retained in `A.1-BIZ-STYP-001` v2.0 §18 as a historical artifact but is **not operative** in the current cycle. All those checkpoints fall before the operational start (2026-10-07) and were never actionable. The only operative checkpoint is the FOM check at window close.
 
 ## 13.7 Boundary
-Govern does not create the recommendation. It establishes the conditions under which the recommendation and its presentation are acceptable.
+Govern does not create the recommendation. It establishes the conditions under which the recommendation and its publication are acceptable.
 
 ## 13.8 Ownership
 Govern rules defined by the **Editorial Owner** in consultation with current Amazon Associates, FTC, and Pinterest terms.
+
+## 13.9 Cycle Note
+For the FOM, the Govern rules that **must** be verified before publication are the ones governing the first Pin:
+
+- required disclosure wording (OI-006);
+- link-format rules (OI-007);
+- image and price display rules (OI-005).
+
+This is a **precondition to the FOM**, not a separate phase. It is estimated at a few hours of reading in `A.5-ENG-STYP-001` §32-B.
 
 ---
 
@@ -700,6 +760,8 @@ Govern rules defined by the **Editorial Owner** in consultation with current Ama
    └───────────────────────────────────────────────────┘
 ```
 
+> **Cycle note:** In the current cycle, this flow is executed **once**. The loop back from Learn to future decisions is present in the model but produces no actionable improvement in 5 days.
+
 ---
 
 # 15. Functional Separation
@@ -727,7 +789,9 @@ The rubric is upstream of Select, Recommend, Align, and Learn.
 
 Its evolution is an explicit learning process, not an undocumented change in personal judgment.
 
-> **Contractual basis:** Rubric Management is formalized as capability C-11 in `A.3-CAP-STYP-001` v1.2 §17 and contracted in `A.4-CONTR-STYP-001` C-11.
+> **Contractual basis:** Rubric Management is formalized as capability C-11 in `A.3-CAP-STYP-001` v1.3 §17 and contracted in `A.4-CONTR-STYP-001` C-11.
+>
+> **Cycle note:** Rubric V0.1 is used as authored in this cycle. No empirical validation is attempted.
 
 ---
 
@@ -752,6 +816,8 @@ Possible mechanisms: deterministic, probabilistic, human, hybrid.
 | Learn | Deterministic + human analysis |
 | Govern | Deterministic + human escalation |
 
+> **Cycle note:** For the FOM, **all eight functions are executed manually**. The mechanisms above describe the target state of the next cycle, not the current one. Manual execution is a valid instantiation of each function per `A.5-ENG-STYP-001` §32 (Phase 0).
+
 ---
 
 # 18. Functional Success Criteria
@@ -768,44 +834,64 @@ These measure whether the **functions** are working.
 | Governance violation rate | ≤ 2% | Every Pin for the first 30; then 1 in 5 |
 | Pin-level ID integrity (Pins with correct tracking ID) | 100% | Every Pin |
 
-> **Naming note:** This metric was previously named "Attribution completeness." It is now named **Pin-level ID integrity** to distinguish it from the tracking-ID-level metric in `A.3-CAP-STYP-001` v1.2 §14.12, now named **Tracking-ID attribution coverage**. The two metrics are related but distinct. See `A.3-CAP-STYP-001` v1.2 §21.
+> **Naming note:** This metric was previously named "Attribution completeness." It is now named **Pin-level ID integrity** to distinguish it from the tracking-ID-level metric in `A.3-CAP-STYP-001` v1.3 §14.12, now named **Tracking-ID attribution coverage**. The two metrics are related but distinct. See `A.3-CAP-STYP-001` v1.3 §21.
+>
+> **Cycle note:** For the FOM, the audit is performed on the first (and possibly only) Pin. The "1 in 5" sampling cadence becomes meaningful in the next cycle.
 
 ## 18.2 Business Validation Thresholds
 
 > **These are business targets, not functional requirements.** They belong conceptually to the Business Plan (`A.1-BIZ-STYP-001`).
+>
+> **Cycle restructuring (V1.3):** The FOM is now the **current-cycle** target. The survival floor and success target are **deferred** to the next cycle, consistent with `A.1-BIZ-STYP-001` v2.0 §11 and §17-A.
 
-| Threshold | Target | Notes |
+| Threshold | Target | Cycle |
 |-----------|--------|-------|
-| Qualifying purchases | **≥ 5 by deadline** | Above the survival floor of 3 |
-| Amazon clicks | ≥ 100 by deadline | **Provisional**; recalibrate after month 1 |
-| Outbound click rate | ≥ 1.5% | **Provisional**; recalibrate after month 1 |
-| Pins published | ≥ 120 by deadline | |
-| Production time per Pin | ≤ 45 min average | |
+| **First Operational Milestone (FOM)** | **1 published Pin with complete internal traceability** | **This cycle** |
+| Qualifying purchases — survival floor | 3 by deadline | Deferred |
+| Qualifying purchases — success target | ≥ 5 by deadline | Deferred |
+| Amazon clicks | ≥ 100 by deadline | Deferred (provisional) |
+| Outbound click rate | ≥ 1.5% | Deferred (provisional) |
+| Pins published | ≥ 120 by deadline | Deferred |
+| Production time per Pin | ≤ 45 min average | Measured this cycle on the first Pin |
 
-> **Provisional status of Amazon clicks:** The "≥ 100 Amazon clicks" target is a planning hypothesis aligned with the 3% conversion hypothesis in `A.1-BIZ-STYP-001` v1.5 §15–§16. It is not an empirically validated coefficient and should be replaced by observed data as soon as it exists.
+> **Provisional status of deferred targets:** The "≥ 100 Amazon clicks" target, the "≥ 1.5%" outbound click rate, and the "≥ 120 Pins" target are planning hypotheses aligned with the 3% conversion hypothesis in `A.1-BIZ-STYP-001` v2.0 §15–§16. They are not empirically validated coefficients and are not commitments of this cycle.
 
-## 18.3 Interim Checkpoints
+## 18.3 End-of-Window Checkpoint (Replaces Interim Checkpoints)
 
-> **All checkpoints are anchored to the Amazon Associates deadline (OI-002). Days are expressed as "deadline minus N."**
+> **All checkpoints are anchored to the Amazon Associates deadline (OI-002 = 2026-10-12).**
 
-| Deadline minus | Condition | Action |
-|----------------|-----------|--------|
-| **135 days** | Outbound clicks **well below expected** (< 20 total) | Escalate — strategic review |
-| **135 days** | Outbound clicks present but **attribution ratio < 50%** | Escalate immediately — tracking failure |
-| **90 days** | Zero qualifying purchases | Escalate — strategic review |
-| **60 days** | Fewer than 2 qualifying purchases | Escalate — strategic review |
-| **30 days** | Fewer than 3 qualifying purchases | Escalate — survival threshold at risk |
+**Single operative checkpoint:**
 
-> **Survival floor:** 3 qualifying purchases is the **minimum to keep the Associates account**, not evidence that the value proposition works. The success target is set above that floor.
+| Checkpoint | Condition | Action |
+|------------|-----------|--------|
+| **Window close (2026-10-12)** | FOM achieved | Proceed to Decision Frame (`A.1-BIZ-STYP-001` v2.0 §18-A) |
+| **Window close (2026-10-12)** | FOM not achieved | Diagnose blocker (technical / rule-verification / time / external). Proceed to Decision Frame. |
 
-> **Note on checkpoint relevance (aligned with `A.1-BIZ-STYP-001` v1.5 §18 and `A.3-CAP-STYP-001` v1.2 §18.7):** If the remaining operating window is shorter than the largest checkpoint offset (135 days), the checkpoint has either already passed or is not actionable. In that case, the Editorial Owner must decide whether to (a) treat the current date as the effective checkpoint, (b) request a deadline extension, or (c) accept that the survival floor may not be reached and plan accordingly.
+> **Survival floor:** 3 qualifying purchases is the **minimum to keep the Associates account**, not evidence that the value proposition works. It is **not attempted in this cycle**.
+
+> **Historical note:** The V1.2 checkpoint table (deadline minus 135/90/60/30 days) is retained in `A.1-BIZ-STYP-001` v2.0 §18 as a historical artifact. All those checkpoints fall before the operational start (2026-10-07) and were never actionable. The note on checkpoint relevance that V1.2 carried is now replaced by §18-A of A.1 v2.0.
+
+## 18.4 Decision Frame at Window Close (New)
+
+> **This section formalizes the handoff from this document to the next cycle.**
+
+At the close of the operating window, the Editorial Owner chooses one of four paths, defined in `A.1-BIZ-STYP-001` v2.0 §18-A:
+
+| Path | When | Action |
+|------|------|--------|
+| **1 — Extend the survival clock** | OI-003 verification or Amazon extension changes the deadline | Recompute the operating window; if large enough, revert to validation framing |
+| **2 — Reapply for Amazon Associates** | Account lapses; business still pursues Amazon monetization | Reapply; use the new window to attempt validation with the system already built |
+| **3 — Operate without Amazon Associates** | Account lapses; reapplication not immediately possible | Continue publishing without affiliate monetization; pursue alternative monetization |
+| **4 — Redefine the model** | Diagnosis reveals the model is not viable under available conditions | Redefine business model, channel, monetization, or target market; re-enter Stage A |
+
+> **The Decision Frame forces an explicit choice.** It does not permit declaring "validation in progress" when validation was never attempted. It does not permit treating the FOM as if it were the survival floor.
 
 ---
 
 # 19. Relationship to the Engineering Proposal
 
 ```text
-Business Plan (A.1-BIZ-STYP-001)
+Business Plan (A.1-BIZ-STYP-001 v2.0)
       ↓
 Value Proposition
       ↓
@@ -825,6 +911,8 @@ Implementation (Stage D)
 The Engineering Proposal must answer:
 
 > **What engineering system should Style Picks build to reliably execute these functions?**
+
+> **Cycle note:** For the current cycle, the Engineering Proposal's answer is **Phase 0 — Manual Operating Baseline**, which achieves the FOM without requiring the full system. The full system is the target of the next cycle.
 
 ---
 
@@ -847,14 +935,15 @@ The Engineering Proposal must answer:
 | Govern escalation review | Editorial Owner |
 | Tracking ID strategy | Editorial Owner |
 | Open Items closure | Editorial Owner |
+| **Decision Frame at window close (§18.4)** | **Editorial Owner** |
 
 ---
 
 # 22. Version Control
 
-This specification represents the **V1.2** functional model.
+This specification represents the **V1.3** functional model.
 
-It becomes **V1.2 Final** only when all Open Items (`OI-001` to `OI-008`) are closed.
+It becomes **V1.3 Final** only when all Open Items (`OI-001` to `OI-008`) are closed.
 
 Changes should be made when:
 1. New evidence demonstrates a function is missing
@@ -862,6 +951,7 @@ Changes should be made when:
 3. A functional boundary proves incorrect
 4. The business model changes
 5. Validation reveals the value proposition cannot be delivered
+6. **The cycle objective changes (as it did from V1.2 to V1.3: validation → traction demonstration)**
 
 ---
 
@@ -877,6 +967,8 @@ operating transversally and acting as a publication gate.
 
 Together, these functions define the minimum business behavior required for Style Picks to transform product abundance into contextual, curated, trustworthy, and commercially useful product discovery.
 
+> **Cycle note:** In this cycle, the eight functions are executed **once**, manually, to achieve the **First Operational Milestone**. The functional model is the target. The FOM is the first instance of it operating.
+
 ---
 
 ## Formal Sign-Off
@@ -891,11 +983,11 @@ Together, these functions define the minimum business behavior required for Styl
 
 **Document ID:** A.2-FUNC-STYP-001
 
-**Version:** 1.2 — Functional Definition (Reconciled)
+**Version:** 1.3 — Functional Definition (Traction Demonstration Reconciled)
 
 **Status:** **Baselined**
 
-**Authorization:** This document derives from `A.1-BIZ-STYP-001` v1.5. `A.3-CAP-STYP-001` v1.2 is authorized to derive from it.
+**Authorization:** This document derives from `A.1-BIZ-STYP-001` v2.0. `A.3-CAP-STYP-001` v1.3 is authorized to derive from it.
 
 **Pending Change Proposals:** CP-002 (AI-Generated Contextual Imagery).
 
@@ -903,7 +995,7 @@ Together, these functions define the minimum business behavior required for Styl
 
 ---
 
-*End of Value Proposition Functional Specification — A.2-FUNC-STYP-001 v1.2*
+*End of Value Proposition Functional Specification — A.2-FUNC-STYP-001 v1.3*
 
 ---
 
@@ -913,4 +1005,8 @@ Together, these functions define the minimum business behavior required for Styl
 >
 > **OI-002 is CLOSED.** The survival deadline is **2026-10-12** (account date + 180 days).
 >
-> All checkpoints in this document are computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock. The remaining operating window from the operational start to the deadline is short; §18.3 carries the note on checkpoint relevance.
+> The operational start of October 7, 2026 is confirmed as **not** the survival clock. The operating window is **5 days**.
+>
+> **This cycle does not attempt commercial validation.** It attempts the **First Operational Milestone (FOM)** — one published Pin with complete internal traceability. The survival floor and success target are deferred to the next cycle, per `A.1-BIZ-STYP-001` v2.0 §11 and §18-A.
+>
+> The single operative checkpoint is at **window close (2026-10-12)**: was the FOM achieved? The Decision Frame in §18.4 governs what happens next.
