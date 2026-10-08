@@ -6,9 +6,9 @@
 
 **Document ID:** A.3-CAP-STYP-001
 
-**Version:** 1.1 RC.4 — Capability Definition Release Candidate
+**Version:** 1.2 — Capability Definition (Reconciled)
 
-**Status:** Stage A — Engineering Definition (Conceptual Level) — Release Candidate
+**Status:** Stage A — Engineering Definition (Conceptual Level) — Baselined
 
 **Project:** Style Picks — Content Commerce + Affiliate Commerce
 
@@ -32,7 +32,6 @@
 **Monetization:** Amazon Associates
 **Initial Categories:** Home Decor + Home Organization
 **Stage:** Commercial Validation
-**Operational Start:** October 7, 2026
 **Document Type:** Business Capabilities Specification
 **Derives from:** A.2-FUNC-STYP-001
 
@@ -48,6 +47,7 @@
 | 1.1 RC.3 | Oct 7, 2026 | Reconciled Medium confidence definition; added survival checkpoints to CD1; unified tracking ID source of truth; removed leftover verifiability threshold; enumerated Recommendation statuses; made reconciliation metric conditional; generalized opening statement of Section 5 to "operating loop" |
 | 1.1 RC.4 | Oct 7, 2026 | Reclassified Performance Measurement → Compliance as a **monitoring input** (not a runtime dependency); fixed cross-reference to Functional Spec; documented runtime vs monitoring dependency in Section 19 |
 | **1.1 RC.4 (Baselined header)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals register referenced; Sign-Off block added |
+| **1.2** | Oct 8, 2026 | **Consistency reconciliation.** (1) §21 metrics roll-up table cleaned — the malformed row for "Pin-level ID integrity" now has exactly two columns. (2) §18.7 survival checkpoint table now carries a note on checkpoint relevance when the remaining operating window is shorter than the checkpoint offset, aligned with `A.1-BIZ-STYP-001` v1.5 §18. (3) §14.12 metric named "Tracking-ID attribution coverage" is now the only name used; the obsolete term "attribution completeness" is removed from §21. (4) §16.5 note on the future `Limited Reliability` tier aligned with `A.4-CONTR-STYP-001` I.1.3 and `A.2-FUNC-STYP-001` §9.6.2. (5) §22 ownership table confirmed against `A.4-CONTR-STYP-001` INV-10 and Part II contracts. (6) Change Proposals register updated to reflect CP-001 acceptance. |
 
 ---
 
@@ -68,9 +68,14 @@
 
 **Change Proposals affecting this document:**
 
-| CP ID | Title | Status |
-|-------|-------|--------|
-| CP-002 | AI-Generated Contextual Imagery | Pending |
+| CP ID | Title | Affected sections | Status |
+|-------|-------|-------------------|--------|
+| CP-001 | Re-evaluation vs Revocation on Superseded Evidence | 10.6, 10.8, 16.6 | **Accepted 2026-10-08** |
+| CP-002 | AI-Generated Contextual Imagery | 11.5, 16.5 | Pending |
+
+> **On CP-001 (Accepted):** The two-step logic is now formalized in `A.4-CONTR-STYP-001` INV-12 and `A.5-ENG-STYP-001` §19. Capability 10's evidence versioning rules in §16.6 reflect this. No divergence remains.
+
+> **On CP-002 (Pending):** This CP, filed in `A.5-ENG-STYP-001` §47, proposes amending `A.2-FUNC-STYP-001` §10.6 and corresponding contracts to admit AI-generated contextual imagery. Until CP-002 is accepted, only licensed and stock imagery are used. Capability 5's imagery rules in §11.5 reflect this.
 
 **Moved to Rubric Management backlog (not a document blocker):**
 - Rubric V0.1 empirical validation (tracked in 17.13).
@@ -539,6 +544,9 @@ A Recommendation Record is always in exactly one of the following states:
 | **Human-Review-Approved** | Reviewed and accepted despite Low evidence confidence. Eligible for Content Presentation. |
 | **Approved** | Evidence confidence = High or Medium. Eligible for Content Presentation. |
 | **Rejected** | Withdrawn before Content Presentation. |
+| **Revoked** | Withdrawn after approval, typically due to superseded evidence no longer supporting a material claim. |
+
+> **CP-001 accepted (2026-10-08):** A recommendation moves to Revoked only when **a material claim is no longer supported by any Active Evidence Record**. If successor evidence is available for the same claim, the reference is re-pointed to the successor and the recommendation remains in its current approved state. This two-step logic is formalized in `A.4-CONTR-STYP-001` INV-12.
 
 ## 10.6 Evidence Confidence (Computed Here)
 
@@ -636,6 +644,8 @@ The asset must: accurately represent the recommended product; use permitted imag
 
 Prices are not displayed in Pins under the Stage A functional rule.
 
+> **CP-002 (Pending):** AI-generated contextual imagery is not admitted until CP-002 is accepted. Until then, only licensed and stock imagery are used.
+
 ## 11.6 Destination and Tracking ID — Single Source of Truth
 
 **Source of truth:** The **Product Record** holds an **approved destination reference** for each product. That reference contains both the affiliate destination URL and the tracking ID embedded in that URL.
@@ -711,7 +721,7 @@ A **Validation Result** containing:
 - validation timestamp.
 
 ## 12.5 Decision States
-**PASS** / **FAIL**
+**PASS** / **FAIL** / **CLEARED**
 
 ## 12.6 Business Rules
 Validation must confirm, in order:
@@ -1029,11 +1039,13 @@ An **Evidence Record** containing:
 - license or permission (for imagery);
 - applicable constraints;
 - linked product identifier;
-- linked recommendation identifier (where applicable).
+- linked recommendation identifier (where applicable);
+- status (Active / Superseded);
+- superseded_by reference (when Superseded).
 
 ## 16.5 Evidence Source Policy (Interim)
 
-> **This policy is aligned with `A.2-FUNC-STYP-001` §9.6.2.** Formalizing it is **OI-008** in `PH1-REG-STYP-001`.
+> **This policy is aligned with `A.2-FUNC-STYP-001` §9.6.2 and `A.4-CONTR-STYP-001` I.1.3.** Formalizing it is **OI-008** in `PH1-REG-STYP-001`.
 
 **Verified sources:**
 - Amazon product page;
@@ -1048,12 +1060,14 @@ An **Evidence Record** containing:
 
 **Rule:** Any material claim sourced from anything other than Amazon's product page or the manufacturer's official site **lowers Evidence Confidence to Low**, which routes the recommendation to human review.
 
-> **On the "Limited Reliability" tier:** Preserved in the schema as a **future** classification. Not currently mapped to any source. Operational tiers today are **Verified** and **Unverified**.
+> **On the "Limited Reliability" tier:** Preserved in the schema as a **future** classification. Not currently mapped to any source. Operational tiers today are **Verified** and **Unverified**. Until OI-008 is closed, Evidence Confidence = Medium is unreachable.
 
 > **On fact volatility (deferred):** Source reliability and fact volatility are distinct dimensions. Price, availability, and rating are volatile even when sourced from a Verified source. Distinguishing these belongs to a future Evidence Source Policy.
 
 ## 16.6 Business Rules
 Every factual claim must reference at least one Evidence Record. Imagery must have recorded license and permission metadata. Evidence records must be versioned when sources change. Primary evidence may be registered independently of any recommendation (see 8.13).
+
+> **CP-001 accepted (2026-10-08):** When a material claim's supporting Evidence Record is superseded, the two-step logic applies: (1) if a successor supports the same claim, the reference is re-pointed and the recommendation retains its current approved state; (2) if no successor supports the claim, the recommendation transitions to Revoked. This is formalized in `A.4-CONTR-STYP-001` INV-12.
 
 ## 16.7 Preconditions
 A claim exists that requires factual support, **or** primary evidence is being registered for a discovered product.
@@ -1216,6 +1230,8 @@ Compliance & Governance enforces: Amazon Associates Operating Agreement rules; F
 
 > **Survival floor:** 3 qualifying purchases is the minimum to keep the Associates account, not evidence that the value proposition works.
 
+> **Note on checkpoint relevance (aligned with `A.1-BIZ-STYP-001` v1.5 §18):** All checkpoints are anchored to the Amazon Associates deadline (OI-002 = 2026-10-12). If the remaining operating window is shorter than the largest checkpoint offset (135 days), the checkpoint has either already passed or is not actionable. In that case, the Editorial Owner must decide whether to (a) treat the current date as the effective checkpoint, (b) request a deadline extension, or (c) accept that the survival floor may not be reached and plan accordingly.
+
 ## 18.8 Decision States
 **Approve** / **Reject** / **Correct** / **Escalate**
 
@@ -1328,14 +1344,14 @@ D+H.
 # 21. Metrics Roll-up
 
 | Functional threshold (`A.2-FUNC-STYP-001` §18.1) | Aggregated from |
-|---------------------------------------------|-----------------|
+|--------------------------------------------------|-----------------|
 | Recommendations passing Align on first attempt ≥ 90% | Consistency Validation: first-pass validation rate |
 | Factual error rate ≤ 2% | Recommendation Generation: factual error rate + Compliance & Governance: violation rate |
 | Recommendation-context match rate ≥ 95% | Recommendation Generation: context-match rate |
 | Governance violation rate ≤ 2% | Compliance & Governance: violation rate |
-| Pin-level ID integrity 100% | Publication | Attribution completeness 100% | Publication & Lifecycle: tracking ID correctness at publication | Lifecycle: tracking ID correctness at publication |
+| Pin-level ID integrity 100% | Publication & Lifecycle: tracking ID correctness at publication |
 
-> **Naming note:** `A.2-FUNC-STYP-001` §18.1 defines **Pin-level ID integrity** as **Pins with a correct tracking ID** — a Pin-level, computable metric. Capability 8's metric is now named **Tracking-ID attribution coverage** (14.12) because Amazon reports per tracking ID, not per Pin. The two were previously both named "attribution completeness."
+> **Naming note:** `A.2-FUNC-STYP-001` §18.1 defines **Pin-level ID integrity** as **Pins with a correct tracking ID** — a Pin-level, computable metric. Capability 8's metric is named **Tracking-ID attribution coverage** (§14.12) because Amazon reports per tracking ID, not per Pin. The two metrics are related but distinct, and they are not the same metric. The obsolete term "attribution completeness" is no longer used anywhere in this document.
 
 **Business Validation Thresholds (`A.2-FUNC-STYP-001` §18.2) are not capability metrics.** They are business outcomes tracked in the Business Plan (`A.1-BIZ-STYP-001`).
 
@@ -1358,13 +1374,15 @@ D+H.
 | Rubric Management | Cross-cutting | Editorial Owner |
 | Compliance & Governance | Cross-cutting | Editorial Owner |
 
+> **Consistency note:** This ownership model matches `A.4-CONTR-STYP-001` Part II, where each contract's sole writer is identified per record type, and `A.4-CONTR-STYP-001` INV-10, which requires exactly one sole writer per record type. The Editorial Owner is the accountable business owner for all twelve capabilities; the sole-writer rule constrains the *record-level* write authority, not the business ownership.
+
 ---
 
 # 23. Version Control
 
-This specification represents the **V1.1 RC.4** business capability model.
+This specification represents the **V1.2** business capability model.
 
-It becomes **V1.1 Final** only when all Open Items (`OI-001` to `OI-008`) are closed.
+It becomes **V1.2 Final** only when all Open Items (`OI-001` to `OI-008`) are closed.
 
 **Provisional operational rules** may evolve after the first 30 days of live operation without requiring a version increment.
 
@@ -1390,13 +1408,36 @@ The next engineering artifact should be the **Capability Contracts Specification
 
 ---
 
+## Formal Sign-Off
+
+**Prepared by:** Style Picks Editorial Owner
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Stage:** A — Engineering Definition (Conceptual Level)
+
+**Level:** A.3 — Business Capabilities
+
+**Document ID:** A.3-CAP-STYP-001
+
+**Version:** 1.2 — Capability Definition (Reconciled)
+
+**Status:** **Baselined**
+
+**Authorization:** This document derives from `A.2-FUNC-STYP-001`. `A.4-CONTR-STYP-001` is authorized to derive from it.
+
+**Language:** English
 
 ---
 
-## Note on OI-001
+*End of Business Capabilities Specification — A.3-CAP-STYP-001 v1.2*
+
+---
+
+## Note on OI-001 and OI-002
 
 > **OI-001 is CLOSED.** Amazon Associates account was created on **2026-04-15**.
 >
-> The survival deadline is **2026-10-12** (account date + 180 days).
+> **OI-002 is CLOSED.** The survival deadline is **2026-10-12** (account date + 180 days).
 >
-> All checkpoints in this document are now computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock.
+> All checkpoints in this document are computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock. The remaining operating window from the operational start to the deadline is short; §18.7 carries the note on checkpoint relevance.

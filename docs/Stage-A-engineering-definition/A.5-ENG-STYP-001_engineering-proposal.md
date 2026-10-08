@@ -6,19 +6,19 @@
 
 **Document ID:** A.5-ENG-STYP-001
 
-**Version:** 1.2 — Engineering Definition Baseline (Frozen)
+**Version:** 1.3 — Engineering Definition Baseline (Reconciled)
 
-**Status:** Stage A — Engineering Definition (Conceptual Level) — Frozen
+**Status:** Stage A — Engineering Definition (Conceptual Level) — Baselined
 
 **Project:** Style Picks — Content Commerce + Affiliate Commerce
 
 **Engagement:** STYP-VALIDATION-2026
 
 **Parent Documents:**
-- A.1-BIZ-STYP-001 — Business Plan and Commercial Validation (v1.4)
-- A.2-FUNC-STYP-001 — Value Proposition Functional Specification (v1.1 RC)
-- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.1 RC.4)
-- A.4-CONTR-STYP-001 — Capability Contracts Specification (v1.0 RC.4)
+- A.1-BIZ-STYP-001 — Business Plan and Commercial Validation (v1.5 Reconciled)
+- A.2-FUNC-STYP-001 — Value Proposition Functional Specification (v1.2 Reconciled)
+- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.2 Reconciled)
+- A.4-CONTR-STYP-001 — Capability Contracts Specification (v1.0 Reconciled)
 - PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.0)
 
 **Child Documents:**
@@ -49,8 +49,9 @@
 | 1.1 | Oct 8, 2026 | Added Phase 0 / FOM; committed default stack; added external dependency fallbacks; filed three change proposals |
 | 1.2 | Oct 8, 2026 | Build-time budget and evidence-gated phases; compliance verification in Phase 0; ED-05 closed; AI provider default; CP-02 and CP-03 wording corrected; Workflow Execution Model added; refined defaults |
 | 1.2 Final | Oct 8, 2026 | Phase 0 uses Django models + admin directly on PostgreSQL (no SQLite, no migration from spreadsheets); scheduling mechanism unified to cron + management commands (APScheduler dropped); status set to Frozen |
-| **1.2 Final (Baselined header)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals and Engineering Dependencies registers integrated; Sign-Off block added |
+| 1.2 Final (Baselined header) | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals and Engineering Dependencies registers integrated; Sign-Off block added |
 | 1.2.1 | Oct 8, 2026 | CP-001 accepted. §19 re-evaluation semantics aligned with INV-12 of A.4. No divergence remains. |
+| **1.3** | Oct 8, 2026 | **Consistency reconciliation with A.1 v1.5, A.2 v1.2, A.3 v1.2, A.4 v1.0 Reconciled.** (1) CP-003 status corrected from Pending to **Accepted 2026-10-08** in the header table and §47. (2) §13 wording aligned with A.4 C-06 postcondition #3 (C-06 issues; C-07 executes). (3) §32-A references the checkpoint relevance note from A.1 v1.5 §18 and A.3 v1.2 §18.7. (4) §46 FOM aligns with A.4 INV-13. (5) All parent document versions updated. (6) Formal Sign-Off updated to Baselined. |
 
 ---
 
@@ -75,7 +76,7 @@
 |-------|-------|-------------------|--------|
 | CP-001 | Re-evaluation vs Revocation on Superseded Evidence | §19, §47 | **Accepted 2026-10-08** |
 | CP-002 | AI-Generated Contextual Imagery | §12, §47 | Pending |
-| CP-003 | Review Cleared Sole-Writer Assignment | §13, §47 | Pending |
+| CP-003 | Review Cleared Sole-Writer Assignment | §13, §47 | **Accepted 2026-10-08** |
 
 **Engineering Dependencies Register:**
 
@@ -86,6 +87,10 @@
 | ED-003 | Pinterest API Capabilities | Open |
 | ED-004 | AI Provider Selection | **Closed** — Anthropic Claude |
 | ED-005 | Infrastructure Selection | **Closed** — §39-A |
+
+> **On CP-003 (Accepted):** A.4-CONTR-STYP-001 v1.0 Reconciled reworded C-06 postcondition #3. C-06 issues Validation Results; C-07 executes lifecycle transitions. This aligns with INV-13. §13 of this document reflects the accepted wording.
+
+> **On CP-002 (Pending):** Until accepted, only licensed and stock imagery are used. §12 reflects this.
 
 ---
 
@@ -278,7 +283,7 @@ Images are treated separately from product factual evidence.
 
 # 13. C-06 — Consistency Validation
 
-Primarily deterministic. The seven validation checks defined by `A.2-FUNC-STYP-001` and `A.4-CONTR-STYP-001` are implemented as executable validation rules.
+Primarily deterministic. The seven validation checks defined by `A.2-FUNC-STYP-001` §11.3 and `A.4-CONTR-STYP-001` I.1.7 are implemented as executable validation rules.
 
 **Validator checks:** Pin promise vs. content; product identity; destination; tracking ID; recommendation/content consistency; required metadata; relevant evidence relationships.
 
@@ -286,7 +291,7 @@ Primarily deterministic. The seven validation checks defined by `A.2-FUNC-STYP-0
 
 Human review may be required for ambiguous semantic checks.
 
-**Lifecycle transitions triggered by a Validation Result are executed by C-07 only** (see §47, CP-003).
+**Lifecycle transitions triggered by a Validation Result are executed by C-07 only** (INV-13; CP-003 accepted 2026-10-08). C-06 issues Validation Results; C-07 executes lifecycle transitions. This aligns with `A.4-CONTR-STYP-001` C-06 postcondition #3 and §47 CP-003.
 
 ---
 
@@ -303,6 +308,8 @@ Publication permitted
 Operator may trigger publication manually. Where approved Pinterest API capabilities permit, C-07 may publish programmatically.
 
 **Lifecycle:** Publication records track Pin URL, tracking ID, publication timestamp, validation reference, compliance reference, lifecycle events, current state.
+
+**INV-13 (CP-003 accepted 2026-10-08):** Every lifecycle transition — including Review triggered, Review cleared, Re-linked, Replaced, Archived, Restored — is executed by C-07 only, even when triggered by a Validation Result issued by C-06.
 
 ---
 
@@ -362,7 +369,7 @@ Dedicated governance layer. System maintains evidence identity, source, source c
 Evidence v1 → Superseded → Evidence v2
 ```
 
-**Re-evaluation semantics (CP-001 accepted, 2026-10-08):** when a material claim's supporting evidence is superseded, the system adopts the two-step logic — re-point the claim to the successor if it supports the claim, otherwise Revoke the recommendation. This semantics is now formalized in INV-12 of `A.4-CONTR-STYP-001`. **No further divergence exists between A.4 and A.5 on this point.**
+**Re-evaluation semantics (CP-001 accepted, 2026-10-08):** when a material claim's supporting evidence is superseded, the system adopts the two-step logic — re-point the claim to the successor if it supports the claim, otherwise Revoke the recommendation. This semantics is formalized in INV-12 of `A.4-CONTR-STYP-001`. No divergence exists between A.4 and A.5 on this point.
 
 ---
 
@@ -632,11 +639,11 @@ The implementation follows dependency order, not visual feature order. All build
 
 > **This section is the operational consequence of EP-07 and EP-08.**
 
-**Capacity reality.** One operator. The validation targets in `A.2-FUNC-STYP-001` §18.2 (120 Pins at ≤45 min each) already require roughly 90 hours of production. A 12–18 week build program consumes most of the 180-day survival window. **Every hour of build is an hour not spent producing Pins.**
+**Capacity reality.** One operator. The validation targets in `A.2-FUNC-STYP-001` v1.2 §18.2 (120 Pins at ≤45 min each) already require roughly 90 hours of production. A 12–18 week build program consumes most of the 180-day survival window. **Every hour of build is an hour not spent producing Pins.**
 
 **Budget cap.** Build effort during commercial validation is capped at **10 hours per week**, with the remaining operator time reserved for Pin production. If a phase cannot be completed within the cap, it is deferred, not expanded.
 
-**Evidence gating.** Phases 2–7 do **not** start automatically. Each phase starts **only when the operational evidence justifies automating what the phase automates** (consistent with `A.2-FUNC-STYP-001` §17.1):
+**Evidence gating.** Phases 2–7 do **not** start automatically. Each phase starts **only when the operational evidence justifies automating what the phase automates** (consistent with `A.2-FUNC-STYP-001` v1.2 §17.1):
 
 | Phase | Start condition (evidence gate) |
 |-------|--------------------------------|
@@ -648,6 +655,8 @@ The implementation follows dependency order, not visual feature order. All build
 | 7 | Sufficient performance data exists to make learning non-speculative. |
 
 **Consequence.** In a realistic validation window, **Phases 0–3 are likely to be the only ones that justify themselves before the deadline.** Phases 4–7 may legitimately be deferred past the first survival checkpoint. This is not a failure of the plan; it is the plan working as designed.
+
+> **Note on the compressed operating window (aligned with `A.1-BIZ-STYP-001` v1.5 §18 and `A.3-CAP-STYP-001` v1.2 §18.7):** The survival clock began on 2026-04-15 and the deadline is 2026-10-12. The operational start is 2026-10-07. The remaining operating window from the operational start to the deadline is short. If the window is shorter than the largest checkpoint offset (135 days), the checkpoints have either already passed or are not actionable, and the Editorial Owner must decide whether to treat the current date as the effective checkpoint, request a deadline extension, or accept that the survival floor may not be reached. This does not change the engineering plan; it changes the operational expectations against which the plan is executed.
 
 ## 32-B — External Rule Verification (Phase 0)
 
@@ -884,7 +893,7 @@ The First Operational Milestone is the state in which:
 
 **The FOM does depend on:** verification of the specific external rules governing the first Pin (§32-B).
 
-**The FOM is the target of Phase 0.**
+**The FOM is the target of Phase 0.** It aligns with `A.4-CONTR-STYP-001` INV-13 (C-07 executes lifecycle transitions) and with the reconciled state of CP-001 and CP-003.
 
 ---
 
@@ -894,9 +903,9 @@ Under EP-01, where this Engineering Proposal diverges from the Capability Contra
 
 ## CP-001 — Re-evaluation vs Revocation on Superseded Evidence
 
-**Divergence:** Section 19 describes two-step logic — re-point if successor supports the claim, Revoke otherwise. INV-12 in `A.4-CONTR-STYP-001` RC.4 states that recommendations whose supporting evidence is superseded "MUST transition to Revoked."
+**Divergence:** Section 19 describes two-step logic — re-point if successor supports the claim, Revoke otherwise. INV-12 in `A.4-CONTR-STYP-001` RC.4 stated that recommendations whose supporting evidence is superseded "MUST transition to Revoked."
 
-**Proposed resolution:** Adopt the two-step logic. **Impact:** INV-12 and I.5 need rewording. **Status:** Pending.
+**Proposed resolution:** Adopt the two-step logic. **Impact:** INV-12 and I.5 need rewording. **Status:** **Accepted 2026-10-08.** INV-12 in `A.4-CONTR-STYP-001` v1.0 Reconciled now formalizes the two-step logic. No divergence remains.
 
 ## CP-002 — AI-Generated Contextual Imagery
 
@@ -910,13 +919,13 @@ Under EP-01, where this Engineering Proposal diverges from the Capability Contra
 
 ## CP-003 — Review Cleared Sole-Writer Assignment
 
-**Divergence:** `A.4-CONTR-STYP-001` RC.4 C-06 postcondition #3 says C-06 "executes" the Review cleared event, contradicting INV-10 (C-07 is sole writer of the Publication Record).
+**Divergence:** `A.4-CONTR-STYP-001` RC.4 C-06 postcondition #3 said C-06 "executes" the Review cleared event, contradicting INV-10 and INV-13.
 
 **Proposed resolution:** Reword C-06 postcondition #3 to: *"C-06 issues a Validation Result with status = CLEARED; C-07 executes the corresponding lifecycle transition on the Publication Record."*
 
 **Impact:** Documentation-only text change in `A.4-CONTR-STYP-001`.
 
-**Status:** Pending.
+**Status:** **Accepted 2026-10-08.** C-06 postcondition #3 has been reworded in `A.4-CONTR-STYP-001` v1.0 Reconciled. §13 of this document reflects the accepted wording.
 
 ---
 
@@ -932,9 +941,6 @@ Pinterest permits creators enrolled in the Amazon Influencer Program to connect 
 
 ---
 
-
----
-
 # 51. What Comes Next
 
 This document closes the documentation phase of the Stage A pipeline:
@@ -944,7 +950,7 @@ A.1-BIZ-STYP-001        Business Plan
 A.2-FUNC-STYP-001       Functional Specifications
 A.3-CAP-STYP-001        Business Capabilities
 A.4-CONTR-STYP-001      Capability Contracts
-A.5-ENG-STYP-001        Engineering Proposal  ← this document (Frozen)
+A.5-ENG-STYP-001        Engineering Proposal  ← this document (Baselined)
 ```
 
 The next artifacts are not documents:
@@ -959,7 +965,7 @@ Any further document — technical design notes, implementation logs, runbooks �
 
 ## Freeze Note
 
-**Version 1.2 Final is frozen.** The three change proposals (CP-001, CP-002, CP-003) remain pending in `A.4-CONTR-STYP-001`; they do not block the start of Phase 0. The next review cycle is triggered by operational evidence, not by further drafting. The next thing to look at is not this document — it is the result of §32-B, the account creation date (OI-001), and the production-time log from the first ten Pins.
+**Version 1.3 is Baselined.** CP-001 and CP-003 are accepted and reflected in `A.4-CONTR-STYP-001` v1.0 Reconciled. CP-002 remains pending and does not block the start of Phase 0. The next review cycle is triggered by operational evidence, not by further drafting. The next thing to look at is not this document — it is the result of §32-B, the production-time log from the first ten Pins, and the operational reality of the compressed remaining window.
 
 ---
 
@@ -975,27 +981,30 @@ Any further document — technical design notes, implementation logs, runbooks �
 
 **Document ID:** A.5-ENG-STYP-001
 
-**Version:** 1.2 — Engineering Definition Baseline (Frozen)
+**Version:** 1.3 — Engineering Definition Baseline (Reconciled)
 
-**Status:** **Frozen**
+**Status:** **Baselined**
 
 **Authorization:** This document closes Stage A. `STAGE-A-CONSOL-REPORT-STYP-001` is authorized to consolidate Stage A and authorize Stage B (System Architecture — HLD).
 
-**Blocking dependencies:** OI-001, OI-002.
+**Blocking dependencies:** OI-001, OI-002 (both CLOSED).
 
-**Pending Change Proposals:** CP-001, CP-002, CP-003.
+**Pending Change Proposals:** CP-002.
+
+**Accepted Change Proposals:** CP-001 (2026-10-08), CP-003 (2026-10-08).
 
 **Language:** English
 
 ---
 
-*End of Engineering Proposal — A.5-ENG-STYP-001 v1.2 Final*
+*End of Engineering Proposal — A.5-ENG-STYP-001 v1.3*
+
 ---
 
-## Note on OI-001
+## Note on OI-001 and OI-002
 
 > **OI-001 is CLOSED.** Amazon Associates account was created on **2026-04-15**.
 >
-> The survival deadline is **2026-10-12** (account date + 180 days).
+> **OI-002 is CLOSED.** The survival deadline is **2026-10-12** (account date + 180 days).
 >
-> All checkpoints in this document are now computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock.
+> All checkpoints in this document are computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock. The remaining operating window from the operational start to the deadline is short; §32-A carries the note on checkpoint relevance, aligned with `A.1-BIZ-STYP-001` v1.5 §18 and `A.3-CAP-STYP-001` v1.2 §18.7.

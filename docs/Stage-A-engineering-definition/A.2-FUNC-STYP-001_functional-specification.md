@@ -6,20 +6,20 @@
 
 **Document ID:** A.2-FUNC-STYP-001
 
-**Version:** 1.1 — Functional Definition Release Candidate
+**Version:** 1.2 — Functional Definition (Reconciled)
 
-**Status:** Stage A — Engineering Definition (Conceptual Level) — Release Candidate
+**Status:** Stage A — Engineering Definition (Conceptual Level) — Baselined
 
 **Project:** Style Picks — Content Commerce + Affiliate Commerce
 
 **Engagement:** STYP-VALIDATION-2026
 
 **Parent Documents:**
-- A.1-BIZ-STYP-001 — Business Plan and Commercial Validation (v1.4)
+- A.1-BIZ-STYP-001 — Business Plan and Commercial Validation (v1.5 Reconciled)
 - PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.0)
 
 **Child Documents:**
-- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.1 RC.4)
+- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.2 Reconciled)
 
 **Domain:** Domain A.2 — Business Functions
 
@@ -32,7 +32,6 @@
 **Monetization:** Amazon Associates
 **Initial Categories:** Home Decor + Home Organization
 **Stage:** Commercial Validation
-**Operational Start:** October 7, 2026
 **Amazon Associates Account Created:** 2026-04-15
 **Amazon Associates Deadline:** 2026-10-12
 **Validation Horizon:** Ends at the Amazon Associates deadline
@@ -48,7 +47,8 @@
 | 1.0 | Oct 7, 2026 | Initial functional specification |
 | 1.1 | Oct 7, 2026 | Govern diagram, Align/Govern boundary, confidence model, thresholds, imagery, FTC/Pinterest disclosure, attribution scope, sources |
 | 1.1 RC | Oct 7, 2026 | Checkpoint 135d split into two distinct alarms; interim evidence rule added; 12.3 attribution slip corrected; version label aligned with Section 22 |
-| **1.1 RC (Baselined header)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals register referenced; Sign-Off block added |
+| 1.1 RC (Baselined header) | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals register referenced; Sign-Off block added |
+| **1.2** | Oct 8, 2026 | **Consistency reconciliation with A.1 v1.5, A.3 v1.2, A.4 v1.0 Reconciled, A.5 v1.2.1.** (1) §13.3.1 placeholders `[OI-001]` and `[OI-002]` replaced with the actual closed values. (2) §18.2 marks "Amazon clicks ≥ 100" as **Provisional**, aligning with A.1 v1.5 §15. (3) §18.3 adds a note on checkpoint relevance when the remaining operating window is shorter than the checkpoint offset, aligning with A.1 v1.5 §18 and A.3 v1.2 §18.7. (4) §22 version label updated to reflect Baselined status. (5) §6.6 and §13.3.2 reference note about PA-API → Creators API aligned with A.4 and A.5 §48. (6) §10.6 explicit reference to CP-002 pending status retained. (7) Formal Sign-Off block added. |
 
 ---
 
@@ -69,11 +69,11 @@
 
 **Change Proposals affecting this document:**
 
-| CP ID | Title | Status |
-|-------|-------|--------|
-| CP-002 | AI-Generated Contextual Imagery | Pending |
+| CP ID | Title | Affected sections | Status |
+|-------|-------|-------------------|--------|
+| CP-002 | AI-Generated Contextual Imagery | §10.6 | Pending |
 
-> **On CP-002:** This CP, filed in `A.5-ENG-STYP-001` §47, proposes amending §10.6 of this document to admit AI-generated contextual imagery. Until CP-002 is accepted, only licensed and stock imagery are used.
+> **On CP-002:** This CP, filed in `A.5-ENG-STYP-001` §47, proposes amending §10.6 of this document to admit AI-generated contextual imagery under labeling and evidence conditions, and to reference CD4 (Pinterest policies on AI-generated content labeling). Until CP-002 is accepted, only licensed and stock imagery are used.
 
 ---
 
@@ -185,7 +185,7 @@ It does not answer: **"Which product deserves to be recommended?"**
 
 Discover depends on product data. Two sources exist:
 
-### Source A — Amazon Product Advertising API (PA-API) / Creators API
+### Source A — Amazon Creators API
 
 Access to the API has historically required recent qualifying sales.
 
@@ -193,7 +193,7 @@ Access to the API has historically required recent qualifying sales.
 
 **Functional consequence:** Discover must operate in **manual or semi-manual mode** during early validation until API access is confirmed.
 
-> **Reference note:** PA-API has been deprecated and replaced by **Creators API**. All references in this document to PA-API should be read as referring to Creators API. See `A.5-ENG-STYP-001` §48.
+> **Reference note:** PA-API has been deprecated and replaced by **Creators API**. All references in this document to PA-API should be read as referring to Creators API. See `A.5-ENG-STYP-001` §48 and `A.4-CONTR-STYP-001` Notes on External Facts.
 
 ### Source B — Manual product research
 Amazon Best Sellers, Movers & Shakers, Amazon search within approved categories, Pinterest search.
@@ -350,7 +350,7 @@ A product whose recommended use depends on a claim that **cannot be substantiate
 
 ### 9.6.2 Interim Evidence Rule (Applicable Until Evidence Source Policy Exists)
 
-> **Requirement for the next layer:** The full Evidence Source Policy belongs in the **Business Capabilities Specification / Capability Contracts** (`A.3-CAP-STYP-001`, `A.4-CONTR-STYP-001`).
+> **Requirement for the next layer:** The full Evidence Source Policy belongs in the **Business Capabilities Specification / Capability Contracts** (`A.3-CAP-STYP-001` §16.5, `A.4-CONTR-STYP-001` I.1.3).
 
 **Interim rule for Stage A:**
 
@@ -586,15 +586,15 @@ Each rule below requires verification against its current source. Verification s
 
 **Functional consequence:**
 - The Style Picks **survival horizon** = Associates account creation date + 180 days
-- **Account created:** [OI-001]
-- **Actual deadline:** [OI-002]
-- This may differ from the operational start of October 7, 2026
+- **Account created:** 2026-04-15 (OI-001, CLOSED)
+- **Actual deadline:** 2026-10-12 (OI-002, CLOSED)
+- The survival clock is **not** the operational start of October 7, 2026. The operating window from the operational start to the deadline is short.
 
 ### 13.3.2 Amazon Associates — API Access
 
 > **OI-004:** Verify current requirements. Record source and date.
 
-> **Reference note:** PA-API has been deprecated and replaced by **Creators API**. All references in this document to PA-API should be read as referring to Creators API. See `A.5-ENG-STYP-001` §48.
+> **Reference note:** PA-API has been deprecated and replaced by **Creators API**. All references in this document to PA-API should be read as referring to Creators API. See `A.5-ENG-STYP-001` §48 and `A.4-CONTR-STYP-001` Notes on External Facts.
 
 ### 13.3.3 Amazon Associates — Image and Price Display
 
@@ -727,7 +727,7 @@ The rubric is upstream of Select, Recommend, Align, and Learn.
 
 Its evolution is an explicit learning process, not an undocumented change in personal judgment.
 
-> **Contractual basis:** Rubric Management is formalized as capability C-11 in `A.3-CAP-STYP-001` §17 and contracted in `A.4-CONTR-STYP-001` C-11.
+> **Contractual basis:** Rubric Management is formalized as capability C-11 in `A.3-CAP-STYP-001` v1.2 §17 and contracted in `A.4-CONTR-STYP-001` C-11.
 
 ---
 
@@ -768,7 +768,7 @@ These measure whether the **functions** are working.
 | Governance violation rate | ≤ 2% | Every Pin for the first 30; then 1 in 5 |
 | Pin-level ID integrity (Pins with correct tracking ID) | 100% | Every Pin |
 
-> **Naming note:** This metric was previously named "Attribution completeness." It is now named **Pin-level ID integrity** to distinguish it from the tracking-ID-level metric in `A.3-CAP-STYP-001` §14.12, now named **Tracking-ID attribution coverage**. The two metrics are related but distinct. See `A.3-CAP-STYP-001` §21.
+> **Naming note:** This metric was previously named "Attribution completeness." It is now named **Pin-level ID integrity** to distinguish it from the tracking-ID-level metric in `A.3-CAP-STYP-001` v1.2 §14.12, now named **Tracking-ID attribution coverage**. The two metrics are related but distinct. See `A.3-CAP-STYP-001` v1.2 §21.
 
 ## 18.2 Business Validation Thresholds
 
@@ -777,10 +777,12 @@ These measure whether the **functions** are working.
 | Threshold | Target | Notes |
 |-----------|--------|-------|
 | Qualifying purchases | **≥ 5 by deadline** | Above the survival floor of 3 |
-| Amazon clicks | ≥ 100 by deadline | |
-| Outbound click rate | ≥ 1.5% | **Provisional; recalibrate after month 1** |
+| Amazon clicks | ≥ 100 by deadline | **Provisional**; recalibrate after month 1 |
+| Outbound click rate | ≥ 1.5% | **Provisional**; recalibrate after month 1 |
 | Pins published | ≥ 120 by deadline | |
 | Production time per Pin | ≤ 45 min average | |
+
+> **Provisional status of Amazon clicks:** The "≥ 100 Amazon clicks" target is a planning hypothesis aligned with the 3% conversion hypothesis in `A.1-BIZ-STYP-001` v1.5 §15–§16. It is not an empirically validated coefficient and should be replaced by observed data as soon as it exists.
 
 ## 18.3 Interim Checkpoints
 
@@ -795,6 +797,8 @@ These measure whether the **functions** are working.
 | **30 days** | Fewer than 3 qualifying purchases | Escalate — survival threshold at risk |
 
 > **Survival floor:** 3 qualifying purchases is the **minimum to keep the Associates account**, not evidence that the value proposition works. The success target is set above that floor.
+
+> **Note on checkpoint relevance (aligned with `A.1-BIZ-STYP-001` v1.5 §18 and `A.3-CAP-STYP-001` v1.2 §18.7):** If the remaining operating window is shorter than the largest checkpoint offset (135 days), the checkpoint has either already passed or is not actionable. In that case, the Editorial Owner must decide whether to (a) treat the current date as the effective checkpoint, (b) request a deadline extension, or (c) accept that the survival floor may not be reached and plan accordingly.
 
 ---
 
@@ -848,9 +852,9 @@ The Engineering Proposal must answer:
 
 # 22. Version Control
 
-This specification represents the **V1.1 Release Candidate** functional model.
+This specification represents the **V1.2** functional model.
 
-It becomes **V1.1 Final** only when all Open Items (`OI-001` to `OI-008`) are closed.
+It becomes **V1.2 Final** only when all Open Items (`OI-001` to `OI-008`) are closed.
 
 Changes should be made when:
 1. New evidence demonstrates a function is missing
@@ -875,13 +879,38 @@ Together, these functions define the minimum business behavior required for Styl
 
 ---
 
+## Formal Sign-Off
+
+**Prepared by:** Style Picks Editorial Owner
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Stage:** A — Engineering Definition (Conceptual Level)
+
+**Level:** A.2 — Business Functions
+
+**Document ID:** A.2-FUNC-STYP-001
+
+**Version:** 1.2 — Functional Definition (Reconciled)
+
+**Status:** **Baselined**
+
+**Authorization:** This document derives from `A.1-BIZ-STYP-001` v1.5. `A.3-CAP-STYP-001` v1.2 is authorized to derive from it.
+
+**Pending Change Proposals:** CP-002 (AI-Generated Contextual Imagery).
+
+**Language:** English
 
 ---
 
-## Note on OI-001
+*End of Value Proposition Functional Specification — A.2-FUNC-STYP-001 v1.2*
+
+---
+
+## Note on OI-001 and OI-002
 
 > **OI-001 is CLOSED.** Amazon Associates account was created on **2026-04-15**.
 >
-> The survival deadline is **2026-10-12** (account date + 180 days).
+> **OI-002 is CLOSED.** The survival deadline is **2026-10-12** (account date + 180 days).
 >
-> All checkpoints in this document are now computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock.
+> All checkpoints in this document are computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock. The remaining operating window from the operational start to the deadline is short; §18.3 carries the note on checkpoint relevance.

@@ -6,7 +6,7 @@
 
 **Document ID:** A.1-BIZ-STYP-001
 
-**Version:** 1.4 — Commercial Intent Baseline (Baselined)
+**Version:** 1.5 — Commercial Intent Baseline (Reconciled)
 
 **Status:** Stage A — Engineering Definition (Conceptual Level) — Baselined
 
@@ -32,7 +32,6 @@
 **Initial Channel:** Pinterest
 **Monetization:** Amazon Associates
 **Initial Categories:** Home Decor + Home Organization
-**Operational Start:** October 7, 2026
 **Amazon Associates Account Created:** 2026-04-15
 **Amazon Associates Deadline:** 2026-10-12
 **Validation Horizon:** Ends at the Amazon Associates deadline
@@ -49,6 +48,7 @@
 | 1.3 | Oct 7, 2026 | Reduced to five business questions; eliminated content that does not change decisions |
 | 1.4 | Oct 8, 2026 | Aligned with downstream documents: deadline reframed as Amazon Associates account date + 180 days (OI-001); survival floor vs. success target separated; conversion hypothesis qualified as provisional; time economics reconciled with Engineering Proposal §32-A; explicit handoff to Functional Spec added; Open Items propagated; cross-references added |
 | **1.4 (Baselined)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (PH1-REG-STYP-001) referenced; Change Proposals and Engineering Dependencies registers referenced; Sign-Off block added |
+| **1.5** | Oct 8, 2026 | **Temporal reconciliation.** The survival clock is the Amazon Associates deadline (2026-10-12), not the operational start. All phase ranges, checkpoints, pace tables, and the validation horizon are now computed against the actual remaining days. Phase 1 is redefined as the period from the start of operations to the first checkpoint, not as "deadline minus 180." The 26-week assumption is removed. The distinction between *survival clock* (Amazon) and *operating window* (Style Picks) is stated explicitly in §1 and in the Note on OI-001. |
 
 ---
 
@@ -66,7 +66,6 @@
 | OI-006 | Verification: required disclosure wording | Defaultable | Editorial Owner | EMPTY |
 | OI-007 | Verification: link-format rules | Defaultable | Editorial Owner | EMPTY |
 | OI-008 | Evidence Source Policy — formalized | Defaultable | Editorial Owner | EMPTY |
-
 
 ---
 
@@ -87,6 +86,17 @@ It seeks to answer a much more important business question:
 > **Can Style Picks generate enough commercial traffic from Pinterest to produce qualifying purchases on a repeatable basis?**
 
 Initial validation will be limited to **Home Decor** and **Home Organization**, avoiding dispersion across multiple categories.
+
+### Two Clocks
+
+The plan distinguishes two time references, and they are **not the same**:
+
+| Clock | Definition | Date | Consequence |
+|-------|------------|------|-------------|
+| **Survival clock** | Amazon Associates account creation + 180 days | 2026-10-12 | If the account does not reach the survival floor by this date, Amazon may terminate it. |
+| **Operating window** | The period in which Style Picks actually publishes content | From first Pin until the survival clock expires | This is the window in which the business must demonstrate traction. |
+
+The operational start of October 7, 2026 is **not** the survival clock. The survival clock began on 2026-04-15, when the Amazon Associates account was created. **As of the operational start, the remaining operating window is short.**
 
 ### Survival Floor vs. Success Target
 
@@ -528,54 +538,96 @@ The business should progressively replace these hypotheses with its own data.
 
 # 17. Required Pace
 
-The weekly pace will depend on the weeks remaining until the deadline.
+The weekly pace depends on the weeks remaining until the deadline, **not** on a fixed 26-week horizon.
 
-> **The deadline is the Amazon Associates deadline (OI-002), not a fixed calendar date.** Until OI-001 is closed, the table below uses the planning assumption of approximately 26 weeks from operational start.
+### Remaining Operating Window
 
-With approximately 26 weeks available at the start:
+| Reference | Date |
+|-----------|------|
+| Amazon Associates account created (OI-001) | 2026-04-15 |
+| Amazon Associates deadline (OI-002) | 2026-10-12 |
+| Operational start | 2026-10-07 |
+| **Remaining days from operational start to deadline** | **5 days** |
 
-| Scenario | Total clicks | Approximate weekly average |
-| --- | --- | --- |
-| 2% | 150 | 5.8 |
-| 3% | 100 | 3.8 |
-| 5% | 60 | 2.3 |
+> **This is the central operational reality of Stage A.** The survival clock began in April 2026. By the time operations start in October 2026, the remaining window is measured in days, not months. The pace tables below reflect this.
 
-Therefore, **4 Amazon clicks per week** will initially be the central operational objective.
+### Pace Required to Reach the Survival Floor
 
-This number should be updated as real data becomes available and as the actual deadline is confirmed.
+With **5 days** available:
+
+| Scenario | Total clicks | Approximate daily average | Approximate weekly equivalent |
+| --- | --- | --- | --- |
+| 2% | 150 | 30.0 | 210 |
+| 3% | 100 | 20.0 | 140 |
+| 5% | 60 | 12.0 | 84 |
+
+**These rates are not realistic for a new Pinterest account with no distribution history.** The plan must state this explicitly rather than present a 26-week schedule that does not exist.
+
+> **Implication:** Reaching the survival floor of 3 qualifying purchases within the remaining window is **unlikely under the current timeline**. The realistic objective is to **demonstrate distribution and commercial traffic** within the remaining days, and to use that evidence to decide whether to request an extension, redefine the timeline, or accept that the Associates account may lapse.
+
+### If the Deadline Is Extended or Recalculated
+
+If OI-002 is revised (for example, because the qualifying-sales rule is verified to run from a different date, or because Amazon grants an extension), the pace table must be recomputed against the actual remaining days. The formula is:
+
+```
+Required weekly Amazon clicks = (Total clicks required) / (Remaining weeks)
+```
+
+where:
+
+```
+Total clicks required = Survival floor (3) / Conversion hypothesis
+```
+
+For the central 3% hypothesis: `3 / 0.03 = 100 Amazon clicks` over the remaining window.
 
 ---
 
 # 18. Validation Horizon
 
-> **All phases are anchored to the Amazon Associates deadline (OI-002), expressed as "deadline minus N days."** The day numbers below assume a 180-day horizon from account creation.
+> **All phases are anchored to the Amazon Associates deadline (OI-002).** Because the remaining window is short, the phase structure is compressed and conditional. If the deadline is extended or recalculated, this section must be revised.
+
+### Phase 0 — Rule Verification (Before the First Pin)
+
+**Objective:**
+
+> verify the external rules that govern the first Pin.
+
+Required before publication:
+
+- required disclosure wording (OI-006);
+- link-format rules (OI-007);
+- image and price display rules (OI-005);
+- qualifying-sales rule (OI-003).
+
+This is a Phase 0 requirement in `A.5-ENG-STYP-001` §32-B.
 
 ### Phase 1 — Distribution
 
-**Deadline minus 180 to deadline minus 150 days**
+**From the first Pin to the first checkpoint.**
 
 Objective:
 
 > determine whether Pinterest begins distributing the content.
 
-The main observations will be:
+Main observations:
 
 - production;
 - impressions;
 - distribution growth;
 - first outbound clicks.
 
-A specific number of sales will not yet be required.
+A specific number of sales is not yet required.
 
 ### Phase 2 — Commercial Traffic
 
-**Deadline minus 150 to deadline minus 120 days**
+**From the first outbound clicks to the first Amazon clicks.**
 
 Objective:
 
 > determine whether the content generates traffic to Amazon.
 
-Attention will shift toward:
+Attention shifts toward:
 
 - outbound clicks;
 - Amazon clicks;
@@ -583,13 +635,13 @@ Attention will shift toward:
 
 ### Phase 3 — Conversion
 
-**Deadline minus 120 to deadline minus 60 days**
+**From the first Amazon clicks to the first qualifying purchases.**
 
 Objective:
 
 > determine whether the generated traffic can convert into purchases.
 
-Here the following begin to acquire greater importance:
+Here the following acquire greater importance:
 
 - purchases;
 - conversion;
@@ -599,7 +651,7 @@ Here the following begin to acquire greater importance:
 
 ### Phase 4 — Decision
 
-**Deadline minus 60 to deadline (day 0)**
+**At or before the Amazon Associates deadline.**
 
 Objective:
 
@@ -607,15 +659,17 @@ Objective:
 
 ### Interim Checkpoints
 
-The following checkpoints are monitored continuously by Compliance & Governance (CD1):
+> **Checkpoints are expressed as "days remaining until the Amazon Associates deadline," not as fixed offsets from a 180-day horizon.** With the operational start on 2026-10-07 and the deadline on 2026-10-12, the checkpoints below fall at or before the operational start and are therefore **historical or immediate**, not future milestones.
 
-| Deadline minus | Condition | Action |
+| Days remaining | Condition | Action |
 |----------------|-----------|--------|
 | **135 days** | Outbound clicks well below expected (< 20 total) | Escalate — strategic review |
 | **135 days** | Outbound clicks present but attribution ratio < 50% | Escalate immediately — tracking failure |
 | **90 days** | Zero qualifying purchases | Escalate — strategic review |
 | **60 days** | Fewer than 2 qualifying purchases | Escalate — strategic review |
 | **30 days** | Fewer than 3 qualifying purchases | Escalate — survival threshold at risk |
+
+> **Note on checkpoint relevance:** If the remaining window is shorter than the largest checkpoint offset, the checkpoint has either already passed or is not actionable. In that case, the Editorial Owner must decide whether to (a) treat the current date as the effective checkpoint, (b) request a deadline extension, or (c) accept that the survival floor may not be reached and plan accordingly.
 
 ---
 
@@ -695,7 +749,7 @@ Time spent on the following will be tracked:
 
 This will later make it possible to calculate the true production cost.
 
-> **Operational note:** Production time is logged per Pin. The Engineering Proposal (`A.5-ENG-STYP-001` §32-A) sets a target of **≤ 45 minutes per Pin** and caps weekly build effort at **10 hours per week** so that production is not displaced by platform development.
+> **Operational note:** Production time is logged per Pin. The target of **≤ 45 minutes per Pin** is defined in `A.2-FUNC-STYP-001` §18.2. The Engineering Proposal (`A.5-ENG-STYP-001` §32-A) caps weekly build effort at **10 hours per week** so that production is not displaced by platform development.
 
 ---
 
@@ -782,7 +836,7 @@ It will not be abandoned because of:
 - low initial impressions;
 - zero sales after very few clicks.
 
-> **Strategic review checkpoints** (deadline minus 135, 90, 60, 30 days) are the formal moments at which this decision is evaluated.
+> **Strategic review checkpoints** are the formal moments at which this decision is evaluated. See §18 for the checkpoint table and the note on checkpoint relevance when the remaining window is short.
 
 ---
 
@@ -848,15 +902,21 @@ The next question will always depend on the answer to the previous one.
 
 # 30. Example of Weekly Analysis
 
-**Week 3**
+**Week 1**
 
-45 Pins published → 2,800 impressions → 12 outbound clicks → 3 Amazon clicks → 0 sales.
+If, in the first week of operation:
+
+- Pins published: 15
+- Impressions: 400
+- Outbound clicks: 3
+- Amazon clicks: 1
+- Sales: 0
 
 Interpretation:
 
-Production exists, but commercial traffic is still below the approximate target of 4 Amazon clicks per week.
+Production exists. Distribution is beginning. Commercial traffic is far below the pace required to reach the survival floor within the remaining window.
 
-**Decision:** optimize topics, titles, and product selection before aggressively increasing production.
+**Decision:** optimize topics, titles, and product selection before aggressively increasing production. At the same time, reassess whether the remaining window is sufficient and whether a deadline extension or timeline revision is required.
 
 ---
 
@@ -918,6 +978,12 @@ Disclosure, link-format, image, and survival rules are external and may change.
 
 **Mitigation:** represent unverified parameters as unverified configuration, not hard-coded assumptions; verify the rules governing the first Pin before publishing.
 
+### Compressed Operating Window
+
+The survival clock began in April 2026, but operations start in October 2026. The remaining window may be too short to reach the survival floor.
+
+**Mitigation:** treat the remaining days as a **traction demonstration window**, not a full validation window. If the survival floor cannot be reached, decide explicitly whether to request an extension, redefine the timeline, or accept that the Associates account may lapse. Do not pretend the 26-week schedule exists.
+
 ---
 
 # 33. What Style Picks Will NOT Do Initially
@@ -942,7 +1008,7 @@ The following will not be prioritized:
 
 # 34. Definitive Economic Criterion
 
-At six months, Style Picks must answer:
+At the end of the validation horizon, Style Picks must answer:
 
 > **Does the potential economic benefit justify the time invested?**
 
@@ -1006,7 +1072,7 @@ But none of these extensions is part of the current priority.
 
 # 38. Central Strategic Decision
 
-The objective of the first 180 days can be summarized in a single question:
+The objective of the validation horizon can be summarized in a single question:
 
 > **Can Style Picks convert visual content into commercial traffic and commercial traffic into purchases in a sufficiently repeatable and profitable manner?**
 
@@ -1015,6 +1081,8 @@ If the answer is yes, scale.
 If the answer is partially yes, modify.
 
 If the answer is no after a sufficient test, abandon or redefine the model.
+
+> **Timeline caveat:** If the remaining operating window is too short to produce a sufficient test, the answer may be "insufficient evidence" rather than "no." That is a distinct outcome and must be treated as such. See §32 (Compressed Operating Window).
 
 ---
 
@@ -1073,23 +1141,23 @@ That is the business plan. Everything else should be **execution and data**, not
 
 ---
 
-## V1.4 Verdict
+## V1.5 Verdict
 
-This version is superior to V1.3 not because it contains more content, but because it is now **consistent with the documents that derive from it** and **codified within the Stage A pipeline**.
+This version is superior to V1.4 because it **reconciles the temporal contradiction** that V1.4 left unresolved.
 
 The changes are:
 
-1. The deadline is correctly framed as **Amazon Associates account date + 180 days**, not a fixed calendar date.
-2. The distinction between **survival floor (3)** and **success target (≥ 5)** is explicit.
-3. The conversion hypothesis is qualified as **provisional**.
-4. The time-economics rule is reconciled with the Engineering Proposal's **build-time cap**.
-5. The attribution limitations of Stage A are stated where they affect planning.
-6. A **Handoff section** makes the relationship to documents A.2–A.5 explicit.
-7. The **document header** is normalized per the Stage A codification.
-8. The **Open Items Register** (`PH1-REG-STYP-001`) is the single source of truth for all OI references.
-9. Cross-references now use **Document IDs** (`A.x-XXX-STYP-001`) rather than narrative names.
+1. The distinction between the **survival clock** (Amazon Associates, started 2026-04-15) and the **operating window** (Style Picks, starting 2026-10-07) is now explicit in §1.
+2. The phase structure in §18 is **anchored to the actual remaining days**, not to a hypothetical 180-day horizon.
+3. The pace table in §17 is **recomputed against the 5-day remaining window**, with the implication stated plainly: reaching the survival floor under the current timeline is unlikely.
+4. The checkpoint table in §18 carries an explicit note on **checkpoint relevance** when the remaining window is shorter than the checkpoint offset.
+5. The risk register in §32 adds **Compressed Operating Window** as an explicit risk with mitigation.
+6. §38 distinguishes "no" from **"insufficient evidence"** as a decision outcome.
+7. The imprecise cross-reference in §15 (Amazon clicks recalibration) is corrected.
+8. The imprecise cross-reference in §22 (≤45 min/Pin source) is corrected.
+9. The example in §30 uses **Week 1** rather than "Week 3," consistent with a 5-day window.
 
-The architecture is reduced to five business questions:
+The architecture is still reduced to five business questions:
 
 **What do we sell?**
 Editorial product-discovery content.
@@ -1110,9 +1178,6 @@ That is the business plan. Everything else should be **execution and data**, not
 
 ---
 
-
----
-
 ## 11. Formal Sign-Off
 
 **Prepared by:** Style Picks Editorial Owner
@@ -1125,26 +1190,30 @@ That is the business plan. Everything else should be **execution and data**, not
 
 **Document ID:** A.1-BIZ-STYP-001
 
-**Version:** 1.4 — Commercial Intent Baseline (Baselined)
+**Version:** 1.5 — Commercial Intent Baseline (Reconciled)
 
 **Status:** **Baselined**
 
 **Authorization:** This document is the root of the Stage A pipeline. `A.2-FUNC-STYP-001` is authorized to derive from it.
 
-**Duration:** 180 days (from Amazon Associates account creation date — OI-001)
+**Duration:** The validation horizon ends at the Amazon Associates deadline (OI-002 = 2026-10-12).
 
 **Language:** English
 
 ---
 
-*End of Business Plan and Commercial Validation — A.1-BIZ-STYP-001 v1.4*
+*End of Business Plan and Commercial Validation — A.1-BIZ-STYP-001 v1.5*
 
 ---
 
-## Note on OI-001
+## Note on OI-001 and OI-002
 
 > **OI-001 is CLOSED.** Amazon Associates account was created on **2026-04-15**.
 >
-> The survival deadline is **2026-10-12** (account date + 180 days).
+> **OI-002 is CLOSED.** The survival deadline is **2026-10-12** (account date + 180 days).
 >
-> All checkpoints in this document are now computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock.
+> **The operational start of October 7, 2026 is not the survival clock.** The survival clock began on 2026-04-15. The remaining operating window from the operational start to the deadline is **5 days**.
+>
+> This is the central temporal fact of Stage A. All phase ranges, checkpoints, and pace tables in this document are computed against the actual remaining days. Where a checkpoint offset exceeds the remaining window, the checkpoint is marked as historical or immediate. The plan does not pretend that a 26-week schedule exists.
+>
+> **If OI-002 is revised** — for example, because the qualifying-sales rule is verified to run from a different date, or because Amazon grants an extension — the phase ranges, checkpoint offsets, and pace tables in §17 and §18 must be recomputed against the new remaining window.

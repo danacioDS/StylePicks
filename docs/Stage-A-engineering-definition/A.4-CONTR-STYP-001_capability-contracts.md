@@ -6,20 +6,20 @@
 
 **Document ID:** A.4-CONTR-STYP-001
 
-**Version:** 1.0 RC.4 — Contract Formalization Release Candidate
+**Version:** 1.0 — Contract Formalization (Reconciled)
 
-**Status:** Stage A — Engineering Definition (Conceptual Level) — Release Candidate
+**Status:** Stage A — Engineering Definition (Conceptual Level) — Baselined
 
 **Project:** Style Picks — Content Commerce + Affiliate Commerce
 
 **Engagement:** STYP-VALIDATION-2026
 
 **Parent Documents:**
-- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.1 RC.4)
+- A.3-CAP-STYP-001 — Business Capabilities Specification (v1.2 Reconciled)
 - PH1-REG-STYP-001 — Phase 1 Clarification & Open Items Register (v1.0)
 
 **Child Documents:**
-- A.5-ENG-STYP-001 — Engineering Proposal (v1.2 Final)
+- A.5-ENG-STYP-001 — Engineering Proposal (v1.2.1 Frozen)
 
 **Domain:** Domain A.4 — Capability Contracts
 
@@ -45,8 +45,9 @@
 | 1.0 RC.2 | Oct 7, 2026 | Part I added (schemas, state machines, invariants, error codes); Product Record ownership resolved; Change Detection added; D-6 split into states + events; Contract Failure Record added |
 | 1.0 RC.3 | Oct 7, 2026 | Sole-writer ownership for every record; Revoked state + Review cleared event; Evidence Record supports imagery; Publication Record references Validation and Compliance; disclosure field added; error table extended; Product Record versioning semantics; systemic-failure routing fixed |
 | 1.0 RC.4 | Oct 7, 2026 | INV-12 refined: re-point claims to successor evidence before revoking; "Review triggered" and "Review cleared" transitions reassigned to C-07; Revoked → Pin dependency added; Product Record references keyed to (product_id, version); E-ALIGN-02 corrected to re-link; C-10 wording tightened |
-| **1.0 RC.4 (Baselined header)** | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals register referenced; Sign-Off block added |
+| 1.0 RC.4 (Baselined header) | Oct 8, 2026 | Normalized document header per Stage A codification; cross-references updated to A.x IDs; Open Items Register (`PH1-REG-STYP-001`) referenced; Change Proposals register referenced; Sign-Off block added |
 | 1.0 RC.5 | Oct 8, 2026 | CP-001 accepted: INV-12 formalized as two-step logic (re-point if successor exists, Revoke otherwise). Aligns A.4 with A.5 §19. |
+| **1.0 (Reconciled)** | Oct 8, 2026 | **Consistency reconciliation with A.1 v1.5, A.2 v1.1, A.3 v1.2, A.5 v1.2.1.** (1) I.5 duplicated sentence removed. (2) CP-003 accepted: C-06 postcondition #3 reworded so that C-06 issues Validation Results and C-07 executes lifecycle transitions, aligning with INV-13. (3) I.2.1 "Review cleared" event row cleaned: triggered by C-06, executed by C-07. (4) CP-001 acceptance note consolidated. (5) All cross-references to A.3 updated to v1.2 section numbers. (6) Note on external facts aligned with A.5 §48 and §49. (7) Formal Sign-Off block added. |
 
 ---
 
@@ -71,9 +72,13 @@
 |-------|-------|-------------------|--------|
 | CP-001 | Re-evaluation vs Revocation on Superseded Evidence | INV-12, I.5 | **Accepted 2026-10-08** |
 | CP-002 | AI-Generated Contextual Imagery | C-05, CD4 | Pending |
-| CP-003 | Review Cleared Sole-Writer Assignment | C-06 postcondition #3 | Pending |
+| CP-003 | Review Cleared Sole-Writer Assignment | C-06 postcondition #3 | **Accepted 2026-10-08** |
 
-> **Until CP-001, CP-002, and CP-003 are accepted, the literal wording of this document governs.**
+> **On CP-001 (Accepted):** INV-12 formalizes the two-step logic. C-04 postconditions #4 and #5, and C-10 postcondition #3, reflect this. No divergence remains between A.4 and A.5 §19.
+
+> **On CP-002 (Pending):** Until accepted, only licensed and stock imagery are used. C-05's `contextual_image_reference` field is restricted accordingly.
+
+> **On CP-003 (Accepted):** C-06 postcondition #3 has been reworded. C-06 issues Validation Results; C-07 executes lifecycle transitions. This aligns with INV-13 and removes the previous internal contradiction.
 
 ---
 
@@ -89,7 +94,7 @@
 ### Document Structure
 
 - **Part I — Shared Contract Assets:** data dictionary, state machines, invariants, error codes, Change Detection, deferred definitions, compliance requirements.
-- **Part II — Capability Contracts:** one per capability. Each contract cites BC (`A.3-CAP-STYP-001`) for purpose, inputs, business rules, failure conditions, dependencies, ownership, evidence requirements, boundary — and adds only verification, failure handling by code, and any contract-specific detail.
+- **Part II — Capability Contracts:** one per capability. Each contract cites BC (`A.3-CAP-STYP-001` v1.2) for purpose, inputs, business rules, failure conditions, dependencies, ownership, evidence requirements, boundary — and adds only verification, failure handling by code, and any contract-specific detail.
 
 ### Contract Identifiers
 
@@ -146,7 +151,7 @@ Field types: `string`, `integer`, `decimal`, `boolean`, `date`, `timestamp`, `en
 
 ### I.1.2.1 — Product Record Reference Semantics
 
-> **Correction from RC.3:** The pair `(product_id, version)` uniquely identifies a Product Record.
+> The pair `(product_id, version)` uniquely identifies a Product Record.
 
 **Reference convention:** All references to a Product Record across records are of the form `(product_id, version)`.
 
@@ -165,7 +170,7 @@ When a record must reference "the current Product Record," it stores `(product_i
 | claim | string | O | Required for Claim-level. |
 | source | string | R | |
 | source_url | string | R | |
-| source_classification | enum | R | Verified / Unverified. **Note:** a future `Limited Reliability` value will be added when OI-008 (Evidence Source Policy) is closed. Until then, Evidence Confidence = Medium is unreachable (see A.3-CAP-STYP-001 §10.6). |
+| source_classification | enum | R | Verified / Unverified. **Note:** a future `Limited Reliability` value will be added when OI-008 (Evidence Source Policy) is closed. Until then, Evidence Confidence = Medium is unreachable (see `A.3-CAP-STYP-001` §10.6). |
 | retrieval_timestamp | timestamp | R | |
 | content_snapshot | string | O | |
 | license_or_permission | string | O | Required for Imagery. |
@@ -256,7 +261,7 @@ When a record must reference "the current Product Record," it stores `(product_i
 | corrective_action | enum | O | Required when FAIL and post-publication. |
 | validated_at | timestamp | R | |
 
-> **Note:** C-06 **issues** Validation Results (PASS, FAIL, CLEARED). C-07 **executes** lifecycle transitions. C-06 does not modify Publication Records.
+> **Note:** C-06 **issues** Validation Results (PASS, FAIL, CLEARED). C-07 **executes** lifecycle transitions. C-06 does not modify Publication Records (INV-13).
 
 ## I.1.8 — Compliance Record
 
@@ -372,16 +377,14 @@ States are persistent. Events are transitions. A record is in exactly one state 
 | Event | From | To | Triggered by | Executed by |
 |-------|------|-----|--------------|-------------|
 | Published | — | Live | C-07 | C-07 |
-| Review triggered | Live | Under Review | C-06 (CLEARED not applicable; failure detected) | C-07 |
+| Review triggered | Live | Under Review | C-06 (Validation Result = FAIL) | C-07 |
 | Review cleared | Under Review | Live | C-06 (Validation Result = CLEARED) | C-07 |
 | Re-linked | Under Review | Live | C-06 (corrective action = re-link) | C-07 |
 | Replaced | Live or Under Review | Archived | C-06 | C-07 |
 | Archived | Live or Under Review | Archived | C-06 | C-07 |
 | Restored | Archived | Live | Editorial Owner | C-07 |
 
-> **Correction from RC.3:** C-06 **issues** Validation Results; C-07 **executes** lifecycle transitions. This preserves INV-10 (C-07 is sole writer of the Publication Record).
-
-> **Pending CP-003:** C-06 postcondition #3 currently states that C-06 "executes" the Review cleared event. CP-003 proposes rewording it to align with INV-13. Until CP-003 is accepted, the literal text of C-06 postcondition #3 governs.
+> **CP-003 accepted (2026-10-08):** C-06 **issues** Validation Results; C-07 **executes** lifecycle transitions. This preserves INV-10 (C-07 is sole writer of the Publication Record) and INV-13 (every lifecycle transition is executed by C-07 only).
 
 ## I.2.2 — Recommendation Status
 
@@ -394,9 +397,7 @@ States are persistent. Events are transitions. A record is in exactly one state 
 | **Rejected** | Withdrawn before presentation. | (Terminal.) |
 | **Revoked** | Withdrawn after approval, typically due to superseded evidence no longer supporting a material claim. | (Terminal.) |
 
-> **CP-001 accepted (2026-10-08):** A recommendation moves to Revoked only when **a material claim is no longer supported by any Active Evidence Record**. If successor evidence is available for the same claim, the reference is re-pointed to the successor and the recommendation remains in its current approved state. This two-step logic is now formalized in INV-12.
-
-
+> **CP-001 accepted (2026-10-08):** A recommendation moves to Revoked only when **a material claim is no longer supported by any Active Evidence Record**. If successor evidence is available for the same claim, the reference is re-pointed to the successor and the recommendation remains in its current approved state. This two-step logic is formalized in INV-12.
 
 ## I.2.3 — Rubric Version Status
 
@@ -436,8 +437,9 @@ Exactly one version Active at a time.
 | INV-13 | **Every lifecycle transition of a Pin is executed by C-07 only, even when triggered by a Validation Result issued by C-06.** |
 | INV-14 | **Every reference to a Product Record is of the form `(product_id, version)`.** |
 
-> **CP-001 accepted (2026-10-08).** INV-12 now formally adopts the two-step logic. This aligns A.4 with the implementation described in A.5-ENG-STYP-001 §19. No divergence remains between the contract and the built system on this point.
+> **CP-001 accepted (2026-10-08).** INV-12 formally adopts the two-step logic. This aligns A.4 with the implementation described in `A.5-ENG-STYP-001` §19.
 
+> **CP-003 accepted (2026-10-08).** INV-13 is confirmed. C-06 issues Validation Results; C-07 executes lifecycle transitions. No contradiction remains between I.2.1, C-06, and C-07.
 
 ---
 
@@ -458,9 +460,9 @@ Each code carries: detection method, default response, severity, deadline.
 | E-TR-01 | Traceability link missing. | Deterministic | Block | Material | Immediate |
 | E-TR-02 | Traceability link inconsistent (e.g., tracking ID mismatch). | Deterministic | Block | Material | Immediate |
 | E-ALIGN-01 | Pin promise does not match content. | Deterministic or human | Block | Material | Immediate |
-| E-ALIGN-02 | **Destination not reachable (product still available).** | Deterministic | **Re-link** | Material | 24h |
+| E-ALIGN-02 | Destination not reachable (product still available). | Deterministic | Re-link | Material | 24h |
 | E-ALIGN-03 | Product Record materially changed. | Deterministic | Review triggered | Material | 24h |
-| E-ALIGN-04 | **Destination not reachable and product discontinued.** | Deterministic | **Archive Pin** | Material | 24h |
+| E-ALIGN-04 | Destination not reachable and product discontinued. | Deterministic | Archive Pin | Material | 24h |
 | E-GOV-01 | Disclosure missing or incorrect. | Deterministic or human | Block | Material | Immediate |
 | E-GOV-02 | Link format non-conforming. | Deterministic | Block | Material | Immediate |
 | E-GOV-03 | Image use non-conforming. | Deterministic or human | Block | Material | Immediate |
@@ -489,8 +491,10 @@ Each code carries: detection method, default response, severity, deadline.
 **Detection semantics:**
 
 - An Evidence Record is superseded **only when the specific fact it supports changes**, not when the page snapshot changes trivially.
-- When supersession is required and a successor Evidence Record is available for the same claim, the claim reference is re-pointed (code **E-EV-04**, no status change). **This is now the formal behavior per INV-12.**
-- When no successor is available for a material claim, the recommendation transitions to **Revoked** (code **E-EV-03**). **This is now the formal behavior per INV-12.** **This is now the formal behavior per INV-12.**
+- When supersession is required and a successor Evidence Record is available for the same claim, the claim reference is re-pointed (code **E-EV-04**, no status change).
+- When no successor is available for a material claim, the recommendation transitions to **Revoked** (code **E-EV-03**).
+
+> **CP-001 accepted (2026-10-08):** The two-step logic is the formal behavior per INV-12.
 
 **What it produces:**
 
@@ -561,7 +565,7 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 # C-01 — Context Management
 
 **Outputs:** Context Record (I.1.1). Sole writer: C-01.
-**Preconditions / Postconditions / Failure handling / Boundary:** per BC `A.3-CAP-STYP-001` §7.6, §7.7, §7.12, §7.5.
+**Preconditions / Postconditions / Failure handling / Boundary:** per BC `A.3-CAP-STYP-001` v1.2 §7.6, §7.7, §7.12, §7.5.
 
 **Failure codes:** E-PRE-01, E-POST-01, E-RULE-01.
 
@@ -574,7 +578,7 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 - Product Record (I.1.2). Sole writer: C-02.
 - Change-detection outcomes (per I.5). C-02 **detects**; C-10 **versions**.
 
-**Preconditions / Failure handling / Boundary:** per BC `A.3-CAP-STYP-001` §8.6, §8.12, §8.5.
+**Preconditions / Failure handling / Boundary:** per BC `A.3-CAP-STYP-001` v1.2 §8.6, §8.12, §8.5.
 
 **Failure codes:** E-PRE-01, E-EV-01, E-EV-02, E-TR-01, E-CD-01.
 
@@ -585,7 +589,7 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 # C-03 — Product Evaluation & Curation
 
 **Outputs:** Evaluation Record (I.1.4). Sole writer: C-03.
-**Preconditions / Failure handling / Boundary:** per BC `A.3-CAP-STYP-001` §9.7, §9.13, §9.6.
+**Preconditions / Failure handling / Boundary:** per BC `A.3-CAP-STYP-001` v1.2 §9.7, §9.13, §9.6.
 
 **Failure codes:** E-PRE-01, E-RULE-01, E-RUB-01.
 
@@ -614,7 +618,7 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 # C-05 — Content Presentation
 
 **Outputs:** Content Asset (I.1.6). Sole writer: C-05.
-**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §11.7, §11.6.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` v1.2 §11.7, §11.6.
 
 **Postconditions:** affiliate URL and tracking ID derived from the same Product Record reference (INV-3, INV-7); `disclosure_text` present; asset available to C-06.
 
@@ -627,20 +631,26 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 # C-06 — Consistency Validation
 
 **Outputs:** Validation Result (I.1.7). Sole writer: C-06.
-**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §12.9, §12.8.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` v1.2 §12.9, §12.8.
 
-**Postconditions:** Asset has explicit state PASS, FAIL, or CLEARED; post-publication failures handed to C-07 for corrective action; **C-06 issues Validation Results but does not modify Publication Records** (INV-13).
+**Postconditions:**
+
+| # | Postcondition | Verification |
+|---|---------------|--------------|
+| 1 | Asset has explicit state PASS, FAIL, or CLEARED. | Deterministic. |
+| 2 | Post-publication failures are handed to C-07 with a corrective action specified. | Deterministic. |
+| 3 | **C-06 issues a Validation Result with status = CLEARED; C-07 executes the corresponding lifecycle transition on the Publication Record.** | Deterministic (INV-13). |
 
 **Failure codes:** E-ALIGN-01, E-ALIGN-02, E-ALIGN-03, E-ALIGN-04, E-TR-02.
 
-**Contract-specific note:** Postcondition #3 currently states that C-06 "executes" the Review cleared event. This is the subject of CP-003. Until CP-003 is accepted, the literal text governs. Under INV-13, C-06 issues Validation Results and C-07 executes lifecycle transitions.
+**Contract-specific note (CP-003 accepted 2026-10-08):** The previous wording of postcondition #3 stated that C-06 "executes" the Review cleared event. That contradicted INV-10 and INV-13. The reworded postcondition #3 aligns C-06 with `A.3-CAP-STYP-001` v1.2 §12.8 and with `A.5-ENG-STYP-001` §13. No contradiction remains.
 
 ---
 
 # C-07 — Publication & Lifecycle
 
 **Outputs:** Publication Record (I.1.9). Sole writer: C-07.
-**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §13.6, §13.5.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` v1.2 §13.6, §13.5.
 
 **Postconditions:**
 
@@ -660,7 +670,7 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 # C-08 — Performance Measurement & Attribution
 
 **Outputs:** Performance Record (I.1.10). Sole writer: C-08.
-**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §14.7, §14.6.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` v1.2 §14.7, §14.6.
 
 **Postconditions:** Data available at supported attribution level; completeness and freshness recorded.
 
@@ -673,7 +683,7 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 # C-09 — Learning & Improvement
 
 **Outputs:** Learning Record (I.1.11). Sole writer: C-09.
-**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §15.6, §15.5.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` v1.2 §15.6, §15.5.
 
 **Postconditions:** Every Learning Record links to supporting Performance Records; every hypothesis states its evidence basis and confidence; accepted rubric change proposals handed to C-11.
 
@@ -684,7 +694,7 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 # C-10 — Evidence Management
 
 **Outputs:** Evidence Record (I.1.3). Sole writer: C-10.
-**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §16.7, §16.6.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` v1.2 §16.7, §16.6.
 
 **Postconditions:**
 
@@ -701,7 +711,7 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 # C-11 — Rubric Management
 
 **Outputs:** Rubric Version Record (I.1.12). Sole writer: C-11.
-**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §17.6, §17.5.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` v1.2 §17.6, §17.5.
 
 **Postconditions:** Exactly one rubric version Active (INV-2); change justification and approver recorded.
 
@@ -712,7 +722,7 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 # C-12 — Compliance & Governance
 
 **Outputs:** Compliance Record (I.1.8). Sole writer: C-12.
-**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` §18.10, §18.6.
+**Preconditions / Boundary:** per BC `A.3-CAP-STYP-001` v1.2 §18.10, §18.6.
 
 **Postconditions:** Compliance Record exists with a decision; if Approve, asset eligible for C-07 subject to Validation = PASS (INV-1).
 
@@ -743,7 +753,7 @@ Each contract cites BC for purpose, inputs, business rules, failure conditions, 
 
 - Does not prescribe implementation (deterministic, human, LLM, hybrid).
 - Does not prescribe architecture, storage, or APIs.
-- Does not re-open capability boundaries from `A.3-CAP-STYP-001` V1.1 RC.4.
+- Does not re-open capability boundaries from `A.3-CAP-STYP-001` v1.2.
 - Does not define business metrics — those remain in the Business Plan (`A.1-BIZ-STYP-001`).
 
 ---
@@ -770,13 +780,41 @@ It MUST NOT redefine contracts.
 
 ---
 
+## Formal Sign-Off
+
+**Prepared by:** Style Picks Editorial Owner
+
+**Engagement:** STYP-VALIDATION-2026
+
+**Stage:** A — Engineering Definition (Conceptual Level)
+
+**Level:** A.4 — Capability Contracts
+
+**Document ID:** A.4-CONTR-STYP-001
+
+**Version:** 1.0 — Contract Formalization (Reconciled)
+
+**Status:** **Baselined**
+
+**Authorization:** This document derives from `A.3-CAP-STYP-001` v1.2. `A.5-ENG-STYP-001` v1.2.1 is authorized to derive from it.
+
+**Change Proposals:**
+- CP-001 — Accepted 2026-10-08
+- CP-002 — Pending
+- CP-003 — Accepted 2026-10-08
+
+**Language:** English
 
 ---
 
-## Note on OI-001
+*End of Capability Contracts Specification — A.4-CONTR-STYP-001 v1.0 (Reconciled)*
+
+---
+
+## Note on OI-001 and OI-002
 
 > **OI-001 is CLOSED.** Amazon Associates account was created on **2026-04-15**.
 >
-> The survival deadline is **2026-10-12** (account date + 180 days).
+> **OI-002 is CLOSED.** The survival deadline is **2026-10-12** (account date + 180 days).
 >
-> All checkpoints in this document are now computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock.
+> All checkpoints in this document are computed against this date. The operational start of October 7, 2026 is confirmed as **not** the survival clock. The remaining operating window from the operational start to the deadline is short; CD1 survival checkpoint relevance is governed by `A.1-BIZ-STYP-001` v1.5 §18 and `A.3-CAP-STYP-001` v1.2 §18.7.
